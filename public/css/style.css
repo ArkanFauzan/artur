@@ -1,0 +1,656 @@
+body,#app{
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+}
+.header {
+    width: 950px;
+    font-size: 14px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.header .logo {
+    width: 100px;
+    height: 54px;
+    float: left;
+}
+
+.header .nav {
+    width: 750px;
+    float: left;
+}
+
+.header .join {
+    text-align: center;
+    margin-top: 4px;
+    float: right;
+}
+
+.clear{
+    clear:both;
+}
+
+.header ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 54px;
+    display: flex;
+    justify-content: center;
+}
+
+.header ul a {
+    float: left;
+    padding: 0px 40px;
+    height: 54px;
+    line-height: 54px;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    color:black;
+}
+
+.header ul a:hover, button.button:hover{
+    cursor:pointer;
+}
+
+a.button, button.button {
+    text-decoration: none;
+    background: rgba(66,180,227,1);
+    padding: 15px 25px;
+    border-radius: 15px;
+    color: white;
+    display: inline-block;
+    border: none;
+}
+
+a.button:hover, button.button:hover{
+    background: rgba(28,157,210,1);
+}
+
+.main{
+    min-height: 500px;
+}
+
+.main .welcome {
+    width:950px;
+    margin: 0 auto;
+    padding-top: 50px;
+    position: relative;
+    height: 400px;
+    display: flex;
+}
+
+.main .welcome .text {
+    width: 520px;
+    font-size: 20px;
+    padding-top: 50px;
+}
+
+.main .welcome .text h1 {
+    font-size: 55px;
+    margin: 0;
+    padding-bottom: 30px;
+}
+
+.main .welcome .text p {
+    color: #a5a5a5;
+    padding-bottom: 30px;
+    font-size: 25px;
+    margin: 0px;
+}
+
+.main .welcome .text a{
+    font-size: 30px;
+}
+
+.main .welcome .video{
+    position: relative;
+}
+
+.main .welcome .video iframe {
+    position:absolute;
+    top:0;
+    left:0;
+    height: 350px;
+    width: 680px;
+    border-radius: 35px;
+}
+
+
+.main .features {
+    width: 950px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.main .features .mockup {
+    width: 550px;
+    height: 650px;
+    overflow: visible;
+    text-align: center;
+}
+
+.main .features .mockup img {
+    width: 800px;
+    display: inline-block;
+    position: relative;
+    left: -120px;
+}
+
+.main .features .features-description {
+    width: 400px;
+}
+
+.main .features .features-description .goals p {
+    font-size: 20px;
+    letter-spacing: 0.4px;
+    color: #b6b6b6;
+}
+
+.main .features .features-description .goals h1 {
+    font-size: 40px;
+}
+
+.main .features .features-description .features-list h1 {
+    font-size: 35px;
+}
+
+.main .features .features-description .features-list .features1,
+.main .features .features-description .features-list .features2,
+.main .features .features-description .features-list .features3 {
+    position: relative;
+    padding: 30px 30px;
+    margin-bottom: 15px;
+}
+
+.main .features .features-description .features-list .features1 img,
+.main .features .features-description .features-list .features2 img,
+.main .features .features-description .features-list .features3 img {
+    width: 55px;
+    float: left;
+    margin-right: 30px;
+}
+
+.main .features .features-description .features-list .features1 p,
+.main .features .features-description .features-list .features2 p,
+.main .features .features-description .features-list .features3 p {
+    color: white;
+    font-size: 20px;
+    letter-spacing: 0.1px;
+    margin: 6px 0px;
+}
+
+.main .features .features-description .features-list .features1 div,
+.main .features .features-description .features-list .features2 div,
+.main .features .features-description .features-list .features3 div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 700px;
+    height: 118px;
+    border-radius: 20px;
+    z-index: -1;
+}
+
+.main .features .features-description .features-list .features1 div{
+    background: rgb(103,209,0);
+}
+
+.main .features .features-description .features-list .features2 div{
+    background:#ff8f1f;
+}
+
+.main .features .features-description .features-list .features3 div{
+    background: #41b3e3;
+}
+
+.main .quotes {
+    width: 950px;
+    margin: 0 auto;
+    padding-top: 70px;
+}
+
+.main .quotes .ceo-image {
+    float: right;
+    width: 380px;
+}
+
+.main .quotes .quotes-group {
+    width: 570px;
+    box-sizing: border-box;
+    padding: 15px 30px;
+    text-align: center;
+    font-size: 33px;
+    color: #a5a5a5;
+}
+
+
+.main .quotes .quotes-group .by {
+    color:#000000;
+    margin-bottom:0;
+    font-size: 20px
+}
+
+.main .quotes .quotes-group .position {
+    margin-top: 5px;
+    color: #000000;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.main .mitra {
+    width: 950px;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    padding-right: 40px;
+    box-sizing: border-box;
+}
+
+.main .mitra .background {
+    background: #41b3e3;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1500px;
+    height: 200px;
+    border-radius: 20px;
+    z-index: -1;
+}
+
+.main .mitra .text {
+    height: 70px;
+    color: white;
+    font-size: 20px;
+    margin: 70px 30px;
+}
+
+.main .mitra .list-mitra {
+    padding: 40px 15px;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+}
+
+.main .mitra .list-mitra .logo {
+    width: 65px;
+    display: inline-block;
+}
+
+.main .mitra .list-mitra .name {
+    margin: 0;
+    padding-top: 5px;
+    font-size: 20px;
+}
+
+.main .mitra .list-mitra .ig {
+    margin: 10px;
+}
+
+.main .pricing {
+    width: 950px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding-top: 120px;
+}
+
+.main .pricing .text {
+    width: 430px;
+    float: right;
+}
+
+.main .pricing .text h1 {
+    margin: 0;
+    margin-bottom: 30px;
+    font-size: 45px;
+    letter-spacing: 0.9px;
+}
+
+.main .pricing .text p {
+    font-size: 23px;
+    color: #a5a5a5;
+    text-align: justify;
+}
+
+.main .pricing img {
+    display: inline-block;
+    width: 400px;
+    position: relative;
+    top: 10px;
+    left: 50px;
+}
+
+.footer{
+    background: #272727;
+    padding-top: 30px;
+    margin-top: 60px;
+}
+
+.footer .footer-group{
+    width: 950px;
+    margin: 0 auto;
+    color: white;
+}
+
+.footer .contacts{
+    float:left;
+    width: 520px;
+}
+
+.footer .contacts h1{
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 35px;
+}
+
+.footer .contact{
+    margin-bottom: 10px;
+}
+
+.footer .contact img{
+    float: left;
+    margin-right: 20px;
+    width: 30px;
+}
+
+.footer .contact p{
+    display: inline-block;
+    line-height: 30px;
+    margin: 0px;
+    font-size: 20px;
+}
+
+.footer .logo{
+    float:right;
+    width: 200px;
+}
+
+.footer .copyright{
+    border-top: 2px solid #565656;
+    text-align: center;
+    padding: 15px;
+    font-size: 15px;
+}
+
+/* 
+**
+** Register CSS 
+**
+*/
+
+.main .register {
+    display: flex;
+    width: 950px;
+    margin: 0 auto;
+}
+
+.main .register .mockup{
+    width: 490px;
+    height: 600px;
+    position: relative;
+}
+
+.main .register img {
+    width: 710px;
+    position: absolute;
+    top: 35px;
+    left: -155px;
+}
+
+.main .register .register-form{
+    width: 460px;
+}
+
+.main .register .register-form h1{
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.main .register .form h2{
+    font-size: 35px;
+    margin-bottom: 0;
+    margin-top: 25px;
+}
+
+.main .register .form{
+    height: 500px;
+    position: relative;
+    padding: 5px 0 20px 50px;
+}
+
+.main .register .form p{
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.main .register .form p a{
+    text-decoration: none;
+    color: #69c2e7;
+}
+
+.main .register .form .backgroud{
+    background: #f3f3f3;
+    border-radius: 50px;
+    box-sizing: border-box;
+    position: absolute;
+    width: 900px;
+    height: 540px;
+    top:0px;
+    left: 0px;
+    z-index: -1;
+}
+
+.main .register .form-group{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.main .register .form-group label{
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.main .register .form-group input{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+.main .register .section{
+    display: flex;
+}
+
+.main .register .section .space{
+    width: 30px;
+}
+
+.main .register .form .button{
+    float: right;
+    font-size: 18px;
+}
+
+/*
+**
+** Login CSS
+**
+*/
+
+.main .login {
+    display: flex;
+    width: 950px;
+    margin: 0 auto;
+}
+
+.main .login .mockup{
+    width: 490px;
+    height: 600px;
+    position: relative;
+}
+
+.main .login img {
+    width: 710px;
+    position: absolute;
+    top: 35px;
+    left: -155px;
+}
+
+.main .login .login-form{
+    width: 460px;
+    position: relative;
+    top: 60px;
+}
+
+.main .login .login-form h1{
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.main .login .form h2{
+    font-size: 35px;
+    margin-bottom: 0;
+    margin-top: 25px;
+}
+
+.main .login .form{
+    height: 500px;
+    position: relative;
+    padding: 5px 0 20px 50px;
+}
+
+.main .login .form p{
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.main .login .form p a{
+    text-decoration: none;
+    color: #69c2e7;
+}
+
+.main .login .form .backgroud{
+    background: #f3f3f3;
+    border-radius: 50px;
+    box-sizing: border-box;
+    position: absolute;
+    width: 900px;
+    height: 380px;
+    top:0px;
+    left: 0px;
+    z-index: -1;
+}
+
+.main .login .form-group{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.main .login .form-group label{
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.main .login .form-group input{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+.main .login .section{
+    display: flex;
+}
+
+.main .login .section .space{
+    width: 30px;
+}
+
+.main .login .form .button{
+    float: right;
+    font-size: 18px;
+}
+
+
+/*
+**
+** Our UMKM CSS
+**
+*/
+
+.main .our-umkm{
+    width: 950px;
+    margin: 0 auto;
+}
+
+.main .our-umkm h1 {
+    font-size: 40px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.main .our-umkm .umkm-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main .our-umkm .umkm-group .umkm {
+    width: 270px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    margin: 0 25px 25px 20px;
+}
+
+.main .our-umkm .umkm-group .umkm .toko {
+    width: 270px;
+    height: 190px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.main .our-umkm .umkm-group .umkm .logo {
+    float: left;
+    width: 50px;
+    margin-right: 20px;
+    margin-left: 23px;
+}
+
+.main .our-umkm .umkm-group .umkm .description{
+    margin-bottom: 20px;
+}
+
+.main .our-umkm .umkm-group .umkm h2 {
+    margin: 0;
+}
+
+.main .our-umkm .umkm-group .umkm p {
+    margin-bottom: 0;
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+.main .our-umkm .umkm-group .umkm .button-toko{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+
+.main .our-umkm .umkm-group .umkm .button-toko img{
+    width: 100px;
+}
+
+
+.main .our-umkm .umkm-group .umkm .background {
+    position: absolute;
+    height: 500px;
+    top: 50px;
+    background: #f3f3f3;
+    width: 350px;
+    z-index: -1;
+}
