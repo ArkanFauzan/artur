@@ -9,17 +9,24 @@
                 with our features.</p>
                 <a class="button" href="/register">Get Started</a>
             </div>
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/xdUtBgu92sI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
+            <div class="video-wrapper" onclick="playVideo()">
+                <img src="https://1.bp.blogspot.com/-w6Y9tzLYfv8/W-j4rX5o9kI/AAAAAAAAAC4/OdkGD4JkL1AkP6ySJDNqP5pOSBjubjLGQCPcBGAYYCw/s1600/T1.jpg" alt="About Artur">
+                <img src="img/play.png" class="play-btn">
+            </div>           
         </div>
+        <div id="videoPlayer">
+            <img src="img/close.png" class="close-btn" onclick="closeVideo()">
+            <video controls autoplay muted>
+                <source src="video/Rec 0001.mp4" type="video/mp4">
+            </video>
+        </div> 
 
         <div class="features">
             <div class="mockup">
                 <img src="img/mockup.png" alt="Mockup Artur">
             </div>
             <div class="features-description">
-                <div class="goals">
+                <div class="goals" id="about">
                     <h1>Our Goals</h1>
                     <p>We want furniture UMKM in Indonesia to go <br/>
                     digital and take advantage of technology for <br/>
@@ -95,7 +102,7 @@
             <div class="background"></div>
         </div>
 
-        <div class="pricing">
+        <div class="pricing" id="pricing">
             <img src="{{asset('/img/pricing.png')}}" alt="Pricing">
             <div class="text">
                 <h1>Pricing</h1>
@@ -108,3 +115,20 @@
         </div>
     </main>
 @endsection
+
+@push('script')
+    <script>
+        let videoPlayer = document.getElementById("videoPlayer");
+        videoPlayer.classList.add("hideVideo");
+
+        function playVideo(){
+            videoPlayer.classList.add("showVideo");
+            videoPlayer.classList.remove("hideVideo");
+        }
+
+        function closeVideo(){
+            videoPlayer.classList.add("hideVideo");
+            videoPlayer.classList.remove("showVideo");
+        }
+    </script>
+@endpush

@@ -10,7 +10,7 @@
                 <h1>Join and Get <br/> our Feature</h1>
                 <form class="form" action="#">
                     <h2>Create an account</h2>
-                    <p>Already have an account? <a href="#">Sign in</a></p>
+                    <p>Already have an account? <a href="/login">Sign in</a></p>
 
                     <div class="form-group">
                         <label for="name">UMKM's Name</label>

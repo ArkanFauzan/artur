@@ -10,7 +10,7 @@
                 <h1>Join and Get <br/> our Feature</h1>
                 <form class="form" action="#">
                     <h2>Login to your account</h2>
-                    <p>New user? <a href="#">Create an account</a></p>
+                    <p>New user? <a href="/register">Create an account</a></p>
 
                     <div class="form-group">
                         <label for="email">Email</label>
