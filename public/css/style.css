@@ -95,24 +95,29 @@ a.button:hover, button.button:hover{
 .main .welcome .text {
     width: 520px;
     font-size: 20px;
-    padding-top: 50px;
+    padding-top: 60px;
 }
 
 .main .welcome .text h1 {
     font-size: 50px;
     margin: 0;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
 }
 
 .main .welcome .text p {
     color: #a5a5a5;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
     font-size: 20px;
     margin: 0px;
 }
 
 .main .welcome .text a{
-    font-size: 20px;
+    font-size: 17px;
+    width: 90px;
+    height: 10px;
+    text-align: justify;
+    justify-content: center;
+    padding-bottom: 22px;
 }
 
 .main .welcome .video-wrapper{
@@ -258,10 +263,12 @@ a.button:hover, button.button:hover{
     font-size: 19px;
     letter-spacing: 0.4px;
     color: #b6b6b6;
+    margin-top: -15px;
 }
 
 .main .features .features-description .goals h1 {
     font-size: 40px;
+    padding-top: 25px;
 }
 
 .main .features .features-description .features-list h1 {
@@ -337,7 +344,10 @@ a.button:hover, button.button:hover{
     color: #a5a5a5;
 }
 
-
+.main .quotes .quotes-group .text {
+    font-style: italic;
+    font-weight: 1000px;
+}
 .main .quotes .quotes-group .by {
     color:#000000;
     margin-bottom:0;
@@ -417,7 +427,7 @@ a.button:hover, button.button:hover{
 
 .main .pricing .text h1 {
     margin: 0;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     font-size: 45px;
     letter-spacing: 0.9px;
 }
