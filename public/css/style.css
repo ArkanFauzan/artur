@@ -77,6 +77,7 @@ a.button, button.button {
 
 a.button:hover, button.button:hover{
     background: rgba(28,157,210,1);
+    cursor: pointer;
 }
 
 .main{
@@ -138,7 +139,7 @@ a.button:hover, button.button:hover{
 }
 
 #videoPlayer{
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -157,7 +158,6 @@ a.button:hover, button.button:hover{
         z-index:2;
         transform: scale(1);
         display:block;
-        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
@@ -168,7 +168,6 @@ a.button:hover, button.button:hover{
         z-index:-1;
         transform: scale(0);
         display: none;
-        position: absolute;
         top: 50%;
         left: 80%;
         width: 10%;
@@ -530,7 +529,7 @@ a.button:hover, button.button:hover{
 }
 
 .main .register .form{
-    height: 500px;
+    height: auto;
     position: relative;
     padding: 5px 0 20px 50px;
 }
@@ -550,7 +549,7 @@ a.button:hover, button.button:hover{
     box-sizing: border-box;
     position: absolute;
     width: 900px;
-    height: 540px;
+    height: 100%;
     top:0px;
     left: 0px;
     z-index: -1;
@@ -574,6 +573,10 @@ a.button:hover, button.button:hover{
     border-radius: 10px;
     border: none;
 }
+.main .form-group input:focus{
+    outline: none;
+    border:none;
+}
 
 .main .register .section{
     display: flex;
@@ -584,8 +587,9 @@ a.button:hover, button.button:hover{
 }
 
 .main .register .form .button{
-    float: right;
+    margin-top: 20px;
     font-size: 18px;
+    float: right;
 }
 
 /*

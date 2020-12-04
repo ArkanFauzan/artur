@@ -14,7 +14,7 @@
                 <img src="img/play.png" class="play-btn">
             </div>           
         </div>
-        <div id="videoPlayer">
+        <div id="videoPlayer" class="hideVideo">
             <img src="img/close.png" class="close-btn" onclick="closeVideo()">
             <video controls autoplay muted>
                 <source src="video/Rec 0001.mp4" type="video/mp4">
@@ -119,7 +119,7 @@
 @push('script')
     <script>
         let videoPlayer = document.getElementById("videoPlayer");
-        videoPlayer.classList.add("hideVideo");
+        // videoPlayer.classList.add("hideVideo");
 
         function playVideo(){
             videoPlayer.classList.add("showVideo");

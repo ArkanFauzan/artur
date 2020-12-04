@@ -18,3 +18,7 @@ Route::view('/home','home');
 Route::view('/login','login');
 Route::view('/register','register');
 Route::view('/umkm','umkm');
+
+Route::prefix('api')->group(function(){
+    Route::post('/register','Auth\RegisterController');
+});

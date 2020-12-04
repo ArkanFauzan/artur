@@ -3,17 +3,18 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        {{-- <meta name="csrf-token" content="{{csrf_token()}}"> --}}
+        
         <title>Laravel</title>
-
+        
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+        
         <!-- Styles -->
         <link rel="stylesheet" href="{{asset('/css/style.css')}}">
         {{-- <link rel="stylesheet" href="{{asset('/css/app.css')}}"> --}}
     </head>
-    <div class="app">
+    <div id="app">
         <header class="header">
             <div class="logo">
                 <img src="img/logo.png" alt="Artur" width="100px">
@@ -58,6 +59,7 @@
         </footer>
     </div>
 
+    <script src="{{asset('/js/app.js')}}"></script>
     @stack('script')
     <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
