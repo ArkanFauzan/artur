@@ -38,6 +38,6 @@ class RegisterController extends Controller
         // Mail::to($register_user)->send(new RegistrasiUMKM($register_user));
 
         // return $request->all();
-        return response()->json(compact('register_user'));
+        return response()->json(compact('register_user','password'));
     }
 }

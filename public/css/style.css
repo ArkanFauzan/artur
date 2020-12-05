@@ -80,6 +80,11 @@ a.button:hover, button.button:hover{
     cursor: pointer;
 }
 
+.button:focus{
+    outline: none;
+    border: none;
+}
+
 .main{
     min-height: 500px;
 }
@@ -631,6 +636,7 @@ a.button:hover, button.button:hover{
     width: 460px;
     position: relative;
     top: 60px;
+    margin-bottom: 70px;
 }
 
 .main .login .login-form h1{
@@ -645,7 +651,7 @@ a.button:hover, button.button:hover{
 }
 
 .main .login .form{
-    height: 500px;
+    height: auto;
     position: relative;
     padding: 5px 0 20px 50px;
 }
@@ -665,7 +671,7 @@ a.button:hover, button.button:hover{
     box-sizing: border-box;
     position: absolute;
     width: 900px;
-    height: 380px;
+    height: 100%;
     top:0px;
     left: 0px;
     z-index: -1;

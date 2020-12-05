@@ -63,16 +63,6 @@
 
 <script>
 export default {
-    async mounted(){
-        // try{
-        //     await axios.post('/api/register',{halo:"haiii",coba:"dulu"}).then(response=>{
-        //         console.log(response);
-        //     })
-        // }catch(e){
-        //     console.log(e)
-        // }
-        console.log('halo')
-    },
     data(){
         return{
             errors:'',
@@ -103,7 +93,7 @@ export default {
                 })
             }catch(e){
                 this.errors = e.response.data.errors;
-                console.log(e.response)
+                this.loading = false;
             }
         },
         hidePopup(){

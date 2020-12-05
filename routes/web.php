@@ -13,12 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+$password= bcrypt("haloo");
+
 Route::view('/','home');
 Route::view('/home','home');
 Route::view('/login','login');
 Route::view('/register','register');
 Route::view('/umkm','umkm');
 
+Route::view('/member','layout.member')->middleware('admin');
+Route::view('/admin','layout.admin')->middleware('admin');
+
 Route::prefix('api')->group(function(){
     Route::post('/register','Auth\RegisterController');
+    Route::post('/login','Auth\LoginController');
 });
