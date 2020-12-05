@@ -82,7 +82,6 @@ export default {
             try{
                 this.loading=true;
                 await axios.post('/api/register',this.form).then(response=>{
-                    console.log(response.data);
                     this.errors='';
 
                     let registrationPopup = document.getElementsByClassName('registration-success')[0];
@@ -124,7 +123,7 @@ export default {
         left:50%;
         transform:translate(-50%,-50%); 
         width: 30%;
-        background: grey;
+        background: lightgrey;
         padding: 20px;
         border-radius: 20px;
     }

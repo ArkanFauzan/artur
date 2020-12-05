@@ -2164,7 +2164,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this.loading = true;
                 _context.next = 4;
                 return axios.post('/api/register', _this.form).then(function (response) {
-                  console.log(response.data);
                   _this.errors = '';
                   var registrationPopup = document.getElementsByClassName('registration-success')[0];
                   registrationPopup.classList.add('showPopup');
@@ -6659,7 +6658,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.error-form{\n    display: block;\n    color: red;\n    margin: 0;\n    padding: 0;\n}\nbutton.button .loading{\n    width: 21px;\n    height: 21px;\n    float:right;\n    margin-left: 10px;\n}\n.registration-success{\n    position: fixed;\n    top: 50%;\n    left:50%;\n    transform:translate(-50%,-50%); \n    width: 30%;\n    background: grey;\n    padding: 20px;\n    border-radius: 20px;\n}\n.hidePopup{\n    display: none;\n}\n.showPopup{\n    z-index: 2;\n    opacity:1;\n    -webkit-animation: showPopup 0.3s;\n            animation: showPopup 0.3s;\n}\n@-webkit-keyframes showPopup {\n0%{\n        transform: translateX(-50%);\n        top: -50%;\n        left: 50%;\n        display: none;\n}\n}\n@keyframes showPopup {\n0%{\n        transform: translateX(-50%);\n        top: -50%;\n        left: 50%;\n        display: none;\n}\n}\n.popup-header{\n    margin-bottom: 10px;\n    font-size: 30px;\n}\n.popup-header h2{\n    margin: 25px 0px;\n}\n.popup-body{\n    text-align: justify;\n}\na.popup-button{\n    font-size: 15px;\n    padding: 7px 15px;\n    border-radius: 10px;\n    margin-top: 20px;\n    float: right;\n}\n", ""]);
+exports.push([module.i, "\n.error-form{\n    display: block;\n    color: red;\n    margin: 0;\n    padding: 0;\n}\nbutton.button .loading{\n    width: 21px;\n    height: 21px;\n    float:right;\n    margin-left: 10px;\n}\n.registration-success{\n    position: fixed;\n    top: 50%;\n    left:50%;\n    transform:translate(-50%,-50%); \n    width: 30%;\n    background: lightgrey;\n    padding: 20px;\n    border-radius: 20px;\n}\n.hidePopup{\n    display: none;\n}\n.showPopup{\n    z-index: 2;\n    opacity:1;\n    -webkit-animation: showPopup 0.3s;\n            animation: showPopup 0.3s;\n}\n@-webkit-keyframes showPopup {\n0%{\n        transform: translateX(-50%);\n        top: -50%;\n        left: 50%;\n        display: none;\n}\n}\n@keyframes showPopup {\n0%{\n        transform: translateX(-50%);\n        top: -50%;\n        left: 50%;\n        display: none;\n}\n}\n.popup-header{\n    margin-bottom: 10px;\n    font-size: 30px;\n}\n.popup-header h2{\n    margin: 25px 0px;\n}\n.popup-body{\n    text-align: justify;\n}\na.popup-button{\n    font-size: 15px;\n    padding: 7px 15px;\n    border-radius: 10px;\n    margin-top: 20px;\n    float: right;\n}\n", ""]);
 
 // exports
 
