@@ -23,6 +23,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('register-form', require('./components/form/RegisterForm.vue').default);
 Vue.component('login-form', require('./components/form/LoginForm.vue').default);
 
+Vue.component('new-umkm', require('./components/admin/NewUmkm.vue').default); 
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

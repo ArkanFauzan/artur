@@ -18,5 +18,6 @@ class LogoutController extends Controller
         if(auth()->check()){
             auth()->logout();
         }
+        return redirect('/home');
     }
 }

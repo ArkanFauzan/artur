@@ -21,11 +21,16 @@ Route::view('/login','login');
 Route::view('/register','register');
 Route::view('/umkm','umkm');
 
-Route::view('/member','layout.member')->middleware('admin');
-Route::view('/admin','layout.admin')->middleware('admin');
-
 Route::prefix('api')->group(function(){
     Route::post('/register','Auth\RegisterController');
     Route::post('/login','Auth\LoginController');
-    Route::get('/logout','Auth\LogoutController');
+
+    Route::get('/admin/new-umkm','Admin\AdminController@index');
+    Route::post('/admin/create-umkm','Admin\AdminController@create');
+});
+Route::get('/logout','Auth\LogoutController');
+
+Route::middleware('admin')->group(function(){
+    Route::view('/member','layout.member');
+    Route::view('/admin','admin.new_umkm');
 });
