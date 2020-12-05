@@ -15,6 +15,11 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
+        // checking for authenthicated user
+        if (!auth()->check()) {
+            return redirect('/login');
+        }
+        
         // get the current path
         $path = $request->path();
         strpos($path,'member') === 0 ? $route='member' : $route = 'admin' ;

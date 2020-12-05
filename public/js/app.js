@@ -2168,6 +2168,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   var registrationPopup = document.getElementsByClassName('registration-success')[0];
                   registrationPopup.classList.add('showPopup');
                   registrationPopup.classList.remove('hidePopup');
+                  _this.form = {
+                    name: '',
+                    place: '',
+                    wa: '',
+                    email: '',
+                    ig: ''
+                  };
                   _this.loading = false;
                 });
 

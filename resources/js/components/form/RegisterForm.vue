@@ -88,6 +88,13 @@ export default {
                     registrationPopup.classList.add('showPopup');
                     registrationPopup.classList.remove('hidePopup');
 
+                    this.form = {
+                        name : '',
+                        place:'',
+                        wa:'',
+                        email:'',
+                        ig:'',
+                    }
                     this.loading = false;
                 })
             }catch(e){

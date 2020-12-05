@@ -27,4 +27,5 @@ Route::view('/admin','layout.admin')->middleware('admin');
 Route::prefix('api')->group(function(){
     Route::post('/register','Auth\RegisterController');
     Route::post('/login','Auth\LoginController');
+    Route::get('/logout','Auth\LogoutController');
 });
