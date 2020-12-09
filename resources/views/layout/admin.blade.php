@@ -26,7 +26,8 @@
             }
         </style>
     </head>
-    <div id="app">
+<body>
+    <div id="wrapper">
         <header class="header">
             <div class="logo">
                 <img src="img/logo.png" alt="Artur" width="100px">

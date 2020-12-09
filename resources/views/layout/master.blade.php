@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="{{asset('/css/style.css')}}">
         {{-- <link rel="stylesheet" href="{{asset('/css/app.css')}}"> --}}
     </head>
-    <div id="app">
+    <div id="wrapper">
         <header class="header">
             <div class="logo">
                 <img src="img/logo.png" alt="Artur" width="100px">

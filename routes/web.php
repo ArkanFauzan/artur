@@ -27,10 +27,15 @@ Route::prefix('api')->group(function(){
 
     Route::get('/admin/new-umkm','Admin\AdminController@index');
     Route::post('/admin/create-umkm','Admin\AdminController@create');
+
+    Route::get('/member/profile', 'Member\MemberController@get_data');
+    Route::post('/member/edit-profile','Member\MemberController@edit_profile');
 });
+
 Route::get('/logout','Auth\LogoutController');
 
 Route::middleware('admin')->group(function(){
-    Route::view('/member','layout.member');
+    Route::view('/member','member.my_profile');
+    Route::view('/member/edit-profile','member.edit_profile');
     Route::view('/admin','admin.new_umkm');
 });

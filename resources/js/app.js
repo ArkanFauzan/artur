@@ -25,6 +25,9 @@ Vue.component('login-form', require('./components/form/LoginForm.vue').default);
 
 Vue.component('new-umkm', require('./components/admin/NewUmkm.vue').default); 
 
+Vue.component('my-profile', require('./components/member/MyProfile.vue').default); 
+Vue.component('edit-profile', require('./components/member/EditProfile.vue').default); 
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -32,5 +35,5 @@ Vue.component('new-umkm', require('./components/admin/NewUmkm.vue').default);
  */
 
 const app = new Vue({
-    el: '#app',
+    el: '#wrapper',
 });

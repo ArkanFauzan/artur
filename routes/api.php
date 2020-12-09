@@ -22,3 +22,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Route::post('/register','Auth\RegisterController');
 // Route::post('/login','Auth\LoginController');
 // Route::post('/admin/create-umkm','Admin\AdminController@create');
+// Route::get('/member/profile', 'Member\MemberController@get_data');
+// Route::post('/member/edit-profile','Member\MemberController@edit_profile');
