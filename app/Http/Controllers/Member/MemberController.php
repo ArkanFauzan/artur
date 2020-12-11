@@ -28,18 +28,15 @@ class MemberController extends Controller
         return response()->json(compact('profile'));
     }
 
-    public function edit_profile(Request $request){
-        // // get and update account detail
-        // $account = Account::where('id', auth()->user()->id)->first();
-        // $account->update([
-        //     'name'=>$request->name,
-        //     'place'=>$request->place,
-        //     'wa'=>$request->wa,
-        //     'ig'=>$request->ig,
-        // ]);
+    public function edit_profile_picture(Request $request){
+        $file = $request->file('file');
+
+        // condition = false, if the uploaded file is not an image
+        if (getimagesize($file)===false) {
+            return response(['errors'=>"The file must be an image"],422);
+        }
 
         // update the extension of file
-        $file = $request->file('file');
         $profile = Profile::where('user_id',auth()->user()->id)->first();
         $profile->update([
             'type'=> $file->getClientOriginalExtension()
@@ -48,6 +45,26 @@ class MemberController extends Controller
         // move the file to "profile" folder with uuid as file name
         $file->move('img/profile',$profile->id.".".$file->getClientOriginalExtension());
 
-        return response()->json(['result'=>'success']);
+        return response()->json(['result'=>'success upload']);     
+    }
+
+    public function edit_profile(Request $request){
+        request()->validate([
+            'name'=> 'required|min:3|max:255',
+            'place'=> 'required|min:3|max:255',
+            'wa'=> 'required|min:10|regex:/^[0-9]+$/|max:15',
+            'ig'=> 'required|min:3|max:255',
+        ]);
+
+       // get and update account detail
+        $account = Account::where('id', auth()->user()->id)->first();
+        $account->update([
+            'name'=>$request->name,
+            'place'=>$request->place,
+            'wa'=>$request->wa,
+            'ig'=>$request->ig,
+        ]);
+
+        return response()->json(['result'=>'success update']);
     }
 }

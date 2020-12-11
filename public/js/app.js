@@ -2402,12 +2402,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     this.getProfile();
   },
   data: function data() {
     return {
+      loading: false,
       file: '',
       profile: {
         name: '',
@@ -2415,6 +2429,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         wa: '',
         ig: '',
         img: ''
+      },
+      errors: {
+        file: '',
+        input: ''
       }
     };
   },
@@ -2447,42 +2465,111 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var formData;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                // console.log(this.profile);
-                formData = new FormData();
-                formData.append("file", _this2.file); // formData.append("data", this.profile)
-                // console.log(formData);
+                _this2.loading = true;
 
-                _context2.prev = 2;
-                _context2.next = 5;
-                return axios.post('/api/member/edit-profile', formData, {
-                  headers: {
-                    'Content-Type': 'multipart/form-data'
-                  }
-                }).then(function (response) {
-                  console.log(response.data.result);
-                  ;
-                });
+                if (!(_this2.file !== '')) {
+                  _context2.next = 4;
+                  break;
+                }
 
-              case 5:
-                _context2.next = 10;
-                break;
+                _context2.next = 4;
+                return _this2.uploadFile();
 
-              case 7:
-                _context2.prev = 7;
-                _context2.t0 = _context2["catch"](2);
-                console.log(_context2.t0.response.data.errors);
+              case 4:
+                _context2.next = 6;
+                return _this2.updateProfile();
 
-              case 10:
+              case 6:
+                _this2.loading = false;
+
+                if (_this2.errors.file === '' && _this2.errors.input === '') {
+                  window.location.href = '/member';
+                }
+
+              case 8:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[2, 7]]);
+        }, _callee2);
+      }))();
+    },
+    uploadFile: function uploadFile() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var formData;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                formData = new FormData();
+                formData.append("file", _this3.file); // formData.append("data", this.profile)
+                // console.log(formData);
+
+                _context3.prev = 2;
+                _context3.next = 5;
+                return axios.post('/api/member/edit-profile-picture', formData, {
+                  headers: {
+                    'Content-Type': 'multipart/form-data'
+                  }
+                }).then(function (response) {
+                  // console.log(response.data.result);
+                  _this3.errors.file = '';
+                });
+
+              case 5:
+                _context3.next = 10;
+                break;
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](2);
+                _this3.errors.file = _context3.t0.response.data.errors; // console.log(this.errors);
+
+              case 10:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[2, 7]]);
+      }))();
+    },
+    updateProfile: function updateProfile() {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return axios.post('/api/member/edit-profile', _this4.profile).then(function (response) {
+                  // console.log(response.data.result);
+                  _this4.errors.input = '';
+                });
+
+              case 3:
+                _context4.next = 9;
+                break;
+
+              case 5:
+                _context4.prev = 5;
+                _context4.t0 = _context4["catch"](0);
+                _this4.errors.input = _context4.t0.response.data.errors;
+                console.log(_this4.errors);
+
+              case 9:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[0, 5]]);
       }))();
     }
   }
@@ -2507,6 +2594,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -7080,7 +7168,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\ndiv{\r\n    box-sizing: border-box;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\ndiv{\n    box-sizing: border-box;\n}\nbutton.btn .loading{\n    width: 22px;\n    height: 22px;\n    float:right;\n    margin-left: 10px;\n    position: relative;\n    top: 1.5px;\n}\n", ""]);
 
 // exports
 
@@ -40427,6 +40515,12 @@ var render = function() {
               [
                 _c("h4", [_vm._v("Choose profile picture")]),
                 _vm._v(" "),
+                _vm.errors.file
+                  ? _c("p", { staticClass: "text-danger" }, [
+                      _vm._v(_vm._s(_vm.errors.file))
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
                 _c("input", {
                   ref: "file",
                   staticClass: "pl-5 mb-3",
@@ -40440,6 +40534,12 @@ var render = function() {
           _c("div", { staticClass: "col-12 col-md-6" }, [
             _c("div", { staticClass: "form-group" }, [
               _c("h4", [_vm._v("UMKM's name:")]),
+              _vm._v(" "),
+              _vm.errors.input.name
+                ? _c("p", { staticClass: "text-danger" }, [
+                    _vm._v(_vm._s(_vm.errors.input.name[0]))
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -40466,6 +40566,12 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
               _c("h4", [_vm._v("UMKM's place:")]),
+              _vm._v(" "),
+              _vm.errors.input.place
+                ? _c("p", { staticClass: "text-danger" }, [
+                    _vm._v(_vm._s(_vm.errors.input.place[0]))
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -40495,6 +40601,12 @@ var render = function() {
             _c("div", { staticClass: "form-group" }, [
               _c("h4", [_vm._v("WhatsApp number")]),
               _vm._v(" "),
+              _vm.errors.input.wa
+                ? _c("p", { staticClass: "text-danger" }, [
+                    _vm._v(_vm._s(_vm.errors.input.wa[0]))
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
               _c("input", {
                 directives: [
                   {
@@ -40521,6 +40633,12 @@ var render = function() {
             _c("div", { staticClass: "form-group" }, [
               _c("h4", [_vm._v("Instagram Account")]),
               _vm._v(" "),
+              _vm.errors.input.ig
+                ? _c("p", { staticClass: "text-danger" }, [
+                    _vm._v(_vm._s(_vm.errors.input.ig[0]))
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
               _c("input", {
                 directives: [
                   {
@@ -40545,29 +40663,80 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(0)
+          _c("div", { staticClass: "text-left col-12" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { type: "submit", href: "/member/edit-profile" }
+              },
+              [
+                _vm._v("Save Changes \n                    "),
+                _vm.loading
+                  ? _c(
+                      "svg",
+                      {
+                        staticClass: "loading",
+                        staticStyle: {
+                          background: "none",
+                          display: "block",
+                          "shape-rendering": "auto"
+                        },
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                          width: "200px",
+                          height: "200px",
+                          viewBox: "0 0 100 100",
+                          preserveAspectRatio: "xMidYMid"
+                        }
+                      },
+                      [
+                        _c(
+                          "g",
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M50 15A35 35 0 1 0 74.74873734152916 25.251262658470843",
+                                fill: "none",
+                                stroke: "#ffffff",
+                                "stroke-width": "12"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("path", {
+                              attrs: {
+                                d: "M49 3L49 27L61 15L49 3",
+                                fill: "#ffffff"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("animateTransform", {
+                              attrs: {
+                                attributeName: "transform",
+                                type: "rotate",
+                                repeatCount: "indefinite",
+                                dur: "1s",
+                                values: "0 50 50;360 50 50",
+                                keyTimes: "0;1"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  : _vm._e()
+              ]
+            )
+          ])
         ]
       )
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center col-12" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          attrs: { type: "submit", href: "/member/edit-profile" }
-        },
-        [_vm._v("Save Changes")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

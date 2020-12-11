@@ -26,6 +26,7 @@
                     </div>
                 </div>
             </form>
+
             <a class="btn btn-primary" href="/member/edit-profile">Edit profile</a>
         </div>
     </main>
