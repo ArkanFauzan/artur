@@ -82,13 +82,12 @@ export default {
         },
         async handleSubmit(){
             this.loading = true;
-            if (this.file!=='') {
-                await this.uploadFile();
-            }
+            
+            await this.uploadFile();
             await this.updateProfile();
 
             this.loading = false;
-            if(this.errors.file === '' && this.errors.input===''){
+            if((this.errors.file === '' || this.errors.file === undefined) && this.errors.input===''){
                 window.location.href = '/member'
             }
         },

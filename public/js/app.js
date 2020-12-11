@@ -2470,27 +2470,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _this2.loading = true;
-
-                if (!(_this2.file !== '')) {
-                  _context2.next = 4;
-                  break;
-                }
-
-                _context2.next = 4;
+                _context2.next = 3;
                 return _this2.uploadFile();
 
-              case 4:
-                _context2.next = 6;
+              case 3:
+                _context2.next = 5;
                 return _this2.updateProfile();
 
-              case 6:
+              case 5:
                 _this2.loading = false;
 
-                if (_this2.errors.file === '' && _this2.errors.input === '') {
+                if ((_this2.errors.file === '' || _this2.errors.file === undefined) && _this2.errors.input === '') {
                   window.location.href = '/member';
                 }
 
-              case 8:
+              case 7:
               case "end":
                 return _context2.stop();
             }

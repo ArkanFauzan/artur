@@ -35,6 +35,9 @@ class MemberController extends Controller
         if (getimagesize($file)===false) {
             return response(['errors'=>"The file must be an image"],422);
         }
+        elseif($file->getSize()>4100000){
+            return response(['errors'=>"The maximum file size is 4 MB"],422);
+        }
 
         // update the extension of file
         $profile = Profile::where('user_id',auth()->user()->id)->first();
