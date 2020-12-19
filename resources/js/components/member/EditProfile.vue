@@ -83,8 +83,10 @@ export default {
         async handleSubmit(){
             this.loading = true;
             
-            await this.uploadFile();
             await this.updateProfile();
+            if (this.errors.input==='') {
+                await this.uploadFile();
+            }
 
             this.loading = false;
             if((this.errors.file === '' || this.errors.file === undefined) && this.errors.input===''){
@@ -120,7 +122,7 @@ export default {
             }
             catch(e){
                 this.errors.input = e.response.data.errors;
-                console.log(this.errors);
+                // console.log(this.errors);
             }
         }
     }

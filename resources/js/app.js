@@ -27,6 +27,9 @@ Vue.component('new-umkm', require('./components/admin/NewUmkm.vue').default);
 
 Vue.component('my-profile', require('./components/member/MyProfile.vue').default); 
 Vue.component('edit-profile', require('./components/member/EditProfile.vue').default); 
+Vue.component('my-product', require('./components/member/MyProduct.vue').default); 
+Vue.component('add-product', require('./components/member/AddProduct.vue').default); 
+Vue.component('edit-product', require('./components/member/EditProduct.vue').default); 
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

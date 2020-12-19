@@ -13,7 +13,7 @@
             <div class="form-group">
                 <label for="password">Password</label>
                 <p class="error-form" v-if="errors.password" >{{errors.password[0]}}</p>
-                <input type="text" v-model="form.password" id="password"/>
+                <input type="password" v-model="form.password" id="password"/>
             </div>
                         
             <button class="button" type="submit">Login

@@ -25,12 +25,20 @@ Route::prefix('api')->group(function(){
     Route::post('/register','Auth\RegisterController');
     Route::post('/login','Auth\LoginController');
 
-    Route::get('/admin/new-umkm','Admin\AdminController@index');
-    Route::post('/admin/create-umkm','Admin\AdminController@create');
+    
+    Route::middleware('auth')->group(function(){
+        Route::get('/admin/new-umkm','Admin\AdminController@index');
+        Route::post('/admin/create-umkm','Admin\AdminController@create');
 
-    Route::get('/member/profile', 'Member\MemberController@get_data');
-    Route::post('/member/edit-profile-picture','Member\MemberController@edit_profile_picture');
-    Route::post('/member/edit-profile','Member\MemberController@edit_profile');
+        Route::get('/member/profile', 'Member\MemberController@get_data');
+        Route::get('/member/products', 'Member\MemberController@get_products');
+        Route::post('/member/edit-profile-picture','Member\MemberController@edit_profile_picture');
+        Route::post('/member/edit-profile','Member\MemberController@edit_profile');
+        Route::post('/member/my-product/add','Member\MemberController@create_product');
+        Route::get('/member/product/{id}','Member\MemberController@show_product');
+        Route::post('/member/product/{id}','Member\MemberController@edit_product');
+        Route::delete('/member/product/{id}','Member\MemberController@delete_product');
+    });
 });
 
 Route::get('/logout','Auth\LogoutController');
@@ -38,5 +46,8 @@ Route::get('/logout','Auth\LogoutController');
 Route::middleware('admin')->group(function(){
     Route::view('/member','member.my_profile');
     Route::view('/member/edit-profile','member.edit_profile');
+    Route::view('/member/my-product','member.my_product');
+    Route::view('/member/edit-product/{id}','member.edit_product');
+    Route::view('/member/my-product/add','member.add_product');
     Route::view('/admin','admin.new_umkm');
 });

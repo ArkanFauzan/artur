@@ -52,7 +52,7 @@ export default {
         async getProfile(){
             await axios.get('/api/member/profile').then(response=>{
                 this.profile = response.data.profile;
-                console.log(this.profile);
+                // console.log(this.profile);
             })
         }
     }
