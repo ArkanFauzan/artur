@@ -146,6 +146,10 @@ class MemberController extends Controller
             }
         }
 
+        if ($id->user_id != auth()->user()->id) {
+            return response('',401);
+        }
+
         $id->update([
             'name'=> $request->name,
             'description'=> $request->description,
@@ -161,6 +165,9 @@ class MemberController extends Controller
     }
 
     public function delete_product(Product $id){
+        if ($id->user_id != auth()->user()->id) {
+            return response('',401);
+        }
         $id->delete();
         return 'sukses';
     }
