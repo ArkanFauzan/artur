@@ -171,4 +171,35 @@ class MemberController extends Controller
         $id->delete();
         return 'sukses';
     }
+
+    public function all_umkm(){
+        $umkm = Account::select('id','name','place','ig')
+                        ->where('role','member')->get();
+                        
+        return response()->json(compact('umkm'));
+    }
+
+    public function logo_umkm($id_umkm){
+        // get file name of umkm logo
+        $logo = Profile::where('user_id',$id_umkm)->first();
+
+        $logo = $logo->id.'.'.$logo->type;
+                        
+        return response()->json(compact('logo'));
+    }
+
+    public function product_umkm($id_umkm){
+        // get file name of umkm's products
+        $products = Product::where('user_id',$id_umkm)->get();
+
+        foreach ($products as $key => $product) {
+            $products[$key] = [
+                'img' => $product->id.'.'.$product->file_type,
+                'name' => $product->name,
+                'description'=> $product->description
+            ];
+        }
+
+        return response()->json(compact('products'));
+    }
 }

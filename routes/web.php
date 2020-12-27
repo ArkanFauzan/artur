@@ -25,6 +25,10 @@ Route::prefix('api')->group(function(){
     Route::post('/register','Auth\RegisterController');
     Route::post('/login','Auth\LoginController');
 
+    Route::get('/umkm','Member\MemberController@all_umkm');
+    Route::get('/logo-umkm/{id}','Member\MemberController@logo_umkm');
+    Route::get('/product-umkm/{id}','Member\MemberController@product_umkm');
+
     
     Route::middleware('auth')->group(function(){
         Route::get('/admin/new-umkm','Admin\AdminController@index');
@@ -44,7 +48,8 @@ Route::prefix('api')->group(function(){
 Route::get('/logout','Auth\LogoutController');
 
 Route::middleware('admin')->group(function(){
-    Route::view('/member','member.my_profile');
+    Route::get('/member',function(){return redirect('/member/my-profile');});
+    Route::view('/member/my-profile','member.my_profile');
     Route::view('/member/edit-profile','member.edit_profile');
     Route::view('/member/my-product','member.my_product');
     Route::view('/member/edit-product/{id}','member.edit_product');

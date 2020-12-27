@@ -31,6 +31,8 @@ Vue.component('my-product', require('./components/member/MyProduct.vue').default
 Vue.component('add-product', require('./components/member/AddProduct.vue').default); 
 Vue.component('edit-product', require('./components/member/EditProduct.vue').default); 
 
+Vue.component('umkm-list', require('./components/landingpage/UmkmList.vue').default); 
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

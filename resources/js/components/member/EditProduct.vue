@@ -5,7 +5,7 @@
             <div class="p-3">
                 <div class="text-center">
                     <img :src="'../../img/product/'+form.img" width="540px" height="400px"
-                    :alt="form.name" :title="form.name" onerror="this.src='../../img/profile/default picture.png';this.onerror='';"
+                    :alt="form.name" :title="form.name" onerror="this.src='../../img/profile/default picture.png';"
                     >
                 </div>
                 <div class="mb-3">
