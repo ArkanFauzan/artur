@@ -1,0 +1,588 @@
+@media (max-width:800px){
+    *,
+    *::before,
+    *::after {
+    box-sizing:initial; 
+    }
+    .header,.main{
+        padding: 10px;
+    }
+    .header{
+        width:580px;
+        display:flex;
+        z-index: 5;
+        margin: auto;
+    }
+    .header .logo, .header .nav{
+        float:none;
+    }
+    .header .nav{
+        width:380px;
+        position: relative;
+    }
+    .header .nav ul{
+        width:380px;
+        position: absolute;
+        top: 2px;
+        height: auto;
+        display:flex;
+        flex-flow: column;
+        justify-content:center;
+        background-color: white;
+        border-radius: 0 0 20px 20px;
+        z-index: 5;
+    }
+    .header .nav ul li{
+        align-self: center;
+        text-align: center;
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .header .nav ul li a{
+        padding: 0 20px;
+        height: 50px;
+        line-height:50px;
+    }
+    .header .nav ul li i{
+        display: inline-block;
+        position: absolute;
+        top:50%;
+        right:20px;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+    .header .nav ul li:not(:first-child){
+        display:none;
+    }
+    .header .nav ul.responsive li:not(:first-child){
+        display:flex;
+    }
+
+    .main .welcome{
+        padding:0;
+        width:500px;
+        position:relative;
+    }
+    .main .welcome .text{
+        padding:0;
+        margin:0 auto;
+        text-align:center;
+    }
+    .main .welcome .text h1{
+        font-size:43px;
+    }
+    .main .welcome .text p{
+        font-size:19px;
+    }
+    .main .welcome .text p,
+    .main .welcome .text a
+    {
+        position:relative;
+        top:245px;
+    }
+    .main .welcome .video-wrapper{
+        position:absolute;
+        height:220px;
+        width: 350px;
+        top:70px;
+        left:50%;
+        transform:translateX(-50%);
+    }
+    .main .welcome .video-wrapper img{
+        height:220px;
+        width:350px;
+    }
+    .main .welcome .video-wrapper img.play-btn{
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+    }
+
+    .main .features{
+        width: 500px;
+        display: flex;
+        flex-wrap:wrap;
+    }
+    .main .features .mockup{
+        width:300px;
+        height:270px;
+        margin:0 auto
+    }
+    .main .features .mockup img{
+        width:300px;
+        left: 0px;
+        top:35px;
+    }
+    .main .features .features-description{
+        width:500px;
+        margin:0 auto;
+        text-align:center;
+    }
+    .main .features .features-description .features-list h1{
+        margin-top:-5px;
+        margin-bottom:15px;
+    }
+    .main .features .features-description .features-list img{
+        padding-left:35px;
+        padding-right:33px;
+    }
+    .main .features .features-description .features-list p{
+        text-align:left;
+    }
+    .main .features .features-description .features-list>div{
+        padding: 15px 30px !important;
+        margin-bottom:10px !important;
+        padding-right:0px !important;
+    }
+    .main .features .features-description .features-list div div{
+        width:500px !important;
+        height:78px !important;
+    }
+
+    .main .quotes{
+        width:500px;
+        position:relative;
+        padding-top:40px
+    }
+    .main .quotes .quotes-group{
+        width:300px;
+        font-size:21px;
+        text-align:justify;
+        padding:0 20px 0 0;
+    }
+    .main .quotes .quotes-group .text{
+        margin-top:0px;
+        font-style:normal;
+    }
+    .main .quotes .quotes-group p.by{
+        position:absolute;
+        left:50%;
+        transform:translateX(-50%);
+        margin-top:0px;
+    }
+    .main .quotes .quotes-group p.position{
+        position:absolute;
+        left:50%;
+        transform:translateX(-50%);
+        margin-top:30px;
+    }
+    .main .quotes .ceo-image{
+        width:200px;
+        height:250px;
+    }
+    .main .mitra{
+        height: 140px;
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 85px;
+        padding: 0px;
+        background: #41b3e3;
+        position: relative;
+        border-radius:20px;
+    }
+    .main .mitra .text{
+        height: 40px;
+        margin: 10px 20px;
+        position: absolute;
+        font-size: 19px;
+    }
+    .main .mitra .text br{
+        display:none;
+    }
+    .main .mitra .list-mitra{
+        padding: 50px 10px;
+    }
+    .main .mitra .list-mitra .logo{
+        width:40px;
+    }
+    .main .mitra .list-mitra .name{
+        padding-top:0px;
+        font-size:17px;
+    }
+    .main .mitra .list-mitra .ig{
+        padding:0px;
+        font-size:12px;
+        margin:0px
+    }
+    .main .mitra .background{        
+        display: none;
+    }
+    .main .pricing{
+        width:500px;
+        padding-top:30px;
+    }
+    .main .pricing img{
+        width:150px;
+        position:relative;
+        top:25px;
+        left:0;
+        float:left;
+    }
+    .main .pricing .text{
+        width:350px;
+        padding-left:20px;
+    }
+    .main .pricing .text p{
+        font-size:20px;
+        margin-top:0px;
+    }
+    .main .pricing .text h1{
+        text-align:center;
+        font-size:40px;
+        margin-bottom:10px;
+    }
+    .main .pricing .text br{
+        display:none;
+    }
+    .footer{
+        margin-top:0px;
+        height: 190px;
+    }
+    .footer .footer-group{
+        position:relative;
+        width:100%;
+        height: 190px;
+    }
+    .footer .footer-group .logo{
+        display:none;
+        position:absolute;
+        top:-10px;
+        left:50%;
+        transform:translateX(-50%);
+        float:none;
+        width:130px;
+    }
+    .footer .footer-group .contacts{
+        position:absolute;
+        top:-15px;
+        left:50%;
+        transform:translateX(-50%);
+        width:100%;
+        text-align:center
+    }
+    .footer .footer-group .contacts h1{
+        text-align:center;
+    }
+    .footer .footer-group .contacts .contact img{
+        float:none;
+        display:inline-block;
+        margin-right:5px;
+        position:relative;
+        vertical-align: middle;
+    }
+    .footer .footer-group .contacts .contact p{
+        display:inline-block;
+    }
+    .footer .footer-group .copyright{
+        position:absolute;
+        bottom: 0px;
+        width:100%
+    }
+
+
+    .main .register{
+        width:95%;
+    }
+    .main .register .mockup{
+        display:none
+    }
+    .main .register .register-form{
+        width:100%;
+        margin-bottom:15px
+    }
+    .main .register .register-form h1{
+        text-align:center;
+        margin-top: 0px;
+    }
+    .main .register .register-form form{
+        width:100%;
+        padding:5%;
+        box-sizing:border-box;
+    }
+    .main .register .register-form form h2{
+        margin-top:0px;
+    }
+    .main .register .form .backgroud{
+        width:100%;
+    }
+    .main .register .registration-success{
+        width:60%;
+    }
+
+
+    .main .login{
+        width:95%;
+    }
+    .main .login .mockup{
+        display:none
+    }
+    .main .login .login-form{
+        width:100%;
+        margin-bottom:15px;
+        position:static;
+    }
+    .main .login .login-form h1{
+        text-align:center;
+        margin-top:0px;
+    }
+    .main .login .login-form form{
+        width:100%;
+        padding:5%;
+        box-sizing:border-box;
+    }
+    .main .login .login-form form h2{
+        margin-top:0px;
+    }
+    .main .login .form .backgroud{
+        width:100%;
+    }
+
+
+    .main .our-umkm{
+        width:100%;
+    }
+    .main .our-umkm h1{
+        padding:0 0 20px 0;
+    }
+    .main .our-umkm .umkm-group{
+        display:flex;
+        flex-wrap: wrap;
+        justify-content:space-around;
+        width:100%;
+    }
+    .main .our-umkm .popup-close{
+        width: 50px;
+        height: 50px;
+        top:-47px;
+        right:-47x;
+    }
+}
+
+@media (max-width:600px){
+    .header{
+        width:90%;
+        margin:0 auto;
+        font-size:13px;
+        padding-bottom: 0px;
+    }
+    .header .logo{
+        width:20%;
+        height: 50px;
+        position: relative;
+    }
+    .header .logo img{
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .header .nav{
+        width:60%;
+        height:50px;
+    }
+    .header .nav ul{
+        width:100%;
+        top: 0px;
+    }
+    .header .nav ul li a{
+        line-height:50px;
+    }
+    .header .join{
+        width:20%;
+        height:50px;
+        overflow:hidden;
+        margin:0px;
+    }
+    .header .join a.button{
+        padding:0px 13px;
+        line-height:40px;
+        margin-top:5px;
+    }
+
+
+    .main{
+        padding-top:0px;
+    }
+    .main .welcome{
+        width:90%;
+        margin:0 auto;
+    }
+    .main .welcome .text h1{
+        font-size:30px;
+        margin-top:10px;
+        padding-bottom:0px;
+    }
+    .main .welcome .video-wrapper{
+        top:60px;
+    }
+    .main .welcome .text p{
+        font-size:18px;
+    }
+
+
+    .main .features{
+        width:100%;
+    }
+    .main .features .mockup img{
+        top:20px;
+    }
+    .main .features .features-description .goals h1{
+        padding-top:10px;
+    }
+    .main .features .features-description .goals br{
+        display:none;
+    }
+    .main .features .features-description .goals p{
+        letter-spacing:0px;
+        font-size:17px;
+    }
+    .main .features .features-description .features-list div p{
+        font-size:17px !important;
+        margin: 0 !important;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding-left: 80px;
+        padding-right: 20px;
+    }
+    .main .features .features-description .features-list p br{
+        display:none;
+    }
+    .main .features .features-description .features-list img{
+        width:40px !important;
+        padding-left: 15px;
+        padding-right: 0px;
+    }
+    .main .features .features-description .features-list>div{
+        padding-right:10px !important;
+        position: relative;
+        height: 70px;
+    } 
+    /* .main .features .features-description .features-list>div p{
+        position:absolute;
+        top:50%;
+    } */
+    .main .features .features-description .features-list div div{
+        height: 70px !important;
+        width:100% !important;
+    }
+
+
+    .main .quotes{
+        width:90%;
+        text-align:center;
+        padding-top:20px;
+        height: 480px;
+    }
+    .main .quotes .ceo-image{
+        float:none;
+        text-align:center;
+    }
+    .main .quotes .quotes-group{
+        width:100%;
+        padding-right: 0px;
+        position:relative;
+        top:20px;
+        letter-spacing:0px;
+    }
+    .main .quotes .quotes-group .text{
+        font-size:17px;
+    }
+    .main .quotes .quotes-group p.by{
+        font-size: 17px;
+        text-align: center;
+        min-width: 70%;
+    }
+    .main .quotes .quotes-group p.position{
+        margin-top:25px;
+    }
+
+
+    .main .mitra{
+        margin-top:0px;
+        width:90%;
+        height:auto;
+    }
+    .main .mitra .text{
+        font-size:17px;
+        text-align:center;
+        width:100%;
+        margin-top: 15px;
+    }
+    .main .mitra .list-mitra{
+        padding-bottom:20px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .main .mitra .list-mitra .logo{
+        width:30px;
+    }
+    .main .mitra .list-mitra .name{
+        width:100%;
+        font-size:15px;
+    }
+    .main .mitra .list-mitra .ig{
+        font-size:13px;
+    }
+
+
+    .main .pricing{
+        width:90%;
+        display:flex;
+        flex-direction:column;
+        position:relative;
+    }
+    .main .pricing img{
+        width:150px;
+        display:block;
+        align-self:center;
+        position:relative;
+        top:50px;
+        left:5px;
+    }
+    .main .pricing .text{
+        width:100%;
+        padding: 0px;
+    }
+    .main .pricing .text h1{
+        font-size:30px;
+        position:absolute;
+        top:25px;
+        left:50%;
+        transform:translateX(-50%);
+    }
+    .main .pricing .text p{
+        margin-top:60px;
+        font-size:20px;
+    }
+
+
+    .main .our-umkm h1{
+        font-size:30px;
+    }
+
+
+    .main .login .login-form form h2{
+        font-size:25px;
+    }
+    .main .login .login-form h1{
+        font-size:35px;
+        margin:10px 0 15px 0;
+    }
+
+
+    .main .register .register-form form h2{
+        font-size:25px;
+    }
+    .main .register .register-form h1{
+        font-size:35px;
+        margin:10px 0 15px 0;
+    }
+    .main .register .section{
+        display:flex;
+        flex-direction:column;
+    }
+}

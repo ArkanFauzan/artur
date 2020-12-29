@@ -26,6 +26,10 @@ html{
     height: 54px;
     float: left;
 }
+.header .logo img{
+    width: 100%;
+    display: inline-block;
+}
 
 .header .nav {
     width: 750px;
@@ -50,6 +54,10 @@ html{
     display: flex;
     justify-content: center;
     width: 100%;
+}
+
+.header ul li i{
+    display: none;
 }
 
 .header ul a {
@@ -140,7 +148,7 @@ a.button:hover, button.button:hover{
     top:0;
     left:0;
     height: 350px;
-    width: 680px;
+    width: 730px;
     border-radius: 35px;
 }
 
@@ -161,6 +169,7 @@ a.button:hover, button.button:hover{
     height: 100%;
     text-align: center;
     background: rgba(110, 106, 106, 0.5);
+    z-index: 100;
 }
 
 .hideVideo{
@@ -388,7 +397,7 @@ a.button:hover, button.button:hover{
     position: absolute;
     top: 0;
     right: 0;
-    width: 1500px;
+    width: 1200px;
     height: 200px;
     border-radius: 20px;
     z-index: -1;
@@ -607,7 +616,6 @@ a.button:hover, button.button:hover{
 }
 
 .main .register .form .button{
-    margin-top: 20px;
     font-size: 18px;
     float: right;
 }
@@ -724,6 +732,7 @@ a.button:hover, button.button:hover{
 .main .our-umkm{
     width: 950px;
     margin: 0 auto;
+    
 }
 
 .main .our-umkm h1 {
@@ -736,6 +745,8 @@ a.button:hover, button.button:hover{
 .main .our-umkm .umkm-group {
     display: flex;
     flex-wrap: wrap;
+    justify-content:space-between;
+    width: 100%;
 }
 
 .main .our-umkm .umkm-group .umkm {
@@ -743,7 +754,7 @@ a.button:hover, button.button:hover{
     position: relative;
     overflow: hidden;
     border-radius: 20px;
-    margin: 0 25px 25px 20px;
+    margin-bottom: 25px;
 }
 
 .main .our-umkm .umkm-group .umkm .crop-toko{

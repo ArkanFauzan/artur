@@ -8,19 +8,21 @@
         <title>Artur</title>
         
         <!-- Fonts -->
+        <link href="{{asset('/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         
         <!-- Styles -->
         <link rel="stylesheet" href="{{asset('/css/style.css')}}">
+        <link rel="stylesheet" href="{{asset('/css/style-responsive.css')}}">
     </head>
     <div id="wrapper">
         <header class="header">
             <div class="logo">
-                <img src="img/logo.png" alt="Artur" width="100px">
+                <img src="img/logo.png" alt="Artur">
             </div>
             <nav class="nav">
-                <ul>
-                    <li><a href="/home">Home</a></li>
+                <ul id="navbar" class="">
+                    <li><a href="/home">Home</a><i class="fas fa-bars" onclick="navbarToggle()" style="font-size:20px;color:black"></i></li>
                     <li><a href="/home#about">About</a></li>
                     <li><a href="/umkm">UMKM</a></li>
                     <li><a href="/home#pricing">Pricing</a></li>
@@ -61,4 +63,9 @@
     <script src="{{asset('/js/app.js')}}"></script>
     @stack('script')
 </body>
+    <script>
+        function navbarToggle(){
+            document.getElementById('navbar').classList.toggle('responsive');
+        }
+    </script>
 </html>

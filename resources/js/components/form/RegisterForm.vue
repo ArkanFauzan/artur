@@ -49,7 +49,7 @@
         </form>
         <div class="registration-success hidePopup">
             <div class="popup-header">
-                <h2>Registrasi Berhasil !</h2>
+                <h2>Registrasi Berhasil!</h2>
             </div>
             <div class="popup-body">
                 Mohon cek secara berkala email yang anda daftarkan untuk menerima 

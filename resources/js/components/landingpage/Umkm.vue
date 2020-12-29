@@ -167,4 +167,8 @@ export default {
         font-size: 17px !important;
         padding-bottom: 20px;
     }
+
+    .carousel-inner{
+        cursor: pointer;
+    }
 </style>
