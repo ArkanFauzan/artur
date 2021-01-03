@@ -24,17 +24,33 @@
                 <img src="img/logo.png" alt="Artur">
             </div>
             <nav class="nav">
-                <ul class="">
-                    <li><a href="/home">Home</a><i class="fas fa-bars" style="font-size:20px;color:black"></i></li>
-                    <li><a href="/home#about">About</a></li>
-                    <li><a href="/umkm">UMKM</a></li>
-                    <li><a href="/home#pricing">Pricing</a></li>
-                    <li><a href="#contact-us">Contact Us</a></li>
+                <ul id="navbar" class="">
+                    <?php $uri=$_SERVER['REQUEST_URI'];$route=ucwords(str_replace('/','',$uri));?>
+                    
+                    {{-- show current page nav on top --}}
+                    <?php if($uri!='/register'){?>
+                        <li><a href="<?php echo $uri;?>"><?php echo $route;?></a></li>
+                    <?php }else{?>
+                        <li><a href="/home">Home</a></li>
+                    <?php };?>
+
+                    {{-- show other nav menu --}}
+                    <?php if('/home'!=$uri){?>
+                        <li><a href="/home">Home</a></li>
+                    <?php };?>
+                    <?php if('/product'!=$uri){?>
+                        <li><a href="/product">Product</a></li>
+                    <?php };?>
+                    <?php if('/umkm'!=$uri){?>
+                        <li><a href="/umkm">Umkm</a></li>
+                    <?php };?>
+                    <li><a class="button" href="/register">Join Us</a></li>
                 </ul>
             </nav>
             <div class="join">
                 <a class="button" href="/register">Join Us</a>
             </div>
+            <i class="fas fa-bars" onclick="navbarToggle()"></i>
             <div class="clear"></div>
         </header>
 
@@ -70,4 +86,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
+    <script>
+        function navbarToggle(){
+            document.getElementById('navbar').classList.toggle('responsive');
+        }
+    </script>
 </html>

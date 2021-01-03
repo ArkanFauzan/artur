@@ -59,7 +59,7 @@
         </li>
   
         <li class="nav-item">
-          <a class="nav-link collapsed" href="/member/my-transction">
+          <a class="nav-link collapsed" href="/member/my-transaction/update">
             <i class="fas fa-fw fa-money-bill-alt"></i>
             <span>My Transaction</span>
           </a>

@@ -46,8 +46,8 @@
         <div class="background"></div>
 
         <div v-if="popup.status" class="popup-container">
+            <img src="img/close.png" class="popup-close" @click.prevent="closePopup()">
             <div class="popup-product">
-                <img src="img/close.png" class="popup-close" @click.prevent="closePopup()">
                 <div>
                     <img class="popup-img" :src="popup.img">
                     <p class="popup-name" v-text="popup.name"></p>
@@ -70,7 +70,7 @@ export default {
             this.dataUmkm.logo = res.data.logo
         })
 
-        console.log(this.dataUmkm);
+        // console.log(this.dataUmkm);
     },
     data(){
         return{
@@ -140,9 +140,11 @@ export default {
 
     .popup-close{
         position: absolute;
-        right: -52px;
-        top: -52px;
-        width: 60px;
+        right: 3%;
+        top: 3%;
+        width: 50px;
+        height: 50px;
+        z-index: 1001;
     }
     .popup-close:hover{
         cursor: pointer;

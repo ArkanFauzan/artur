@@ -6,6 +6,7 @@
 body,html{
     overflow-x: hidden;
     padding: 0;
+    padding-top: 20px;
     margin: 0;
     font-family: roboto;
 }
@@ -15,14 +16,16 @@ html{
 }
 
 .header {
-    width: 950px;
+    width: 95%;
+    max-width: 950px;
     font-size: 14px;
     margin: 0 auto;
-    padding-top: 20px;
+    display: flex;
 }
 
 .header .logo {
-    width: 100px;
+    width: 20%;
+    max-width: 100px;
     height: 54px;
     float: left;
 }
@@ -32,8 +35,8 @@ html{
 }
 
 .header .nav {
-    width: 750px;
-    float: left;
+    width: 70%;
+    margin: 0 auto;
 }
 
 .header .join {
@@ -52,22 +55,37 @@ html{
     padding: 0;
     height: 54px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     width: 100%;
+    position: relative;
 }
 
-.header ul li i{
+.header ul li{
+    width: 75px;
+    padding-left: 10px;
+}
+.header ul li:last-child{
+    display:none;
+}
+.header i{
     display: none;
+    cursor: pointer;
 }
 
 .header ul a {
-    float: left;
-    padding: 0px 40px;
+    width: 75px;
+    display: block;
+    text-align: center;
     height: 54px;
     line-height: 54px;
     letter-spacing: 0.5px;
     text-decoration: none;
     color:black;
+}
+
+.header ul li a:hover,.header ul li:hover{
+    font-size:17px;
+    font-weight:bold;
 }
 
 .header ul a:hover, button.button:hover{
@@ -100,10 +118,13 @@ a.button:hover, button.button:hover{
 
 .main{
     min-height: 500px;
+    width: 95%;
+    max-width: 980px;
+    margin: 0 auto;
 }
 
 .main .welcome {
-    width:950px;
+    width: 100%;
     margin: 0 auto;
     padding-top: 50px;
     height: 400px;
@@ -111,7 +132,7 @@ a.button:hover, button.button:hover{
 }
 
 .main .welcome .text {
-    width: 520px;
+    width: 56%;
     font-size: 20px;
     padding-top: 60px;
 }
@@ -255,34 +276,39 @@ a.button:hover, button.button:hover{
 }
 
 .main .features {
-    width: 950px;
+    width: 100%;
+    max-width: 950px;
     margin: 0 auto;
     display: flex;
 }
 
 .main .features .mockup {
-    width: 550px;
-    height: 650px;
+    width: 55%;
+    height: 700px;
     overflow: visible;
     text-align: center;
+    position: relative;
 }
 
 .main .features .mockup img {
-    width: 800px;
+    width: 150%;
     display: inline-block;
-    position: relative;
+    position: absolute;
     left: -120px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .main .features .features-description {
-    width: 400px;
+    width: 45%;
+    max-width: 400px;
 }
 
 .main .features .features-description .goals p {
-    font-size: 19px;
-    letter-spacing: 0.4px;
+    font-size: 18px;
     color: #b6b6b6;
     margin-top: -15px;
+    text-align: justify;
 }
 
 .main .features .features-description .goals h1 {
@@ -298,7 +324,7 @@ a.button:hover, button.button:hover{
 .main .features .features-description .features-list .features2,
 .main .features .features-description .features-list .features3 {
     position: relative;
-    padding: 30px 30px;
+    padding: 30px 0 30px 20px;
     margin-bottom: 15px;
 }
 
@@ -306,6 +332,7 @@ a.button:hover, button.button:hover{
 .main .features .features-description .features-list .features2 img,
 .main .features .features-description .features-list .features3 img {
     width: 55px;
+    height: 55px;
     float: left;
     margin-right: 30px;
 }
@@ -314,8 +341,7 @@ a.button:hover, button.button:hover{
 .main .features .features-description .features-list .features2 p,
 .main .features .features-description .features-list .features3 p {
     color: white;
-    font-size: 18.5px;
-    letter-spacing: 0.1px;
+    font-size: 17px;
     margin: 6px 0px;
 }
 
@@ -344,28 +370,38 @@ a.button:hover, button.button:hover{
 }
 
 .main .quotes {
-    width: 950px;
+    width: 100%;
+    max-width: 950px;
     margin: 0 auto;
     padding-top: 70px;
+    position:relative;
+    display:flex;
+    flex-direction:row-reverse
+
+}
+
+.main .quotes .round-image{
+    width:45%;
 }
 
 .main .quotes .ceo-image {
     float: right;
-    width: 380px;
+    width: 100%;
 }
 
 .main .quotes .quotes-group {
-    width: 570px;
+    width: 55%;
     box-sizing: border-box;
     padding: 15px 30px;
     text-align: center;
-    font-size: 33px;
+    font-size: 35px;
     color: #a5a5a5;
 }
 
 .main .quotes .quotes-group .text {
     font-style: italic;
     font-weight: 1000px;
+    margin: 0;
 }
 .main .quotes .quotes-group .by {
     color:#000000;
@@ -407,7 +443,7 @@ a.button:hover, button.button:hover{
     height: 70px;
     color: white;
     font-size: 20px;
-    margin: 70px 30px;
+    margin: 65px 30px;
 }
 
 .main .mitra .list-mitra {
@@ -467,19 +503,20 @@ a.button:hover, button.button:hover{
 
 .footer{
     background: #272727;
-    padding-top: 30px;
+    padding: 20px;
     margin-top: 60px;
 }
 
 .footer .footer-group{
-    width: 950px;
+    width: 100%;
+    max-width: 950px;
     margin: 0 auto;
     color: white;
 }
 
 .footer .contacts{
     float:left;
-    width: 520px;
+    width: auto;
 }
 
 .footer .contacts h1{
@@ -525,21 +562,23 @@ a.button:hover, button.button:hover{
 
 .main .register {
     display: flex;
-    width: 950px;
+    width: 95%;
+    max-width: 950px;
     margin: 0 auto;
 }
 
 .main .register .mockup{
-    width: 490px;
+    width: 50%;
     height: 600px;
     position: relative;
 }
 
 .main .register img {
-    width: 710px;
+    width: 165%;
+    max-width: 650px;
     position: absolute;
-    top: 35px;
-    left: -155px;
+    top: 75px;
+    left: -145px;
 }
 
 .main .register .register-form{
@@ -547,12 +586,12 @@ a.button:hover, button.button:hover{
 }
 
 .main .register .register-form h1{
-    font-size: 50px;
+    font-size: 40px;
     margin-bottom: 20px;
 }
 
 .main .register .form h2{
-    font-size: 35px;
+    font-size: 30px;
     margin-bottom: 0;
     margin-top: 25px;
 }
@@ -584,6 +623,18 @@ a.button:hover, button.button:hover{
     z-index: -1;
 }
 
+.main .register .section .form-group:first-child{
+    width: 190px;
+}
+
+.main .register .section .form-group:last-child{
+    width:200px;
+}
+
+.main .register .section .space{
+    display:none;
+}
+
 .main .register .form-group{
     width: 100%;
     margin-bottom: 20px;
@@ -609,6 +660,8 @@ a.button:hover, button.button:hover{
 
 .main .register .section{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .main .register .section .space{
@@ -628,37 +681,40 @@ a.button:hover, button.button:hover{
 
 .main .login {
     display: flex;
-    width: 950px;
+    width: 95%;
+    max-width: 950px;
     margin: 0 auto;
+    margin-bottom: -30px;
 }
 
 .main .login .mockup{
-    width: 490px;
+    width: 50%;
     height: 600px;
     position: relative;
 }
 
 .main .login img {
-    width: 710px;
+    width: 165%;
+    max-width: 650px;
     position: absolute;
-    top: 35px;
-    left: -155px;
+    top: 0px;
+    left: -145px;
 }
 
 .main .login .login-form{
     width: 460px;
     position: relative;
-    top: 60px;
+    top: 30px;
     margin-bottom: 70px;
 }
 
 .main .login .login-form h1{
-    font-size: 50px;
+    font-size: 40px;
     margin-bottom: 20px;
 }
 
 .main .login .form h2{
-    font-size: 35px;
+    font-size: 30px;
     margin-bottom: 0;
     margin-top: 25px;
 }
@@ -730,13 +786,13 @@ a.button:hover, button.button:hover{
 */
 
 .main .our-umkm{
-    width: 950px;
+    width: 100%;
+    max-width: 1000px;
     margin: 0 auto;
-    
 }
 
 .main .our-umkm h1 {
-    font-size: 40px;
+    font-size: 30px;
     text-align: center;
     padding-top: 20px;
     font-weight: bold !important;
@@ -745,21 +801,21 @@ a.button:hover, button.button:hover{
 .main .our-umkm .umkm-group {
     display: flex;
     flex-wrap: wrap;
-    justify-content:space-between;
+    justify-content: space-around;
     width: 100%;
 }
 
 .main .our-umkm .umkm-group .umkm {
-    width: 270px;
+    width: 230px;
     position: relative;
     overflow: hidden;
     border-radius: 20px;
-    margin-bottom: 25px;
+    margin: 0 6px 20px 6px;
 }
 
 .main .our-umkm .umkm-group .umkm .crop-toko{
-    width: 270px;
-    height: 180px;
+    width: 230px;
+    height: 150px;
     border-radius: 20px;
     margin-bottom: 20px;
     overflow: hidden;
@@ -772,15 +828,15 @@ a.button:hover, button.button:hover{
 .main .our-umkm .umkm-group .umkm .crop-logo{
     float: left;
     width: 50px;
-    height: 50px;
+    height: 70px;
     overflow: hidden;
-    margin-right: 20px;
-    margin-left: 23px;
-    border-radius: 10px;
+    margin-right: 15px;
+    margin-left: 10px;
 }
 .main .our-umkm .umkm-group .umkm .logo {
     width: 50px;
     height:50px;
+    border-radius: 10px;
 }
 
 .main .our-umkm .umkm-group .umkm .description{
@@ -789,12 +845,13 @@ a.button:hover, button.button:hover{
 
 .main .our-umkm .umkm-group .umkm h2 {
     margin: 0;
+    font-size: 20px;
 }
 
 .main .our-umkm .umkm-group .umkm p {
     margin-bottom: 0;
     margin-top: 8px;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .main .our-umkm .umkm-group .umkm .button-toko{
@@ -841,9 +898,9 @@ a.button:hover, button.button:hover{
 
 .main .our-umkm .umkm-group .umkm .background {
     position: absolute;
-    height: 500px;
+    height: 310px;
     top:0px;
     background: #f3f3f3;
-    width: 350px;
+    width: 230px;
     z-index: -1;
 }

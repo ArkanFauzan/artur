@@ -23,7 +23,8 @@ Route::view('/umkm','umkm');
 
 Route::prefix('api')->group(function(){
     Route::post('/register','Auth\RegisterController');
-    Route::post('/login','Auth\LoginController');
+    Route::post('/login','Auth\LoginAdminController');
+    Route::post('/login-member','Auth\LoginMemberController');
 
     Route::get('/umkm','Member\MemberController@all_umkm');
     Route::get('/logo-umkm/{id}','Member\MemberController@logo_umkm');
@@ -42,6 +43,8 @@ Route::prefix('api')->group(function(){
         Route::get('/member/product/{id}','Member\MemberController@show_product');
         Route::post('/member/product/{id}','Member\MemberController@edit_product');
         Route::delete('/member/product/{id}','Member\MemberController@delete_product');
+
+        Route::post('/member/transaction','Member\MemberController@transaction');
     });
 });
 
@@ -54,5 +57,7 @@ Route::middleware('admin')->group(function(){
     Route::view('/member/my-product','member.my_product');
     Route::view('/member/edit-product/{id}','member.edit_product');
     Route::view('/member/my-product/add','member.add_product');
+    Route::view('/member/my-transaction/update','member.my_transaction_update');
+
     Route::view('/admin','admin.new_umkm');
 });

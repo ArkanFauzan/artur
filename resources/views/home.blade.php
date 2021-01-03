@@ -28,8 +28,8 @@
             <div class="features-description">
                 <div class="goals" id="about">
                     <h1>Our Goals</h1>
-                    <p>We want furniture UMKM in Indonesia to go <br/>
-                    digital and take advantage of technology for <br/>
+                    <p>We want furniture UMKM in Indonesia to go
+                    digital and take advantage of technology for
                     marketing their products
                     </p>
                 </div>
@@ -38,7 +38,7 @@
                     <div class="features1">
                         <img src="{{asset('/img/Features1.png')}}" alt="Interior design with AR">
                         <p>
-                            Interior design with<br/>
+                            Interior design with
                             Augmented Reality technology
                         </p>
                         <div></div>
@@ -46,7 +46,7 @@
                     <div class="features2">
                         <img src="{{asset('/img/Features2.png')}}" alt="Interior design with AR">
                         <p>
-                            Simulate your furniture choice<br/>
+                            Simulate your furniture choice
                             with instagram filter
                         </p>
                         <div></div>
@@ -54,7 +54,7 @@
                     <div class="features3">
                         <img src="{{asset('/img/Features3.png')}}" alt="Interior design with AR">
                         <p>
-                            Get your furniture in<br/>
+                            Get your furniture in
                             your favorite E-Commerce
                         </p>
                         <div></div>
@@ -64,7 +64,10 @@
         </div>
 
         <div class="quotes">
-            <img class="ceo-image" src="{{asset('/img/poto.png')}}" alt="CEO Artur">
+            <div class="round-image">
+                <img class="ceo-image" src="{{asset('/img/poto.png')}}" alt="CEO Artur">
+                <div class="clear"></div>
+            </div>
             <div class="quotes-group">
                 <p class="text">
                     "Dari data yang kami dapat, hanya 8-13% dari 64 juta UMKM di Indonesia

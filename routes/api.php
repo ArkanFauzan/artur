@@ -26,3 +26,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Route::post('/member/edit-profile','Member\MemberController@edit_profile');
 
 // Route::post('/member/product/{id}','Member\MemberController@edit_product');
+// Route::post('/login-member','Auth\LoginMemberController');
+
+// Route::post('/member/transaction','Member\MemberController@transaction');

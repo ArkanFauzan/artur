@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Account;
 use App\Profile;
 use App\Product;
+use App\Transaction;
 
 class MemberController extends Controller
 {
@@ -172,6 +173,7 @@ class MemberController extends Controller
         return 'sukses';
     }
 
+    // list umkm & product for landing page umkm
     public function all_umkm(){
         $umkm = Account::select('id','name','place','ig')
                         ->where('role','member')->get();
@@ -179,6 +181,7 @@ class MemberController extends Controller
         return response()->json(compact('umkm'));
     }
 
+    // list umkm & product for landing page umkm
     public function logo_umkm($id_umkm){
         // get file name of umkm logo
         $logo = Profile::where('user_id',$id_umkm)->first();
@@ -188,6 +191,7 @@ class MemberController extends Controller
         return response()->json(compact('logo'));
     }
 
+    // list umkm & product for landing page umkm
     public function product_umkm($id_umkm){
         // get file name of umkm's products
         $products = Product::where('user_id',$id_umkm)->get();
@@ -201,5 +205,38 @@ class MemberController extends Controller
         }
 
         return response()->json(compact('products'));
+    }
+
+    // create transaction for member
+    public function transaction(Request $request){
+        request()->validate([
+            'product_name' => 'required|min:3',
+            'net_price' => 'required|numeric|min:1000',
+            'ongkir' => 'required|numeric|min:1000',
+            'gross_price' => 'required|numeric|min:1000',
+            'profit' => 'required|numeric|min:1000',
+            'file' => 'required|image|max:2000|',
+        ]);
+
+        // store to database
+        $transaction = Transaction::create([
+            'user_id'=>auth()->user()->id,
+            'product_name' => request()->product_name,
+            'net_price' => request()->net_price,
+            'ongkir' => request()->ongkir,
+            'gross_price' => request()->gross_price,
+            'profit' => request()->profit,
+        ]);
+
+        $file = request()->file('file');
+
+        // store name file. filename = id (uuid).extension (file_type)
+        $transaction->update([
+            'file_type' => $file->getClientOriginalExtension()
+        ]);
+
+        // move uploaded file
+        $file->move('img/transaction',$transaction->id.'.'.$transaction->file_type);
+        return response()->json('sukses');
     }
 }

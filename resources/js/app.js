@@ -30,6 +30,7 @@ Vue.component('edit-profile', require('./components/member/EditProfile.vue').def
 Vue.component('my-product', require('./components/member/MyProduct.vue').default); 
 Vue.component('add-product', require('./components/member/AddProduct.vue').default); 
 Vue.component('edit-product', require('./components/member/EditProduct.vue').default); 
+Vue.component('my-transaction-update', require('./components/member/MyTransactionUpdate.vue').default);
 
 Vue.component('umkm-list', require('./components/landingpage/UmkmList.vue').default); 
 

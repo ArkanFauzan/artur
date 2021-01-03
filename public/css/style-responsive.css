@@ -1,11 +1,93 @@
+@media (max-width:1000px){
+    body{
+        padding-top:0px;
+    }
+
+    .main .quotes{
+        width: 700px;
+        position:relative;
+        padding-top:0px;
+        margin-bottom: 110px;
+    }
+    .main .quotes .round-image{
+        width:270px;
+        height: auto;
+    }
+    .main .quotes .quotes-group{
+        width: 430px;
+        font-size: 25px;
+        text-align:justify;
+        padding: 0 50px;
+    }
+    .main .quotes .quotes-group .text{
+        margin-top:0px;
+        font-style:normal;
+        font-size: 27px;
+        text-align: center;
+    }
+    .main .quotes .quotes-group p.by{
+        position: absolute;
+        margin-top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 25px;
+    }
+    .main .quotes .quotes-group p.position{
+        position: absolute;
+        margin-top: 55px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 21px;
+    }
+    .main .quotes .ceo-image{
+        width:100%;
+        height: 330px;
+    }
+    .main .mitra{
+        width:700px;
+        padding-right: 0px;
+    }
+    .main .mitra .text {
+        height: 70px;
+        color: white;
+        font-size: 18px;
+        margin: 65px 0;   
+    }
+    .main .pricing {
+        width:700px;
+    }
+    .main .pricing img{
+        width:210px;
+    }
+    .main .pricing .text{
+        padding-left:30px;
+        padding-right:10px;
+        font-size:20px;
+        text-align:justify;
+    }
+    .main .pricing .text br{
+        display:none;
+    }
+    .main .pricing .text h1{
+        font-size:40px;
+    }
+
+
+    .main .register .section .form-group:first-child{
+        width:100%;
+    }
+    .main .register .section .form-group:last-child{
+        width:100%;
+    }
+}
 @media (max-width:800px){
     *,
     *::before,
     *::after {
-    box-sizing:initial; 
+    box-sizing:initial;
     }
     .header,.main{
-        padding: 10px;
+        padding: 0px;
     }
     .header{
         width:580px;
@@ -13,8 +95,28 @@
         z-index: 5;
         margin: auto;
     }
+    .header i{
+        display:block;
+        width:20%;
+        max-width:100px;
+        line-height:54px;
+        text-align:right;
+        box-sizing: border-box;
+        padding-right: 10px;
+        font-size: 20px;
+        color: black;
+    }
+    .header i:hover{
+        font-size: 23px;
+    }
+    .header .logo img{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
     .header .logo, .header .nav{
         float:none;
+        position: relative;
     }
     .header .nav{
         width:380px;
@@ -24,6 +126,7 @@
         width:380px;
         position: absolute;
         top: 2px;
+        right: 0px;
         height: auto;
         display:flex;
         flex-flow: column;
@@ -39,6 +142,16 @@
         width: 100%;
         display: flex;
         justify-content: center;
+        padding-left: 0px;
+    }
+    .header .nav ul li:last-child{
+        margin-bottom:20px;
+    }
+    .header .nav ul li:last-child a.button{
+        height:35px;
+        line-height:35px;
+        padding:0 15px;
+        color: white;
     }
     .header .nav ul li a{
         padding: 0 20px;
@@ -59,6 +172,9 @@
     .header .nav ul.responsive li:not(:first-child){
         display:flex;
     }
+    .header .join{
+        display:none;
+    }
 
     .main .welcome{
         padding:0;
@@ -68,6 +184,7 @@
     .main .welcome .text{
         padding:0;
         margin:0 auto;
+        width: 520px;
         text-align:center;
     }
     .main .welcome .text h1{
@@ -114,59 +231,79 @@
         width:300px;
         left: 0px;
         top:35px;
+        position: relative;
+        transform: none;
     }
     .main .features .features-description{
         width:500px;
         margin:0 auto;
         text-align:center;
+        max-width: 500px;
+    }
+    .main .features .features-description .goals p{
+        text-align:center;
+    }
+    .main .features .features-description .features-list{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:space-between;
     }
     .main .features .features-description .features-list h1{
         margin-top:-5px;
         margin-bottom:15px;
+        width: 500px;
     }
     .main .features .features-description .features-list img{
-        padding-left:35px;
-        padding-right:33px;
+    display: inline-block;
+    float: none !important;
+    margin: 0 !important;
     }
     .main .features .features-description .features-list p{
-        text-align:left;
+        text-align: center;
+        font-size: 15px !important;
     }
     .main .features .features-description .features-list>div{
-        padding: 15px 30px !important;
-        margin-bottom:10px !important;
-        padding-right:0px !important;
+    width: 150px;
+    padding: 10px !important;
+    text-align: center;
+    box-sizing: border-box;
     }
     .main .features .features-description .features-list div div{
-        width:500px !important;
-        height:78px !important;
+        width: 100% !important;
+        height: 100% !important;
     }
 
     .main .quotes{
         width:500px;
         position:relative;
-        padding-top:40px
+        padding-top: 25px;
+        margin-bottom: 0px;
     }
     .main .quotes .quotes-group{
         width:300px;
-        font-size:21px;
+        font-size: 20px;
         text-align:justify;
         padding:0 20px 0 0;
     }
     .main .quotes .quotes-group .text{
         margin-top:0px;
         font-style:normal;
+        font-size: 20px;
+        text-align: justify;
     }
     .main .quotes .quotes-group p.by{
-        position:absolute;
-        left:50%;
-        transform:translateX(-50%);
-        margin-top:0px;
+    position: absolute;
+    margin-top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
     }
     .main .quotes .quotes-group p.position{
-        position:absolute;
-        left:50%;
-        transform:translateX(-50%);
-        margin-top:30px;
+    position: absolute;
+    margin-top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 17px;
     }
     .main .quotes .ceo-image{
         width:200px;
@@ -236,50 +373,6 @@
     .main .pricing .text br{
         display:none;
     }
-    .footer{
-        margin-top:0px;
-        height: 190px;
-    }
-    .footer .footer-group{
-        position:relative;
-        width:100%;
-        height: 190px;
-    }
-    .footer .footer-group .logo{
-        display:none;
-        position:absolute;
-        top:-10px;
-        left:50%;
-        transform:translateX(-50%);
-        float:none;
-        width:130px;
-    }
-    .footer .footer-group .contacts{
-        position:absolute;
-        top:-15px;
-        left:50%;
-        transform:translateX(-50%);
-        width:100%;
-        text-align:center
-    }
-    .footer .footer-group .contacts h1{
-        text-align:center;
-    }
-    .footer .footer-group .contacts .contact img{
-        float:none;
-        display:inline-block;
-        margin-right:5px;
-        position:relative;
-        vertical-align: middle;
-    }
-    .footer .footer-group .contacts .contact p{
-        display:inline-block;
-    }
-    .footer .footer-group .copyright{
-        position:absolute;
-        bottom: 0px;
-        width:100%
-    }
 
 
     .main .register{
@@ -289,20 +382,23 @@
         display:none
     }
     .main .register .register-form{
-        width:100%;
-        margin-bottom:15px
+        width: 93%;
+        margin: 0 auto;
+        margin-bottom:15px;
     }
     .main .register .register-form h1{
         text-align:center;
         margin-top: 0px;
+        font-size: 35px;
     }
     .main .register .register-form form{
         width:100%;
-        padding:5%;
+        padding: 8%;
         box-sizing:border-box;
     }
     .main .register .register-form form h2{
         margin-top:0px;
+        font-size: 25px;
     }
     .main .register .form .backgroud{
         width:100%;
@@ -319,21 +415,24 @@
         display:none
     }
     .main .login .login-form{
-        width:100%;
+        width: 93%;
+        margin: 0 auto;
         margin-bottom:15px;
         position:static;
     }
     .main .login .login-form h1{
         text-align:center;
         margin-top:0px;
+        font-size: 35px;
     }
     .main .login .login-form form{
         width:100%;
-        padding:5%;
+        padding: 8%;
         box-sizing:border-box;
     }
     .main .login .login-form form h2{
         margin-top:0px;
+        font-size: 25px;
     }
     .main .login .form .backgroud{
         width:100%;
@@ -352,12 +451,6 @@
         justify-content:space-around;
         width:100%;
     }
-    .main .our-umkm .popup-close{
-        width: 50px;
-        height: 50px;
-        top:-47px;
-        right:-47x;
-    }
 }
 
 @media (max-width:600px){
@@ -366,6 +459,9 @@
         margin:0 auto;
         font-size:13px;
         padding-bottom: 0px;
+    }
+    .header i{
+        line-height:50px;
     }
     .header .logo{
         width:20%;
@@ -381,6 +477,10 @@
     .header .nav{
         width:60%;
         height:50px;
+    }
+    .header ul li a:hover, .header ul li:hover{
+        font-size:16px;
+        cursor: pointer;
     }
     .header .nav ul{
         width:100%;
@@ -428,46 +528,21 @@
     .main .features .mockup img{
         top:20px;
     }
-    .main .features .features-description .goals h1{
-        padding-top:10px;
+    .main .features .features-description{
+        width:100%;
     }
-    .main .features .features-description .goals br{
-        display:none;
-    }
-    .main .features .features-description .goals p{
-        letter-spacing:0px;
-        font-size:17px;
-    }
-    .main .features .features-description .features-list div p{
-        font-size:17px !important;
-        margin: 0 !important;
-        height: auto;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        padding-left: 80px;
-        padding-right: 20px;
-    }
-    .main .features .features-description .features-list p br{
-        display:none;
-    }
-    .main .features .features-description .features-list img{
-        width:40px !important;
-        padding-left: 15px;
-        padding-right: 0px;
+    .main .features .features-description .features-list{
+        justify-content:space-around;
     }
     .main .features .features-description .features-list>div{
-        padding-right:10px !important;
-        position: relative;
-        height: 70px;
-    } 
-    /* .main .features .features-description .features-list>div p{
-        position:absolute;
-        top:50%;
-    } */
-    .main .features .features-description .features-list div div{
-        height: 70px !important;
-        width:100% !important;
+        width:120px;
+    }
+    .main .features .features-description .features-list>div img{
+        width: 40px !important;
+        height: 40px !important;
+    }
+    .main .features .features-description .features-list>div p{
+        font-size:13px !important;
     }
 
 
@@ -475,7 +550,18 @@
         width:90%;
         text-align:center;
         padding-top:20px;
-        height: 480px;
+        height: auto;
+        margin-bottom: 40px;
+        display: block;
+    }
+    .main .quotes .round-image{
+        width:200px;
+        height:200px;
+        overflow:hidden;
+        box-sizing:border-box;
+        border:5px solid black;
+        border-radius:100px;
+        margin:auto
     }
     .main .quotes .ceo-image{
         float:none;
@@ -493,11 +579,16 @@
     }
     .main .quotes .quotes-group p.by{
         font-size: 17px;
+        position: static;
         text-align: center;
         min-width: 70%;
+        transform: none;
     }
     .main .quotes .quotes-group p.position{
-        margin-top:25px;
+        position: static;
+        transform: none;
+        margin-top: 5px;
+        text-align: center;
     }
 
 
@@ -560,29 +651,56 @@
     }
 
 
+    .footer .footer-group h1{
+        font-size: 30px;
+    }
+    .footer .footer-group p{
+        font-size:12px;
+    }
+    .footer .logo{
+        width:125px;
+    }
+    .footer .contact img{
+        margin-right:10px
+    }
+    .footer .copyright{
+        font-size:12px;
+    }
+
+
     .main .our-umkm h1{
-        font-size:30px;
+        font-size: 25px;
+        padding-top: 10px;
     }
 
 
     .main .login .login-form form h2{
-        font-size:25px;
+        font-size: 23px;
     }
     .main .login .login-form h1{
-        font-size:35px;
+        font-size: 30px;
         margin:10px 0 15px 0;
+    }
+    .main .login .form .button{
+        font-size:15px;
     }
 
 
     .main .register .register-form form h2{
-        font-size:25px;
+        font-size: 23px;
     }
     .main .register .register-form h1{
-        font-size:35px;
+        font-size: 30px;
         margin:10px 0 15px 0;
     }
     .main .register .section{
         display:flex;
         flex-direction:column;
+    }
+    .main .form-group label{
+        font-size: 13px !important;
+    }
+    .main .register .form .button{
+        font-size:15px;
     }
 }

@@ -20,6 +20,9 @@
               </tr>
           </table>
       </div>
+      <div>
+          <p v-for="dataUmkm in umkm" :key="dataUmkm.id"><a @click.prevent="loginUmkm(dataUmkm)">{{dataUmkm.name}}</a></p>
+      </div>
   </main>
 </template>
 
@@ -27,10 +30,12 @@
 export default {
     mounted(){
         this.getData();
+        this.getUmkm();
     },
     data(){
         return{
             newUmkm:{},
+            umkm:{},
         }
     },
     methods:{
@@ -70,6 +75,22 @@ export default {
             }catch(e){
                 console.log();
             }
+        },
+        async getUmkm(){
+            try{
+                await axios.get('/api/umkm').then(res=>{
+                    this.umkm = res.data.umkm;
+                })
+            }catch(e){
+
+            }
+        },
+        async loginUmkm(umkm){
+            await axios.post('api/login-member',{id:umkm.id}).then(res=>{
+                if (res.data=='sukses') {
+                    window.location.href = '/member';
+                }
+            })
         }
     }
 }

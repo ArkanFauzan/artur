@@ -1,8 +1,7 @@
 <template>
     <div>
         <form class="form" v-on:submit.prevent="handleForm">
-            <h2>Create an account</h2>
-            <p>Already have an account? <a href="/login">Sign in</a></p>
+            <h2 style="color:#007bff;margin-bottom:15px;">Join With US</h2>
 
             <div class="form-group">
                 <label for="name">UMKM's Name</label>
@@ -33,7 +32,7 @@
                     <input type="text" v-model="form.ig" id="instagram"/>
                 </div>
                         
-                <button class="button" type="submit">Sign Up
+                <button class="button" type="submit">Join
                     <svg v-if="loading" class="loading" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: none; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
                         <g>
                         <path d="M50 15A35 35 0 1 0 74.74873734152916 25.251262658470843" fill="none" stroke="#ffffff" stroke-width="12"></path>

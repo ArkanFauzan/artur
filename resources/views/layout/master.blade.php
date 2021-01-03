@@ -22,16 +22,30 @@
             </div>
             <nav class="nav">
                 <ul id="navbar" class="">
-                    <li><a href="/home">Home</a><i class="fas fa-bars" onclick="navbarToggle()" style="font-size:20px;color:black"></i></li>
-                    <li><a href="/home#about">About</a></li>
-                    <li><a href="/umkm">UMKM</a></li>
-                    <li><a href="/home#pricing">Pricing</a></li>
-                    <li><a href="#contact-us">Contact Us</a></li>
+                    <?php $uri=$_SERVER['REQUEST_URI'];$route=ucwords(str_replace('/','',$uri));?>
+                    
+                    {{-- show current page nav on top --}}
+                    <?php if($uri!='/register' && $uri!='/login'){?>
+                        <li><a href="<?php echo $uri;?>"><?php echo $route;?></a></li>
+                    <?php };?>
+
+                    {{-- show other nav menu --}}
+                    <?php if('/home'!=$uri){?>
+                        <li><a href="/home">Home</a></li>
+                    <?php };?>
+                    <?php if('/product'!=$uri){?>
+                        <li><a href="/product">Product</a></li>
+                    <?php };?>
+                    <?php if('/umkm'!=$uri){?>
+                        <li><a href="/umkm">Umkm</a></li>
+                    <?php };?>
+                    <li><a class="button" href="/register">Join Us</a></li>
                 </ul>
             </nav>
             <div class="join">
                 <a class="button" href="/register">Join Us</a>
             </div>
+            <i class="fas fa-bars" onclick="navbarToggle()"></i>
             <div class="clear"></div>
         </header>
 
