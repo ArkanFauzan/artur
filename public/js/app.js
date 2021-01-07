@@ -1991,8 +1991,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    this.getData();
-    this.getUmkm();
+    this.getData(); //data register umkm
+
+    this.getUmkm(); //data umkm for login to dashboard member 
   },
   data: function data() {
     return {
@@ -2012,20 +2013,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.prev = 0;
                 _context.next = 3;
                 return axios.get('/api/admin/new-umkm').then(function (response) {
-                  _this.newUmkm = response.data.newUmkm;
-                  console.log(_this.newUmkm);
+                  _this.newUmkm = response.data.newUmkm; // console.log(this.newUmkm);
                 });
 
               case 3:
-                _context.next = 8;
+                _context.next = 7;
                 break;
 
               case 5:
                 _context.prev = 5;
                 _context.t0 = _context["catch"](0);
-                console.log(_context.t0.response);
 
-              case 8:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -40960,32 +40959,39 @@ var render = function() {
           _vm._m(0),
           _vm._v(" "),
           _vm._l(_vm.newUmkm, function(umkm) {
-            return _c("tr", { key: umkm.id }, [
-              _c("td", [_vm._v(_vm._s(umkm.name))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(umkm.email))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(umkm.place))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(umkm.wa))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(umkm.ig))]),
-              _vm._v(" "),
-              _c("td", [
-                _c(
-                  "a",
-                  {
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        return _vm.verified(umkm)
+            return _c(
+              "tr",
+              {
+                key: umkm.id,
+                style: { color: umkm.read == 0 ? "blue" : "black" }
+              },
+              [
+                _c("td", [_vm._v(_vm._s(umkm.name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(umkm.email))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(umkm.place))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(umkm.wa))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(umkm.ig))]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "a",
+                    {
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.verified(umkm)
+                        }
                       }
-                    }
-                  },
-                  [_vm._v("yes")]
-                )
-              ])
-            ])
+                    },
+                    [_vm._v("yes")]
+                  )
+                ])
+              ]
+            )
           })
         ],
         2

@@ -10,7 +10,7 @@
                   <th>IG</th>
                   <th>Verified?</th>
               </tr>
-              <tr v-for="umkm in newUmkm" :key="umkm.id">
+              <tr v-for="umkm in newUmkm" :key="umkm.id" v-bind:style="{'color':(umkm.read==0?'blue':'black')}">
                   <td>{{umkm.name}}</td>
                   <td>{{umkm.email}}</td>
                   <td>{{umkm.place}}</td>
@@ -29,8 +29,8 @@
 <script>
 export default {
     mounted(){
-        this.getData();
-        this.getUmkm();
+        this.getData(); //data register umkm
+        this.getUmkm(); //data umkm for login to dashboard member 
     },
     data(){
         return{
@@ -43,11 +43,11 @@ export default {
             try{
                 await axios.get('/api/admin/new-umkm').then(response=>{
                 this.newUmkm = response.data.newUmkm;
-                console.log(this.newUmkm);
+                // console.log(this.newUmkm);
                 });
             }
             catch(e){
-                console.log(e.response);
+                // console.log(e.response);
             }
         },
         verified(umkm){

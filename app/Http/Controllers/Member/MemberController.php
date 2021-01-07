@@ -16,7 +16,7 @@ class MemberController extends Controller
         // get detail account
         $account = Account::find(auth()->user()->id);
         // get account's profile picture (filename of picture = id)
-        $img = Profile::firstOrCreate(['user_id'=>auth()->user()->id]);
+        $img = Profile::where('user_id',auth()->user()->id)->first();
 
         $profile = [
             'name'=>$account->name,
@@ -44,14 +44,18 @@ class MemberController extends Controller
             return response(['errors'=>"The maximum file size is 4 MB"],422);
         }
 
-        // update the extension of file
         $profile = Profile::where('user_id',auth()->user()->id)->first();
+        // delete the old file
+        if (file_exists("img/profile/$profile->id.$profile->type")) {
+            unlink("img/profile/$profile->id.$profile->type");
+        }
+        // update the extension of file
         $profile->update([
             'type'=> $file->getClientOriginalExtension()
         ]);
 
-        // move the file to "profile" folder with uuid as file name
-        $file->move('img/profile',$profile->id.".".$file->getClientOriginalExtension());
+        // move the new file to "profile" folder with uuid as file name
+        $file->move('img/profile',$profile->id.".".$profile->type);
 
         return response()->json(['result'=>'success upload']);     
     }
@@ -151,6 +155,12 @@ class MemberController extends Controller
             return response('',401);
         }
 
+        // delete the old file if user upload the new file
+        if(isset($file) && file_exists("img/product/$id->id.$id->file_type")){
+            unlink("img/product/$id->id.$id->file_type");
+        }
+
+        // update the product
         $id->update([
             'name'=> $request->name,
             'description'=> $request->description,
@@ -169,6 +179,11 @@ class MemberController extends Controller
         if ($id->user_id != auth()->user()->id) {
             return response('',401);
         }
+        // delete the product image file
+        if(file_exists("img/product/$id->id.$id->file_type")){
+            unlink("img/product/$id->id.$id->file_type");
+        }
+        // delete the product from product table
         $id->delete();
         return 'sukses';
     }
