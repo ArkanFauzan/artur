@@ -12,9 +12,6 @@ use Illuminate\Support\Facades\DB;
 class AdminController extends Controller
 {
     public function index(){
-        if (auth()->user()->role != 'admin') {
-            return response(null,401);
-        }
         // get umkm that want to join
         $newUmkm = Register::orderBy('created_at','desc')->get();
 
@@ -27,9 +24,6 @@ class AdminController extends Controller
     }
 
     public function create(Request $request){
-        if (auth()->user()->role != 'admin') {
-            return response(null,401);
-        }
         // create account for new umkm after verified
         $umkm = Account::create([
             'name'=>$request->name,
