@@ -2409,14 +2409,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 //
 //
 //
@@ -2480,31 +2472,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['umkm'],
   mounted: function mounted() {
-    var _this = this;
-
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _context.next = 2;
-              return axios.get("/api/product-umkm/".concat(_this.umkm.id)).then(function (res) {
-                _this.dataUmkm.products = res.data.products;
-              });
-
-            case 2:
-              _context.next = 4;
-              return axios.get("/api/logo-umkm/".concat(_this.umkm.id)).then(function (res) {
-                _this.dataUmkm.logo = res.data.logo;
-              });
-
-            case 4:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }))();
+    console.log(this.umkm);
   },
   data: function data() {
     return {
@@ -2512,19 +2480,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         id: this.umkm.id,
         name: this.umkm.name,
         place: this.umkm.place,
-        logo: '',
+        logo: this.umkm.logo,
         ig: this.umkm.ig,
-        ecommerce: 'alala',
-        products: [{
-          img: '',
-          name: ''
-        }, {
-          img: '',
-          name: ''
-        }, {
-          img: '',
-          name: ''
-        }]
+        ecommerce: this.umkm.ecommerce,
+        products: this.umkm.product
       },
       popup: {
         status: false,
@@ -2927,6 +2886,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     this.getProfile();
@@ -2940,6 +2904,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         place: '',
         wa: '',
         ig: '',
+        ecommerce: '',
         img: 'loading.gif'
       },
       errors: {
@@ -2986,22 +2951,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _this2.updateProfile();
 
               case 3:
-                if (!(_this2.errors.input === '')) {
-                  _context2.next = 6;
-                  break;
-                }
-
-                _context2.next = 6;
+                _context2.next = 5;
                 return _this2.uploadFile();
 
-              case 6:
+              case 5:
+                // }
                 _this2.loading = false;
 
                 if ((_this2.errors.file === '' || _this2.errors.file === undefined) && _this2.errors.input === '') {
                   window.location.href = '/member';
                 }
 
-              case 8:
+              case 7:
               case "end":
                 return _context2.stop();
             }
@@ -3216,6 +3177,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     this.getProfile();
@@ -3227,6 +3192,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         place: '',
         wa: '',
         ig: '',
+        ecommerce: '',
         img: 'loading.gif'
       }
     };
@@ -3242,7 +3208,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.next = 2;
                 return axios.get('/api/member/profile').then(function (response) {
-                  _this.profile = response.data.profile; // console.log(this.profile);
+                  _this.profile = response.data.profile;
+                  console.log(_this.profile);
                 });
 
               case 2:
@@ -41716,7 +41683,10 @@ var render = function() {
         "a",
         {
           staticClass: "ig",
-          attrs: { href: "https://instagram.com/" + _vm.dataUmkm.ig }
+          attrs: {
+            href: "https://instagram.com/" + _vm.dataUmkm.ig,
+            target: "_blank"
+          }
         },
         [
           _c("img", { attrs: { src: "img/ig umkm.png" } }),
@@ -41728,7 +41698,7 @@ var render = function() {
         "a",
         {
           staticClass: "ecommerce",
-          attrs: { href: "https://tokopedia.com/" + _vm.dataUmkm.ecommerce }
+          attrs: { href: _vm.dataUmkm.ecommerce, target: "_blank" }
         },
         [
           _c("img", {
@@ -42349,6 +42319,38 @@ var render = function() {
                   }
                 }
               })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("h4", [_vm._v("Link E-commerce")]),
+              _vm._v(" "),
+              _vm.errors.input.ecommerce
+                ? _c("p", { staticClass: "text-danger" }, [
+                    _vm._v(_vm._s(_vm.errors.input.ecommerce[0]))
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.profile.ecommerce,
+                    expression: "profile.ecommerce"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", placeholder: "-" },
+                domProps: { value: _vm.profile.ecommerce },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.profile, "ecommerce", $event.target.value)
+                  }
+                }
+              })
             ])
           ]),
           _vm._v(" "),
@@ -42595,6 +42597,18 @@ var render = function() {
             _c("h4", [_vm._v("UMKM's place:")]),
             _vm._v(" "),
             _c("h5", { domProps: { textContent: _vm._s(_vm.profile.place) } })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("h4", [_vm._v("Link E-commerce")]),
+            _vm._v(" "),
+            _c("h5", {
+              domProps: {
+                textContent: _vm._s(
+                  _vm.profile.ecommerce ? _vm.profile.ecommerce : "-"
+                )
+              }
+            })
           ])
         ]),
         _vm._v(" "),

@@ -23,6 +23,7 @@ class MemberController extends Controller
             'place'=>$account->place,
             'wa'=>$account->wa,
             'ig'=>$account->ig,
+            'ecommerce'=>$account->ecommerce,
             // nama file foto profile
             'img'=>$img->id."."."$img->type",
         ];
@@ -31,9 +32,19 @@ class MemberController extends Controller
     }
 
     public function edit_profile_picture(Request $request){
-        if ($request->file('file')==null) {
+        
+        // profile was created after the user get account (verified)
+        $profile = Profile::where('user_id',auth()->user()->id)->first();
+
+        if($profile->type==null && $request->file('file')==null){
+            // 'type' will null for the first time, and required a file for the first profile update
+            return response(['errors'=>'The profile picture is required'],422);
+        }
+        elseif($request->file('file')==null) {
+            // pass, because the file is not required if user already had profile picture
             return response('',200);
         }
+
         $file = $request->file('file');
 
         // condition = false, if the uploaded file is not an image
@@ -44,7 +55,6 @@ class MemberController extends Controller
             return response(['errors'=>"The maximum file size is 4 MB"],422);
         }
 
-        $profile = Profile::where('user_id',auth()->user()->id)->first();
         // delete the old file
         if (file_exists("img/profile/$profile->id.$profile->type")) {
             unlink("img/profile/$profile->id.$profile->type");
@@ -66,6 +76,7 @@ class MemberController extends Controller
             'place'=> 'required|min:3|max:255',
             'wa'=> 'required|min:10|regex:/^[0-9]+$/|max:15',
             'ig'=> 'required|min:3|max:255',
+            'ecommerce'=> 'required|min:10|max:1000',
         ]);
 
        // get and update account detail
@@ -75,6 +86,7 @@ class MemberController extends Controller
             'place'=>$request->place,
             'wa'=>$request->wa,
             'ig'=>$request->ig,
+            'ecommerce'=>$request->ecommerce
         ]);
 
         return response()->json(['result'=>'success update']);
@@ -190,36 +202,34 @@ class MemberController extends Controller
 
     // list umkm & product for landing page umkm
     public function all_umkm(){
-        $umkm = Account::select('id','name','place','ig')
-                        ->where('role','member')->get();
-                        
-        return response()->json(compact('umkm'));
-    }
+        $all_umkm = Account::where('role','member')->get();
 
-    // list umkm & product for landing page umkm
-    public function logo_umkm($id_umkm){
-        // get file name of umkm logo
-        $logo = Profile::where('user_id',$id_umkm)->first();
+        // only umkm who has biodata & product will be show
+        $umkm  = [];
+        foreach ($all_umkm as $key => $value) {
+            if (!empty($value->product[0]) && !empty($value->profile->type)) {
 
-        $logo = $logo->id.'.'.$logo->type;
-                        
-        return response()->json(compact('logo'));
-    }
+                $product = [];
+                foreach ($value->product as $data) {
+                    $product[] = [
+                        'img' => $data->id.'.'.$data->file_type,
+                        'name' => $data->name,
+                        'description'=> $data->description
+                    ];
+                }
 
-    // list umkm & product for landing page umkm
-    public function product_umkm($id_umkm){
-        // get file name of umkm's products
-        $products = Product::where('user_id',$id_umkm)->get();
-
-        foreach ($products as $key => $product) {
-            $products[$key] = [
-                'img' => $product->id.'.'.$product->file_type,
-                'name' => $product->name,
-                'description'=> $product->description
-            ];
+                $umkm[] = [
+                    'id'=>$value->id,
+                    'name'=>$value->name,
+                    'place'=>$value->place,
+                    'ig'=>$value->ig,
+                    'ecommerce'=>$value->ecommerce,
+                    'logo'=>$value->profile->id.'.'.$value->profile->type,
+                    'product'=>$product
+                ];
+            }
         }
-
-        return response()->json(compact('products'));
+        return response()->json(compact('umkm'));
     }
 
     // create transaction for member

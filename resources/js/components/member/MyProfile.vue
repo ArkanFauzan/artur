@@ -14,6 +14,10 @@
                         <h4>UMKM's place:</h4>
                         <h5 v-text="profile.place"></h5>
                     </div>
+                    <div class="form-group">
+                        <h4>Link E-commerce</h4>
+                        <h5 v-text="profile.ecommerce?profile.ecommerce:'-'"></h5>
+                    </div>
                 </div>
                 <div class="col-12 col-md-6">
                      <div class="form-group">
@@ -44,6 +48,7 @@ export default {
                 place:'',
                 wa:'',
                 ig:'',
+                ecommerce:'',
                 img:'loading.gif',
             }
         }
@@ -52,7 +57,7 @@ export default {
         async getProfile(){
             await axios.get('/api/member/profile').then(response=>{
                 this.profile = response.data.profile;
-                // console.log(this.profile);
+                console.log(this.profile);
             })
         }
     }

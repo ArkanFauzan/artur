@@ -23,6 +23,11 @@
                         <p class="text-danger" v-if="errors.input.place">{{errors.input.place[0]}}</p>
                         <input type="text" class="form-control" v-model="profile.place" />
                     </div>
+                    <div class="form-group">
+                        <h4>Link E-commerce</h4>
+                        <p class="text-danger" v-if="errors.input.ecommerce">{{errors.input.ecommerce[0]}}</p>
+                        <input type="text" class="form-control" v-model="profile.ecommerce" placeholder="-"/>
+                    </div>
                 </div>
                 <div class="col-12 col-md-6">
                      <div class="form-group">
@@ -66,6 +71,7 @@ export default {
                 place:'',
                 wa:'',
                 ig:'',
+                ecommerce:'',
                 img:'loading.gif',
             },
             errors:{file:'',input:''}
@@ -84,9 +90,9 @@ export default {
             this.loading = true;
             
             await this.updateProfile();
-            if (this.errors.input==='') {
+            // if (this.errors.input==='') {
                 await this.uploadFile();
-            }
+            // }
 
             this.loading = false;
             if((this.errors.file === '' || this.errors.file === undefined) && this.errors.input===''){

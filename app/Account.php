@@ -11,6 +11,14 @@ class Account extends Authenticatable
     use Uuid;
     
     protected $fillable = [
-        'name','place','wa', 'email', 'ig','password'
+        'name','place','wa', 'email', 'ig','password','ecommerce'
     ];
+
+    public function product(){
+        return $this->hasMany(Product::class,'user_id','id');
+    }
+
+    public function profile(){
+        return $this->hasOne(Profile::class,'user_id','id');
+    }
 }

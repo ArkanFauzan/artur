@@ -39,8 +39,8 @@
             </div>
         </div>
         <div class="button-toko">
-            <a :href="'https://instagram.com/'+dataUmkm.ig"  class="ig"><img src="img/ig umkm.png"><p>Instagram</p></a>
-            <a :href="'https://tokopedia.com/'+dataUmkm.ecommerce" class="ecommerce"><img src="img/toko umkm.png" class="ecommers"><p>E-Commerce</p></a>
+            <a :href="'https://instagram.com/'+dataUmkm.ig" target="_blank"  class="ig"><img src="img/ig umkm.png"><p>Instagram</p></a>
+            <a :href="dataUmkm.ecommerce" target="_blank" class="ecommerce"><img src="img/toko umkm.png" class="ecommers"><p>E-Commerce</p></a>
         </div>
 
         <div class="background"></div>
@@ -61,16 +61,8 @@
 <script>
 export default {
     props:['umkm'],
-    async mounted(){
-        // get data umkm
-        await axios.get(`/api/product-umkm/${this.umkm.id}`).then(res=>{
-            this.dataUmkm.products = res.data.products
-        })
-        await axios.get(`/api/logo-umkm/${this.umkm.id}`).then(res=>{
-            this.dataUmkm.logo = res.data.logo
-        })
-
-        // console.log(this.dataUmkm);
+    mounted(){
+        console.log(this.umkm);
     },
     data(){
         return{
@@ -78,14 +70,10 @@ export default {
                 id:this.umkm.id,
                 name:this.umkm.name,
                 place:this.umkm.place,
-                logo:'',
+                logo:this.umkm.logo,
                 ig:this.umkm.ig,
-                ecommerce:'alala',
-                products:[
-                    {img:'',name:''},
-                    {img:'',name:''},
-                    {img:'',name:''}
-                ]
+                ecommerce:this.umkm.ecommerce,
+                products:this.umkm.product
             },
             popup:{
                 status:false,

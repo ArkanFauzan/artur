@@ -29,3 +29,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Route::post('/login-member','Auth\LoginMemberController');
 
 // Route::post('/member/transaction','Member\MemberController@transaction');
+// Route::get('/umkm','Member\MemberController@all_umkm');
