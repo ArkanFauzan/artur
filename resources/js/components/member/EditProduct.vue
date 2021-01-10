@@ -85,7 +85,7 @@ export default {
             let value = e.target.value;
             let number = value.replace(/\D/g,'');
 
-            this.form.price = Math.ceil(number*1.3);
+            this.form.price = number;
 
             e.target.value = 'Rp. '+Intl.NumberFormat('de-DE').format(number);
         },

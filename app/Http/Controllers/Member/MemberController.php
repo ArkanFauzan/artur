@@ -104,7 +104,7 @@ class MemberController extends Controller
         $product = Product::create([
             'user_id'=>auth()->user()->id,
             'name'=> $request->name,
-            'price'=>$request->price,
+            'price'=>ceil($request->price*1.3),
             'description'=> $request->description,
             'file_type'=>$file->getClientOriginalExtension()
         ]);
@@ -179,7 +179,7 @@ class MemberController extends Controller
         // update the product
         $id->update([
             'name'=> $request->name,
-            'price'=> $request->price,
+            'price'=> ceil($request->price*1.3),
             'description'=> $request->description,
             'file_type'=>isset($file)?$file->getClientOriginalExtension():$id->file_type
         ]);

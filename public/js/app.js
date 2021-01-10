@@ -2635,7 +2635,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     formatPrice: function formatPrice(e) {
       var value = e.target.value;
       var number = value.replace(/\D/g, '');
-      this.form.price = Math.ceil(number * 1.3);
+      this.form.price = number;
       e.target.value = 'Rp. ' + Intl.NumberFormat('de-DE').format(number);
     },
     handleSubmit: function handleSubmit() {
@@ -2793,7 +2793,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     formatPrice: function formatPrice(e) {
       var value = e.target.value;
       var number = value.replace(/\D/g, '');
-      this.form.price = Math.ceil(number * 1.3);
+      this.form.price = number;
       e.target.value = 'Rp. ' + Intl.NumberFormat('de-DE').format(number);
     },
     handleSubmit: function handleSubmit() {
