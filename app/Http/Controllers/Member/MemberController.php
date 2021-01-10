@@ -95,6 +95,7 @@ class MemberController extends Controller
     public function create_product(Request $request){
         request()->validate([
             'name'=> 'required|min:3|max:255',
+            'price'=> 'required|numeric|min:10000',
             'description'=> 'required|min:3|max:1000',
             'file'=>'required|image|max:10000|'
         ]);
@@ -103,6 +104,7 @@ class MemberController extends Controller
         $product = Product::create([
             'user_id'=>auth()->user()->id,
             'name'=> $request->name,
+            'price'=>$request->price,
             'description'=> $request->description,
             'file_type'=>$file->getClientOriginalExtension()
         ]);
@@ -121,6 +123,7 @@ class MemberController extends Controller
             $product[] = [
                 'id'=> $value->id,
                 'name'=> $value->name,
+                'price'=> 'Rp. '.number_format(ceil($value->price/1.3),0,",","."),
                 'description'=> $value->description,
                 'img' => $value->id.".".$value->file_type
             ];
@@ -136,7 +139,7 @@ class MemberController extends Controller
 
         $product = [
             'name'=> $id->name,
-            'name'=> $id->name,
+            'price'=> ceil($id->price/1.3),
             'description'=> $id->description,
             'img' => $id->id.".".$id->file_type
         ];
@@ -147,6 +150,7 @@ class MemberController extends Controller
     public function edit_product(Product $id, Request $request){
         request()->validate([
             'name'=> 'required|min:3|max:255',
+            'price'=> 'required|numeric|min:10000',
             'description'=> 'required|min:3|max:1000',
         ]);
 
@@ -175,6 +179,7 @@ class MemberController extends Controller
         // update the product
         $id->update([
             'name'=> $request->name,
+            'price'=> $request->price,
             'description'=> $request->description,
             'file_type'=>isset($file)?$file->getClientOriginalExtension():$id->file_type
         ]);
@@ -206,20 +211,25 @@ class MemberController extends Controller
 
         // only umkm who has biodata & product will be show
         $umkm  = [];
+        $id_umkm = 1;
         foreach ($all_umkm as $key => $value) {
             if (!empty($value->product[0]) && !empty($value->profile->type)) {
 
                 $product = [];
+                $id_product = 1;
                 foreach ($value->product as $data) {
                     $product[] = [
+                        'id'=> "$id_umkm.product.$id_product",
                         'img' => $data->id.'.'.$data->file_type,
                         'name' => $data->name,
+                        'price' => 'Rp. '.number_format($data->price,0,",","."),
                         'description'=> $data->description
                     ];
+                    $id_product++;
                 }
 
                 $umkm[] = [
-                    'id'=>$value->id,
+                    'id'=>$id_umkm,
                     'name'=>$value->name,
                     'place'=>$value->place,
                     'ig'=>$value->ig,
@@ -227,6 +237,7 @@ class MemberController extends Controller
                     'logo'=>$value->profile->id.'.'.$value->profile->type,
                     'product'=>$product
                 ];
+                $id_umkm++;
             }
         }
         return response()->json(compact('umkm'));

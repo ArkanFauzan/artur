@@ -24,7 +24,6 @@ Route::view('/umkm','umkm');
 Route::prefix('api')->group(function(){
     Route::post('/register','Auth\RegisterController');
     Route::post('/login','Auth\LoginAdminController');
-    Route::post('/login-member','Auth\LoginMemberController');
 
     Route::get('/umkm','Member\MemberController@all_umkm');
     
@@ -32,6 +31,8 @@ Route::prefix('api')->group(function(){
         Route::middleware('admin')->group(function(){
             Route::get('/admin/new-umkm','Admin\AdminController@index');
             Route::post('/admin/create-umkm','Admin\AdminController@create');
+            Route::get('/admin/umkm','Admin\AdminController@all_umkm');
+            Route::post('/admin/login-member','Auth\LoginMemberController');
         });
 
         Route::middleware('member')->group(function(){

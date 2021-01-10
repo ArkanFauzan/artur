@@ -6,9 +6,12 @@
             >
             <div class="card-body">
                 <h5 class="card-title">{{product.name}}</h5>
-                <p class="card-text">{{product.description}}</p>
-                <a :href="'/member/edit-product/'+product.id" class="btn btn-sm btn-primary">Edit</a>
-                <btn ref="product" @click.prevent="deleteProduct(product)" class="btn btn-sm btn-transparent">Hapus</btn>
+                <div class="card-text">
+                    <p>{{product.price}} (from seller)</p>
+                    <p>{{product.description}}</p>
+                    <a :href="'/member/edit-product/'+product.id" class="btn btn-sm btn-primary">Edit</a>
+                    <btn ref="product" @click.prevent="deleteProduct(product)" class="btn btn-sm btn-transparent">Hapus</btn>
+                </div>
             </div>
         </div>
     </div>

@@ -78,7 +78,7 @@ export default {
         },
         async getUmkm(){
             try{
-                await axios.get('/api/umkm').then(res=>{
+                await axios.get('/api/admin/umkm').then(res=>{
                     this.umkm = res.data.umkm;
                 })
             }catch(e){
@@ -86,11 +86,16 @@ export default {
             }
         },
         async loginUmkm(umkm){
-            await axios.post('api/login-member',{id:umkm.id}).then(res=>{
-                if (res.data=='sukses') {
-                    window.location.href = '/member';
-                }
-            })
+            try{
+                await axios.post('api/admin/login-member',{id:umkm.id}).then(res=>{
+                    // console.log(res.data);
+                    if (res.data=='sukses') {
+                        window.location.href = '/member';
+                    }
+                })
+            }catch(e){
+                console.log(e.response.data.errors);
+            }
         }
     }
 }

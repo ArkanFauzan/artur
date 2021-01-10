@@ -2091,7 +2091,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return axios.get('/api/umkm').then(function (res) {
+                return axios.get('/api/admin/umkm').then(function (res) {
                   _this3.umkm = res.data.umkm;
                 });
 
@@ -2117,21 +2117,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                _context4.next = 2;
-                return axios.post('api/login-member', {
+                _context4.prev = 0;
+                _context4.next = 3;
+                return axios.post('api/admin/login-member', {
                   id: umkm.id
                 }).then(function (res) {
+                  // console.log(res.data);
                   if (res.data == 'sukses') {
                     window.location.href = '/member';
                   }
                 });
 
-              case 2:
+              case 3:
+                _context4.next = 8;
+                break;
+
+              case 5:
+                _context4.prev = 5;
+                _context4.t0 = _context4["catch"](0);
+                console.log(_context4.t0.response.data.errors);
+
+              case 8:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4);
+        }, _callee4, null, [[0, 5]]);
       }))();
     }
   }
@@ -2459,20 +2470,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['umkm'],
   mounted: function mounted() {
     console.log(this.umkm);
+    var tes = document.querySelector("#id".concat(this.dataUmkm.id, " .carousel-inner .carousel-item")).classList.add('active');
   },
   data: function data() {
     return {
@@ -2489,6 +2491,7 @@ __webpack_require__.r(__webpack_exports__);
         status: false,
         img: '',
         name: '',
+        price: 0,
         description: ''
       }
     };
@@ -2498,6 +2501,7 @@ __webpack_require__.r(__webpack_exports__);
       this.popup.status = true;
       this.popup.img = "img/product/".concat(product.img);
       this.popup.name = product.name;
+      this.popup.price = product.price;
       this.popup.description = product.description;
     },
     closePopup: function closePopup() {
@@ -2597,6 +2601,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2604,10 +2613,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       file: '',
       form: {
         name: '',
+        price: '',
         description: ''
       },
       errors: {
         name: '',
+        price: '',
         description: '',
         file: ''
       }
@@ -2619,6 +2630,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     changeFile: function changeFile() {
       this.file = this.$refs.file.files[0];
+    },
+    // format net price input
+    formatPrice: function formatPrice(e) {
+      var value = e.target.value;
+      var number = value.replace(/\D/g, '');
+      this.form.price = Math.ceil(number * 1.3);
+      e.target.value = 'Rp. ' + Intl.NumberFormat('de-DE').format(number);
     },
     handleSubmit: function handleSubmit() {
       var _this = this;
@@ -2634,9 +2652,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData = new FormData();
                 formData.append("file", _this.file);
                 formData.append('name', _this.form.name);
+                formData.append('price', _this.form.price);
                 formData.append('description', _this.form.description);
-                _context.prev = 5;
-                _context.next = 8;
+                _context.prev = 6;
+                _context.next = 9;
                 return axios.post('/api/member/my-product/add', formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
@@ -2648,23 +2667,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   window.location.href = "/member/my-product";
                 });
 
-              case 8:
-                _context.next = 14;
+              case 9:
+                _context.next = 15;
                 break;
 
-              case 10:
-                _context.prev = 10;
-                _context.t0 = _context["catch"](5);
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context["catch"](6);
                 // console.log(e.response.data.errors);
                 _this.errors = _context.t0.response.data.errors;
                 _this.loading = false;
 
-              case 14:
+              case 15:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[5, 10]]);
+        }, _callee, null, [[6, 11]]);
       }))();
     }
   }
@@ -2728,6 +2747,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -2735,7 +2759,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     // get id product from current url
     this.productId = window.location.href.split('edit-product/')[1];
     axios.get('/api/member/product/' + this.productId).then(function (response) {
-      _this.form = response.data.product; // console.log(this.form);
+      _this.form = response.data.product;
+      console.log(_this.form); // format to rupiah
+
+      document.getElementById('price').value = 'Rp. ' + Intl.NumberFormat('de-DE').format(_this.form.price);
     });
   },
   data: function data() {
@@ -2744,6 +2771,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       file: '',
       form: {
         name: '',
+        price: '',
         description: ''
       },
       productId: '',
@@ -2761,6 +2789,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     changeFile: function changeFile() {
       this.file = this.$refs.file.files[0];
     },
+    // format net price input
+    formatPrice: function formatPrice(e) {
+      var value = e.target.value;
+      var number = value.replace(/\D/g, '');
+      this.form.price = Math.ceil(number * 1.3);
+      e.target.value = 'Rp. ' + Intl.NumberFormat('de-DE').format(number);
+    },
     handleSubmit: function handleSubmit() {
       var _this2 = this;
 
@@ -2775,10 +2810,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData = new FormData();
                 formData.append("file", _this2.file);
                 formData.append('name', _this2.form.name);
+                formData.append('price', _this2.form.price);
                 formData.append('description', _this2.form.description); // console.log(formData);
 
-                _context.prev = 5;
-                _context.next = 8;
+                _context.prev = 6;
+                _context.next = 9;
                 return axios.post("/api/member/product/".concat(_this2.productId), formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
@@ -2790,24 +2826,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   window.location.href = "/member/my-product";
                 });
 
-              case 8:
-                _context.next = 15;
+              case 9:
+                _context.next = 16;
                 break;
 
-              case 10:
-                _context.prev = 10;
-                _context.t0 = _context["catch"](5);
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context["catch"](6);
                 // console.log(e.response.data.errors);
                 _this2.errors = _context.t0.response.data.errors;
                 console.log(_this2.errors);
                 _this2.loading = false;
 
-              case 15:
+              case 16:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[5, 10]]);
+        }, _callee, null, [[6, 11]]);
       }))();
     }
   }
@@ -3422,6 +3458,9 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
 //
 //
 //
@@ -7982,7 +8021,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.popup-container{\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background: rgba(110, 106, 106, 0.5);\n    z-index: 1000;\n}\n.popup-product{\n    position: relative;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%,-50%);\n    width: 85%;\n    height: 80vh;\n}\n.popup-product>div{\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    overflow-y: scroll;\n    text-align: center;\n    background: white;\n}\n.popup-close{\n    position: absolute;\n    right: 3%;\n    top: 3%;\n    width: 50px;\n    height: 50px;\n    z-index: 1001;\n}\n.popup-close:hover{\n    cursor: pointer;\n}\n.popup-img{\n    width: 100%;\n    height: auto;\n    padding-bottom: 10px;\n    border-bottom: 1px solid black;\n}\n.popup-name{\n    text-align: left !important;\n    margin: 15px 15px !important;\n    font-size: 25px !important;\n    font-weight: bold !important;\n}\n.popup-description{\n    text-align: left!important;\n    margin: 15px 15px !important;\n    font-size: 17px !important;\n    padding-bottom: 20px;\n}\n.carousel-inner{\n    cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.popup-container{\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background: rgba(110, 106, 106, 0.5);\n    z-index: 1000;\n}\n.popup-product{\n    position: relative;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%,-50%);\n    width: 85%;\n    height: 80vh;\n}\n.popup-product>div{\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    overflow-y: scroll;\n    text-align: center;\n    background: white;\n}\n.popup-close{\n    position: absolute;\n    right: 3%;\n    top: 3%;\n    width: 50px;\n    height: 50px;\n    z-index: 1001;\n}\n.popup-close:hover{\n    cursor: pointer;\n}\n.popup-img{\n    width: 100%;\n    height: auto;\n    padding-bottom: 10px;\n    border-bottom: 1px solid black;\n}\n.popup-name{\n    text-align: left !important;\n    margin: 15px 15px !important;\n    font-size: 25px !important;\n    font-weight: bold !important;\n}\n.popup-price{\n    text-align: left !important;\n    margin: 15px 15px !important;\n    font-size: 18px !important;\n    font-weight: bold !important;\n}\n.popup-description{\n    text-align: left!important;\n    margin: 15px 15px !important;\n    font-size: 17px !important;\n    padding-bottom: 20px;\n}\n.carousel-inner{\n    cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -41514,115 +41553,44 @@ var render = function() {
         "div",
         {
           staticClass: "carousel slide",
-          attrs: { id: _vm.dataUmkm.id, "data-ride": "carousel" }
+          attrs: { id: "id" + _vm.dataUmkm.id, "data-ride": "carousel" }
         },
         [
-          _c("div", { staticClass: "carousel-inner" }, [
-            _c("div", { staticClass: "carousel-item active" }, [
-              _c("img", {
-                staticClass: "d-block w-100",
-                attrs: {
-                  src: "img/product/" + _vm.dataUmkm.products[0].img,
-                  onerror: "this.src='img/loading.gif';",
-                  tittle: _vm.dataUmkm.products[0].name,
-                  alt: _vm.dataUmkm.products[0].name
-                },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.showPopup(_vm.dataUmkm.products[0])
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _vm.dataUmkm.products[1]
-              ? _c("div", { staticClass: "carousel-item" }, [
+          _c(
+            "div",
+            { staticClass: "carousel-inner" },
+            _vm._l(_vm.dataUmkm.products, function(product) {
+              return _c(
+                "div",
+                { key: product.id, staticClass: "carousel-item" },
+                [
                   _c("img", {
                     staticClass: "d-block w-100",
                     attrs: {
-                      src: "img/product/" + _vm.dataUmkm.products[1].img,
+                      src: "img/product/" + product.img,
                       onerror: "this.src='img/loading.gif';",
-                      tittle: _vm.dataUmkm.products[1].name,
-                      alt: _vm.dataUmkm.products[1].name
+                      tittle: product.name,
+                      alt: product.name
                     },
                     on: {
                       click: function($event) {
                         $event.preventDefault()
-                        return _vm.showPopup(_vm.dataUmkm.products[1])
+                        return _vm.showPopup(product)
                       }
                     }
                   })
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.dataUmkm.products[2]
-              ? _c("div", { staticClass: "carousel-item" }, [
-                  _c("img", {
-                    staticClass: "d-block w-100",
-                    attrs: {
-                      src: "img/product/" + _vm.dataUmkm.products[2].img,
-                      onerror: "this.src='img/loading.gif';",
-                      tittle: _vm.dataUmkm.products[2].name,
-                      alt: _vm.dataUmkm.products[2].name
-                    },
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        return _vm.showPopup(_vm.dataUmkm.products[2])
-                      }
-                    }
-                  })
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.dataUmkm.products[3]
-              ? _c("div", { staticClass: "carousel-item" }, [
-                  _c("img", {
-                    staticClass: "d-block w-100",
-                    attrs: {
-                      src: "img/product/" + _vm.dataUmkm.products[2].img,
-                      onerror: "this.src='img/loading.gif';",
-                      tittle: _vm.dataUmkm.products[2].name,
-                      alt: _vm.dataUmkm.products[2].name
-                    },
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        return _vm.showPopup(_vm.dataUmkm.products[3])
-                      }
-                    }
-                  })
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.dataUmkm.products[4]
-              ? _c("div", { staticClass: "carousel-item" }, [
-                  _c("img", {
-                    staticClass: "d-block w-100",
-                    attrs: {
-                      src: "img/product/" + _vm.dataUmkm.products[2].img,
-                      onerror: "this.src='img/loading.gif';",
-                      tittle: _vm.dataUmkm.products[2].name,
-                      alt: _vm.dataUmkm.products[2].name
-                    },
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        return _vm.showPopup(_vm.dataUmkm.products[4])
-                      }
-                    }
-                  })
-                ])
-              : _vm._e()
-          ]),
+                ]
+              )
+            }),
+            0
+          ),
           _vm._v(" "),
           _c(
             "a",
             {
               staticClass: "carousel-control-prev",
               attrs: {
-                href: "#" + _vm.dataUmkm.id,
+                href: "#id" + _vm.dataUmkm.id,
                 role: "button",
                 "data-slide": "prev"
               }
@@ -41642,7 +41610,7 @@ var render = function() {
             {
               staticClass: "carousel-control-next",
               attrs: {
-                href: "#" + _vm.dataUmkm.id,
+                href: "#id" + _vm.dataUmkm.id,
                 role: "button",
                 "data-slide": "next"
               }
@@ -41735,6 +41703,11 @@ var render = function() {
               _c("p", {
                 staticClass: "popup-name",
                 domProps: { textContent: _vm._s(_vm.popup.name) }
+              }),
+              _vm._v(" "),
+              _c("p", {
+                staticClass: "popup-price",
+                domProps: { textContent: _vm._s(_vm.popup.price) }
               }),
               _vm._v(" "),
               _c("p", {
@@ -41847,6 +41820,26 @@ var render = function() {
                   _vm.$set(_vm.form, "name", $event.target.value)
                 }
               }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-3" }, [
+            _c(
+              "label",
+              { staticClass: "form-label", attrs: { for: "price" } },
+              [_vm._v("Net price (from seller)")]
+            ),
+            _vm._v(" "),
+            _vm.errors.price
+              ? _c("p", { staticClass: "text-danger" }, [
+                  _vm._v(_vm._s(_vm.errors.price[0]))
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: { type: "text", name: "name", id: "price" },
+              on: { keyup: _vm.formatPrice }
             })
           ]),
           _vm._v(" "),
@@ -42055,6 +42048,26 @@ var render = function() {
                   _vm.$set(_vm.form, "name", $event.target.value)
                 }
               }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-3" }, [
+            _c(
+              "label",
+              { staticClass: "form-label", attrs: { for: "price" } },
+              [_vm._v("Net price (from seller)")]
+            ),
+            _vm._v(" "),
+            _vm.errors.price
+              ? _c("p", { staticClass: "text-danger" }, [
+                  _vm._v(_vm._s(_vm.errors.price[0]))
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: { type: "text", name: "name", id: "price" },
+              on: { keyup: _vm.formatPrice }
             })
           ]),
           _vm._v(" "),
@@ -42895,44 +42908,46 @@ var render = function() {
           }
         }),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "card-body" },
-          [
-            _c("h5", { staticClass: "card-title" }, [
-              _vm._v(_vm._s(_vm.product.name))
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "card-text" }, [
-              _vm._v(_vm._s(_vm.product.description))
-            ]),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-sm btn-primary",
-                attrs: { href: "/member/edit-product/" + _vm.product.id }
-              },
-              [_vm._v("Edit")]
-            ),
-            _vm._v(" "),
-            _c(
-              "btn",
-              {
-                ref: "product",
-                staticClass: "btn btn-sm btn-transparent",
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.deleteProduct(_vm.product)
+        _c("div", { staticClass: "card-body" }, [
+          _c("h5", { staticClass: "card-title" }, [
+            _vm._v(_vm._s(_vm.product.name))
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "card-text" },
+            [
+              _c("p", [_vm._v(_vm._s(_vm.product.price) + " (from seller)")]),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(_vm.product.description))]),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-sm btn-primary",
+                  attrs: { href: "/member/edit-product/" + _vm.product.id }
+                },
+                [_vm._v("Edit")]
+              ),
+              _vm._v(" "),
+              _c(
+                "btn",
+                {
+                  ref: "product",
+                  staticClass: "btn btn-sm btn-transparent",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.deleteProduct(_vm.product)
+                    }
                   }
-                }
-              },
-              [_vm._v("Hapus")]
-            )
-          ],
-          1
-        )
+                },
+                [_vm._v("Hapus")]
+              )
+            ],
+            1
+          )
+        ])
       ]
     )
   ])

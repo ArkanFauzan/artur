@@ -14,6 +14,11 @@
                     <input type="text" name="name" v-model="form.name" class="form-control" id="name">
                 </div>
                 <div class="mb-3">
+                    <label for="price" class="form-label">Net price (from seller)</label>
+                    <p class="text-danger" v-if="errors.price">{{errors.price[0]}}</p>
+                    <input type="text" name="name"  @keyup="formatPrice" class="form-control" id="price">
+                </div>
+                <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
                     <p class="text-danger" v-if="errors.description">{{errors.description[0]}}</p>
                     <textarea name="description" id="description" @change="changeDescription"  v-text="form.description" class="form-control" cols="30" rows="3"></textarea>
@@ -45,7 +50,10 @@ export default {
 
         axios.get('/api/member/product/'+this.productId).then(response=>{
             this.form = response.data.product
-            // console.log(this.form);
+            console.log(this.form);
+
+            // format to rupiah
+            document.getElementById('price').value = 'Rp. '+ Intl.NumberFormat('de-DE').format(this.form.price);
         })
     },
     data(){
@@ -54,6 +62,7 @@ export default {
             file:'',
             form:{
                 name:'',
+                price:'',
                 description:'',
             },
             productId:'',
@@ -71,6 +80,15 @@ export default {
         changeFile(){
             this.file = this.$refs.file.files[0];
         },
+        // format net price input
+        formatPrice(e){
+            let value = e.target.value;
+            let number = value.replace(/\D/g,'');
+
+            this.form.price = Math.ceil(number*1.3);
+
+            e.target.value = 'Rp. '+Intl.NumberFormat('de-DE').format(number);
+        },
         async handleSubmit(){
             // console.log(this.form);
             this.loading=true;
@@ -78,6 +96,7 @@ export default {
             let formData = new FormData();
             formData.append("file", this.file);
             formData.append('name',this.form.name);
+            formData.append('price',this.form.price);
             formData.append('description',this.form.description);
             // console.log(formData);
         try{

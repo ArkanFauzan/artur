@@ -42,4 +42,9 @@ class AdminController extends Controller
 
         return response()->json(['umkm'=>$umkm]);
     }
+
+    public function all_umkm(){
+        $umkm = Account::where('role','member')->get();
+        return response()->json(compact('umkm'));
+    }
 }

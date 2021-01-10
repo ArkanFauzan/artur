@@ -11,6 +11,6 @@ class Product extends Model
     use Uuid;
 
     protected $fillable = [
-        'name','description','file_type','user_id'
+        'name','price','description','file_type','user_id'
     ];
 }

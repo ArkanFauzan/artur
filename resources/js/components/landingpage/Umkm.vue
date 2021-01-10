@@ -1,29 +1,18 @@
 <template>
     <div class="umkm">
         <div class="crop-toko">
-            <div :id="dataUmkm.id" class="carousel slide" data-ride="carousel">
+            <!-- But querySelector method uses CSS3 selectors for querying the DOM and CSS3 doesn't support ID selectors that start with a digit: -->
+            <div :id="'id'+dataUmkm.id" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                    <img class="d-block w-100" @click.prevent="showPopup(dataUmkm.products[0])" :src="'img/product/'+dataUmkm.products[0].img" onerror="this.src='img/loading.gif';" :tittle="dataUmkm.products[0].name" :alt="dataUmkm.products[0].name">
-                    </div>
-                    <div v-if="dataUmkm.products[1]" class="carousel-item">
-                    <img class="d-block w-100" @click.prevent="showPopup(dataUmkm.products[1])" :src="'img/product/'+dataUmkm.products[1].img"  onerror="this.src='img/loading.gif';" :tittle="dataUmkm.products[1].name" :alt="dataUmkm.products[1].name">
-                    </div>
-                    <div v-if="dataUmkm.products[2]" class="carousel-item">
-                    <img class="d-block w-100" @click.prevent="showPopup(dataUmkm.products[2])" :src="'img/product/'+dataUmkm.products[2].img"  onerror="this.src='img/loading.gif';" :tittle="dataUmkm.products[2].name" :alt="dataUmkm.products[2].name">
-                    </div>
-                    <div v-if="dataUmkm.products[3]" class="carousel-item">
-                    <img class="d-block w-100" @click.prevent="showPopup(dataUmkm.products[3])" :src="'img/product/'+dataUmkm.products[2].img"  onerror="this.src='img/loading.gif';" :tittle="dataUmkm.products[2].name" :alt="dataUmkm.products[2].name">
-                    </div>
-                    <div v-if="dataUmkm.products[4]" class="carousel-item">
-                    <img class="d-block w-100" @click.prevent="showPopup(dataUmkm.products[4])" :src="'img/product/'+dataUmkm.products[2].img"  onerror="this.src='img/loading.gif';" :tittle="dataUmkm.products[2].name" :alt="dataUmkm.products[2].name">
+                    <div v-for="product in dataUmkm.products" :key="product.id" class="carousel-item">
+                        <img class="d-block w-100" @click.prevent="showPopup(product)" :src="'img/product/'+product.img" onerror="this.src='img/loading.gif';" :tittle="product.name" :alt="product.name">
                     </div>
                 </div>
-                <a class="carousel-control-prev" :href="'#'+dataUmkm.id" role="button" data-slide="prev">
+                <a class="carousel-control-prev" :href="'#id'+dataUmkm.id" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" :href="'#'+dataUmkm.id" role="button" data-slide="next">
+                <a class="carousel-control-next" :href="'#id'+dataUmkm.id" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
@@ -51,6 +40,7 @@
                 <div>
                     <img class="popup-img" :src="popup.img">
                     <p class="popup-name" v-text="popup.name"></p>
+                    <p class="popup-price" v-text="popup.price"></p>
                     <p class="popup-description" v-text="popup.description"></p>
                 </div>
             </div>
@@ -63,6 +53,7 @@ export default {
     props:['umkm'],
     mounted(){
         console.log(this.umkm);
+        let tes = document.querySelector(`#id${this.dataUmkm.id} .carousel-inner .carousel-item`).classList.add('active');
     },
     data(){
         return{
@@ -79,6 +70,7 @@ export default {
                 status:false,
                 img:'',
                 name:'',
+                price:0,
                 description:''
             }
         }
@@ -88,6 +80,7 @@ export default {
             this.popup.status = true;
             this.popup.img = `img/product/${product.img}`;
             this.popup.name = product.name;
+            this.popup.price = product.price;
             this.popup.description = product.description;
         },
         closePopup(){
@@ -148,6 +141,13 @@ export default {
         text-align: left !important;
         margin: 15px 15px !important;
         font-size: 25px !important;
+        font-weight: bold !important;
+    }
+
+    .popup-price{
+        text-align: left !important;
+        margin: 15px 15px !important;
+        font-size: 18px !important;
         font-weight: bold !important;
     }
 
