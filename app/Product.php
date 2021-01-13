@@ -13,4 +13,8 @@ class Product extends Model
     protected $fillable = [
         'name','price','description','file_type','user_id'
     ];
+
+    public function umkm(){
+        return $this->belongsTo(Account::class,'user_id','id');
+    }
 }

@@ -20,12 +20,14 @@ Route::view('/home','home');
 Route::view('/login','login');
 Route::view('/register','register');
 Route::view('/umkm','umkm');
+Route::view('/product','product');
 
 Route::prefix('api')->group(function(){
     Route::post('/register','Auth\RegisterController');
     Route::post('/login','Auth\LoginAdminController');
 
     Route::get('/umkm','Member\MemberController@all_umkm');
+    Route::get('/product','Member\MemberController@all_product');
     
     Route::middleware('auth')->group(function(){
         Route::middleware('admin')->group(function(){

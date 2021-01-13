@@ -235,12 +235,40 @@ class MemberController extends Controller
                     'ig'=>$value->ig,
                     'ecommerce'=>$value->ecommerce,
                     'logo'=>$value->profile->id.'.'.$value->profile->type,
-                    'product'=>$product
+                    'products'=>$product
                 ];
                 $id_umkm++;
             }
         }
         return response()->json(compact('umkm'));
+    }
+    // list product for landing page product
+    public function all_product(){
+        $data_product = Product::get();
+
+        $product = [];
+        $id_product = 1;
+        foreach ($data_product as $value) {
+            $umkm = $value->umkm;
+            $umkm = [
+                'name'=>$umkm->name,
+                'place'=>$umkm->place,
+                'ig'=>$umkm->ig,
+                'ecommerce'=>$umkm->ecommerce,
+                'logo'=>$umkm->profile->id.'.'.$umkm->profile->type,
+            ];
+
+            $product[] = [
+                'id'=> $id_product,
+                'name'=>$value->name,
+                'img'=>$value->id.'.'.$value->file_type,
+                'price'=>'Rp. '.number_format($value->price,0,",","."),
+                'description'=>$value->description,
+                'umkm'=>$umkm
+            ];
+            $id_product++;
+        }
+        return response()->json(compact('product'));
     }
 
     // create transaction for member

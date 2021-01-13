@@ -1,35 +1,14 @@
 <template>
     <div class="umkm">
         <div class="crop-toko">
-            <!-- But querySelector method uses CSS3 selectors for querying the DOM and CSS3 doesn't support ID selectors that start with a digit: -->
-            <div :id="'id'+umkm.id" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div v-for="product in umkm.products" :key="product.id" class="carousel-item">
-                        <img class="d-block w-100" @click.prevent="showPopup(product)" :src="'img/product/'+product.img" onerror="this.src='img/loading.gif';" :tittle="product.name" :alt="product.name">
-                    </div>
-                </div>
-                <a class="carousel-control-prev" :href="'#id'+umkm.id" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" :href="'#id'+umkm.id" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
+            <img @click.prevent="showPopup(product)" width="100%" height="100%" :src="'img/product/'+product.img" onerror="this.src='img/loading.gif';" :tittle="product.name" :alt="product.name" style="cursor:pointer">
         </div>
-        <div class="description">
-            <div class="crop-logo">
-                <img :src="'img/profile/'+umkm.logo"  onerror="this.src='img/loading.gif';" class="logo">
-            </div>
-            <div class="name">
-                <h2>{{umkm.name}}</h2>
-                <p>{{umkm.place}}</p>
-            </div>
-        </div>
-        <div class="button-toko">
-            <a :href="'https://instagram.com/'+umkm.ig" target="_blank"  class="ig"><img src="img/ig umkm.png"><p>Instagram</p></a>
-            <a :href="umkm.ecommerce" target="_blank" class="ecommerce"><img src="img/toko umkm.png" class="ecommers"><p>E-Commerce</p></a>
+        <div class="description px-3">
+            <h5 class="card-title">{{product.name}}</h5>
+            <div class="card-text">
+                <p>{{product.price}}</p>
+                <p>{{product.description}}</p>
+            </div>  
         </div>
 
         <div class="background"></div>
@@ -50,10 +29,9 @@
 
 <script>
 export default {
-    props:['umkm'],
+    props:['product'],
     mounted(){
-        // console.log(this.umkm);
-        let tes = document.querySelector(`#id${this.umkm.id} .carousel-inner .carousel-item`).classList.add('active');
+        // console.log(this.product);
     },
     data(){
         return{

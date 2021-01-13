@@ -32,7 +32,8 @@ Vue.component('add-product', require('./components/member/AddProduct.vue').defau
 Vue.component('edit-product', require('./components/member/EditProduct.vue').default); 
 Vue.component('my-transaction-update', require('./components/member/MyTransactionUpdate.vue').default);
 
-Vue.component('umkm-list', require('./components/landingpage/UmkmList.vue').default); 
+Vue.component('umkm-list', require('./components/landingpage/UmkmList.vue').default);
+Vue.component('product-list', require('./components/landingpage/ProductList.vue').default); 
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
