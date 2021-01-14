@@ -19,6 +19,16 @@
                     <textarea name="description" id="description" @change="changeDescription"  v-text="form.description" class="form-control" cols="30" rows="3"></textarea>
                 </div>
                 <div class="mb-3">
+                    <label for="ig" class="form-label">Link instagram filter</label>
+                    <p class="text-danger" v-if="errors.ig">{{errors.ig[0]}}</p>
+                    <input type="text" name="ig" v-model="form.ig" class="form-control" id="ig">
+                </div>
+                <div class="mb-3">
+                    <label for="ecommerce" class="form-label">Link product (in E-commerce)</label>
+                    <p class="text-danger" v-if="errors.ecommerce">{{errors.ecommerce[0]}}</p>
+                    <input type="text" name="ecommerce" v-model="form.ecommerce" class="form-control" id="ecommerce">
+                </div>
+                <div class="mb-3">
                     <label for="file" class="form-label">Product's photo</label>
                     <p class="text-danger" v-if="errors.file">{{errors.file[0]}}</p>
                     <input class="form-control" @change="changeFile" ref="file" style="padding:0;height:auto" type="file" id="file">
@@ -46,11 +56,15 @@ export default {
             form:{
                 name:'',
                 price:'',
+                ig:'',
+                ecommerce:'',
                 description:''
             },
             errors:{
                 name:'',
                 price:'',
+                ig:'',
+                ecommerce:'',
                 description:'',
                 file:''
             }
@@ -80,6 +94,8 @@ export default {
             formData.append("file", this.file);
             formData.append('name',this.form.name);
             formData.append('price',this.form.price);
+            formData.append('ig',this.form.ig);
+            formData.append('ecommerce',this.form.ecommerce);
             formData.append('description',this.form.description);
         try{
             await axios.post('/api/member/my-product/add',formData,

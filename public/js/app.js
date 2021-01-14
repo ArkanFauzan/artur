@@ -2449,12 +2449,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['product'],
-  mounted: function mounted() {// console.log(this.product);
+  mounted: function mounted() {
+    // console.log(this.product); 
+    // set product discount. discount = 20%
+    this.product_discount = parseInt(this.product.price.replace(/\D/g, '')) * 0.8;
+    this.product_discount = 'Rp. ' + Intl.NumberFormat('de-DE').format(this.product_discount);
   },
   data: function data() {
     return {
+      product_discount: '',
       popup: {
         status: false,
         img: '',
@@ -2704,6 +2714,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2712,11 +2732,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       form: {
         name: '',
         price: '',
+        ig: '',
+        ecommerce: '',
         description: ''
       },
       errors: {
         name: '',
         price: '',
+        ig: '',
+        ecommerce: '',
         description: '',
         file: ''
       }
@@ -2751,9 +2775,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData.append("file", _this.file);
                 formData.append('name', _this.form.name);
                 formData.append('price', _this.form.price);
+                formData.append('ig', _this.form.ig);
+                formData.append('ecommerce', _this.form.ecommerce);
                 formData.append('description', _this.form.description);
-                _context.prev = 6;
-                _context.next = 9;
+                _context.prev = 8;
+                _context.next = 11;
                 return axios.post('/api/member/my-product/add', formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
@@ -2765,23 +2791,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   window.location.href = "/member/my-product";
                 });
 
-              case 9:
-                _context.next = 15;
+              case 11:
+                _context.next = 17;
                 break;
 
-              case 11:
-                _context.prev = 11;
-                _context.t0 = _context["catch"](6);
+              case 13:
+                _context.prev = 13;
+                _context.t0 = _context["catch"](8);
                 // console.log(e.response.data.errors);
                 _this.errors = _context.t0.response.data.errors;
                 _this.loading = false;
 
-              case 15:
+              case 17:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[6, 11]]);
+        }, _callee, null, [[8, 13]]);
       }))();
     }
   }
@@ -2850,6 +2876,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -2870,11 +2906,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       form: {
         name: '',
         price: '',
+        ig: '',
+        ecommerce: '',
         description: ''
       },
       productId: '',
       errors: {
         name: '',
+        ig: '',
+        ecommerce: '',
         description: '',
         file: ''
       }
@@ -2909,10 +2949,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData.append("file", _this2.file);
                 formData.append('name', _this2.form.name);
                 formData.append('price', _this2.form.price);
+                formData.append('ig', _this2.form.ig);
+                formData.append('ecommerce', _this2.form.ecommerce);
                 formData.append('description', _this2.form.description); // console.log(formData);
 
-                _context.prev = 6;
-                _context.next = 9;
+                _context.prev = 8;
+                _context.next = 11;
                 return axios.post("/api/member/product/".concat(_this2.productId), formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
@@ -2924,24 +2966,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   window.location.href = "/member/my-product";
                 });
 
-              case 9:
-                _context.next = 16;
+              case 11:
+                _context.next = 18;
                 break;
 
-              case 11:
-                _context.prev = 11;
-                _context.t0 = _context["catch"](6);
+              case 13:
+                _context.prev = 13;
+                _context.t0 = _context["catch"](8);
                 // console.log(e.response.data.errors);
                 _this2.errors = _context.t0.response.data.errors;
                 console.log(_this2.errors);
                 _this2.loading = false;
 
-              case 16:
+              case 18:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[6, 11]]);
+        }, _callee, null, [[8, 13]]);
       }))();
     }
   }
@@ -41721,10 +41763,45 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-text" }, [
-        _c("p", [_vm._v(_vm._s(_vm.product.price))]),
+        _c("p", [
+          _c("i", { staticClass: "fas fa-tag mr-2" }),
+          _vm._v(_vm._s(_vm.product_discount))
+        ]),
+        _vm._v(" "),
+        _c(
+          "p",
+          { staticStyle: { "text-decoration": "line-through", color: "red" } },
+          [_vm._v(_vm._s(_vm.product.price))]
+        ),
         _vm._v(" "),
         _c("p", [_vm._v(_vm._s(_vm.product.description))])
       ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "button-toko" }, [
+      _c(
+        "a",
+        {
+          staticClass: "ig",
+          attrs: { href: _vm.product.ig, target: "_blank" }
+        },
+        [
+          _c("img", { attrs: { src: "img/ig umkm.png" } }),
+          _c("p", [_vm._v("Instagram")])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "ecommerce",
+          attrs: { href: _vm.product.ecommerce, target: "_blank" }
+        },
+        [
+          _c("img", { attrs: { src: "img/toko umkm.png" } }),
+          _c("p", [_vm._v("E-Commerce")])
+        ]
+      )
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "background" }),
@@ -42145,6 +42222,76 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "mb-3" }, [
+            _c("label", { staticClass: "form-label", attrs: { for: "ig" } }, [
+              _vm._v("Link instagram filter")
+            ]),
+            _vm._v(" "),
+            _vm.errors.ig
+              ? _c("p", { staticClass: "text-danger" }, [
+                  _vm._v(_vm._s(_vm.errors.ig[0]))
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.ig,
+                  expression: "form.ig"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", name: "ig", id: "ig" },
+              domProps: { value: _vm.form.ig },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "ig", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-3" }, [
+            _c(
+              "label",
+              { staticClass: "form-label", attrs: { for: "ecommerce" } },
+              [_vm._v("Link product (in E-commerce)")]
+            ),
+            _vm._v(" "),
+            _vm.errors.ecommerce
+              ? _c("p", { staticClass: "text-danger" }, [
+                  _vm._v(_vm._s(_vm.errors.ecommerce[0]))
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.ecommerce,
+                  expression: "form.ecommerce"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", name: "ecommerce", id: "ecommerce" },
+              domProps: { value: _vm.form.ecommerce },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "ecommerce", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-3" }, [
             _c("label", { staticClass: "form-label", attrs: { for: "file" } }, [
               _vm._v("Product's photo")
             ]),
@@ -42369,6 +42516,81 @@ var render = function() {
               },
               domProps: { textContent: _vm._s(_vm.form.description) },
               on: { change: _vm.changeDescription }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-3" }, [
+            _c("label", { staticClass: "form-label", attrs: { for: "ig" } }, [
+              _vm._v("Link instagram filter")
+            ]),
+            _vm._v(" "),
+            _vm.errors.ig
+              ? _c("p", { staticClass: "text-danger" }, [
+                  _vm._v(_vm._s(_vm.errors.ig[0]))
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.ig,
+                  expression: "form.ig"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", name: "ig", placeholder: "-", id: "ig" },
+              domProps: { value: _vm.form.ig },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "ig", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-3" }, [
+            _c(
+              "label",
+              { staticClass: "form-label", attrs: { for: "ecommerce" } },
+              [_vm._v("Link product (in E-commerce)")]
+            ),
+            _vm._v(" "),
+            _vm.errors.ecommerce
+              ? _c("p", { staticClass: "text-danger" }, [
+                  _vm._v(_vm._s(_vm.errors.ecommerce[0]))
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.ecommerce,
+                  expression: "form.ecommerce"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                name: "ecommerce",
+                placeholder: "-",
+                id: "ecommerce"
+              },
+              domProps: { value: _vm.form.ecommerce },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "ecommerce", $event.target.value)
+                }
+              }
             })
           ]),
           _vm._v(" "),

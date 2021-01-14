@@ -6,9 +6,14 @@
         <div class="description px-3">
             <h5 class="card-title">{{product.name}}</h5>
             <div class="card-text">
-                <p>{{product.price}}</p>
+                <p><i class="fas fa-tag mr-2"></i>{{product_discount}}</p>
+                <p style="text-decoration:line-through;color:red">{{product.price}}</p>
                 <p>{{product.description}}</p>
             </div>  
+        </div>
+        <div class="button-toko">
+            <a :href="product.ig" target="_blank"  class="ig"><img src="img/ig umkm.png"><p>Instagram</p></a>
+            <a :href="product.ecommerce" target="_blank" class="ecommerce"><img src="img/toko umkm.png"><p>E-Commerce</p></a>
         </div>
 
         <div class="background"></div>
@@ -31,10 +36,15 @@
 export default {
     props:['product'],
     mounted(){
-        // console.log(this.product);
+        // console.log(this.product); 
+
+        // set product discount. discount = 20%
+        this.product_discount = parseInt(this.product.price.replace(/\D/g,''))*0.8;
+        this.product_discount = 'Rp. '+ Intl.NumberFormat('de-DE').format(this.product_discount);
     },
     data(){
         return{
+            product_discount:'',
             popup:{
                 status:false,
                 img:'',

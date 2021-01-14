@@ -96,6 +96,8 @@ class MemberController extends Controller
         request()->validate([
             'name'=> 'required|min:3|max:255',
             'price'=> 'required|numeric|min:10000',
+            'ig'=> 'required|min:10|max:1000',
+            'ecommerce'=> 'required|min:10|max:1000',
             'description'=> 'required|min:3|max:1000',
             'file'=>'required|image|max:10000|'
         ]);
@@ -105,6 +107,8 @@ class MemberController extends Controller
             'user_id'=>auth()->user()->id,
             'name'=> $request->name,
             'price'=>ceil($request->price*1.3),
+            'ig'=>$request->ig,
+            'ecommerce'=>$request->ecommerce,
             'description'=> $request->description,
             'file_type'=>$file->getClientOriginalExtension()
         ]);
@@ -124,6 +128,8 @@ class MemberController extends Controller
                 'id'=> $value->id,
                 'name'=> $value->name,
                 'price'=> 'Rp. '.number_format(ceil($value->price/1.3),0,",","."),
+                'ig'=>$value->ig,
+                'ecommerce'=>$value->ecommerce,
                 'description'=> $value->description,
                 'img' => $value->id.".".$value->file_type
             ];
@@ -140,6 +146,8 @@ class MemberController extends Controller
         $product = [
             'name'=> $id->name,
             'price'=> ceil($id->price/1.3),
+            'ig'=>$id->ig,
+            'ecommerce'=>$id->ecommerce,
             'description'=> $id->description,
             'img' => $id->id.".".$id->file_type
         ];
@@ -151,6 +159,8 @@ class MemberController extends Controller
         request()->validate([
             'name'=> 'required|min:3|max:255',
             'price'=> 'required|numeric|min:10000',
+            'ig'=> 'required|min:10|max:1000',
+            'ecommerce'=> 'required|min:10|max:1000',
             'description'=> 'required|min:3|max:1000',
         ]);
 
@@ -180,6 +190,8 @@ class MemberController extends Controller
         $id->update([
             'name'=> $request->name,
             'price'=> ceil($request->price*1.3),
+            'ig'=>$request->ig,
+            'ecommerce'=>$request->ecommerce,
             'description'=> $request->description,
             'file_type'=>isset($file)?$file->getClientOriginalExtension():$id->file_type
         ]);
@@ -263,6 +275,8 @@ class MemberController extends Controller
                 'name'=>$value->name,
                 'img'=>$value->id.'.'.$value->file_type,
                 'price'=>'Rp. '.number_format($value->price,0,",","."),
+                'ig'=>$value->ig,
+                'ecommerce'=>$value->ecommerce,
                 'description'=>$value->description,
                 'umkm'=>$umkm
             ];

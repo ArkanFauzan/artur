@@ -11,7 +11,7 @@ class Product extends Model
     use Uuid;
 
     protected $fillable = [
-        'name','price','description','file_type','user_id'
+        'name','price','description','ig','ecommerce','file_type','user_id'
     ];
 
     public function umkm(){

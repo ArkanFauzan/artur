@@ -898,7 +898,7 @@ a.button:hover, button.button:hover{
 
 .main .our-umkm .umkm-group .umkm .background {
     position: absolute;
-    height: 310px;
+    height: 100%;
     top:0px;
     background: #f3f3f3;
     width: 230px;
