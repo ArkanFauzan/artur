@@ -2297,11 +2297,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -41592,13 +41587,11 @@ var render = function() {
                     },
                     [_vm._v(_vm._s(_vm.data.monthlySoldItem))]
                   )
-                ]),
-                _vm._v(" "),
-                _vm._m(2)
+                ])
               ])
             ]),
             _vm._v(" "),
-            _vm._m(3)
+            _vm._m(2)
           ])
         ])
       ])
@@ -41625,7 +41618,7 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _vm._m(4)
+            _vm._m(3)
           ])
         ])
       ])
@@ -41647,25 +41640,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-auto" }, [
       _c("i", { staticClass: "fas fa-dollar-sign fa-2x text-gray-300" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col" }, [
-      _c("div", { staticClass: "progress progress-sm mr-2" }, [
-        _c("div", {
-          staticClass: "progress-bar bg-info",
-          staticStyle: { width: "50%" },
-          attrs: {
-            role: "progressbar",
-            "aria-valuenow": "50",
-            "aria-valuemin": "0",
-            "aria-valuemax": "100"
-          }
-        })
-      ])
     ])
   },
   function() {
