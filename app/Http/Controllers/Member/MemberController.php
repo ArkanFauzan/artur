@@ -103,10 +103,19 @@ class MemberController extends Controller
         ]);
 
         $file= $request->file('file');
+
+        $net_price = $request->price;
+        $gross = $net_price*1.3;
+        $discount = $net_price*0.23;
+        $profit = ($gross-$discount-$net_price);
+
         $product = Product::create([
             'user_id'=>auth()->user()->id,
             'name'=> $request->name,
-            'price'=>ceil($request->price*1.3),
+            'net_price'=>$net_price,
+            'gross'=>$gross,
+            'discount'=>$discount,
+            'profit'=>$profit,
             'ig'=>$request->ig,
             'ecommerce'=>$request->ecommerce,
             'description'=> $request->description,
@@ -127,7 +136,7 @@ class MemberController extends Controller
             $product[] = [
                 'id'=> $value->id,
                 'name'=> $value->name,
-                'price'=> 'Rp. '.number_format(ceil($value->price/1.3),0,",","."),
+                'price'=> 'Rp. '.number_format(ceil($value->net_price),0,",","."),
                 'ig'=>$value->ig,
                 'ecommerce'=>$value->ecommerce,
                 'description'=> $value->description,
@@ -145,7 +154,7 @@ class MemberController extends Controller
 
         $product = [
             'name'=> $id->name,
-            'price'=> ceil($id->price/1.3),
+            'price'=> ceil($id->net_price),
             'ig'=>$id->ig,
             'ecommerce'=>$id->ecommerce,
             'description'=> $id->description,
@@ -186,10 +195,18 @@ class MemberController extends Controller
             unlink("img/product/$id->id.$id->file_type");
         }
 
+        $net_price = $request->price;
+        $gross = $net_price*1.3;
+        $discount = $net_price*0.23;
+        $profit = ($gross-$discount-$net_price);
+
         // update the product
         $id->update([
             'name'=> $request->name,
-            'price'=> ceil($request->price*1.3),
+            'net_price'=>$net_price,
+            'gross'=>$gross,
+            'discount'=>$discount,
+            'profit'=>$profit,
             'ig'=>$request->ig,
             'ecommerce'=>$request->ecommerce,
             'description'=> $request->description,
@@ -234,7 +251,7 @@ class MemberController extends Controller
                         'id'=> "$id_umkm.product.$id_product",
                         'img' => $data->id.'.'.$data->file_type,
                         'name' => $data->name,
-                        'price' => 'Rp. '.number_format($data->price,0,",","."),
+                        'price' => 'Rp. '.number_format($data->gross,0,",","."),
                         'description'=> $data->description
                     ];
                     $id_product++;
@@ -274,7 +291,7 @@ class MemberController extends Controller
                 'id'=> $id_product,
                 'name'=>$value->name,
                 'img'=>$value->id.'.'.$value->file_type,
-                'price'=>'Rp. '.number_format($value->price,0,",","."),
+                'price'=>'Rp. '.number_format($value->gross,0,",","."),
                 'ig'=>$value->ig,
                 'ecommerce'=>$value->ecommerce,
                 'description'=>$value->description,
@@ -291,19 +308,23 @@ class MemberController extends Controller
             'product_name' => 'required|min:3',
             'net_price' => 'required|numeric|min:1000',
             'ongkir' => 'required|numeric|min:1000',
-            'gross_price' => 'required|numeric|min:1000',
-            'profit' => 'required|numeric|min:1000',
             'file' => 'required|image|max:2000|',
         ]);
+
+        $net_price = $request->net_price;
+        $gross = $net_price*1.3;
+        $discount = $net_price*0.23;
+        $profit = ($gross-$discount-$net_price);
 
         // store to database
         $transaction = Transaction::create([
             'user_id'=>auth()->user()->id,
             'product_name' => request()->product_name,
-            'net_price' => request()->net_price,
+            'net_price'=>$net_price,
+            'gross'=>$gross,
+            'discount'=>$discount,
+            'profit'=>$profit,
             'ongkir' => request()->ongkir,
-            'gross_price' => request()->gross_price,
-            'profit' => request()->profit,
         ]);
 
         $file = request()->file('file');

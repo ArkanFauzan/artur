@@ -21,7 +21,8 @@ class CreateTransactionsTable extends Migration
             // detail transacion
             $table->string('product_name')->nullable();
             $table->string('net_price')->nullable();
-            $table->string('gross_price')->nullable();
+            $table->string('gross')->nullable();
+            $table->string('discount')->nullable();
             $table->string('profit')->nullable();
             $table->string('ongkir')->nullable();
             // extension of payment proof image

@@ -24,6 +24,8 @@ Vue.component('register-form', require('./components/form/RegisterForm.vue').def
 Vue.component('login-form', require('./components/form/LoginForm.vue').default);
 
 Vue.component('new-umkm', require('./components/admin/NewUmkm.vue').default); 
+Vue.component('login-to-umkm', require('./components/admin/LoginToUmkm.vue').default); 
+Vue.component('overview', require('./components/admin/Overview.vue').default); 
 
 Vue.component('my-profile', require('./components/member/MyProfile.vue').default); 
 Vue.component('edit-profile', require('./components/member/EditProfile.vue').default); 

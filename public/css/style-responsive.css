@@ -95,6 +95,13 @@
         z-index: 5;
         margin: auto;
     }
+    .header .nav.responsive{
+        display:block;
+    }
+    .header .nav.normal{
+        display: none;
+    }
+
     .header i{
         display:block;
         width:20%;

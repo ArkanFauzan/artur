@@ -1,27 +1,29 @@
 <template>
-  <main class="main">
-      <div class="new-umkm">
-          <table>
-              <tr>
-                  <th>UMKM</th>
-                  <th>Email</th>
-                  <th>Place</th>
-                  <th>WA</th>
-                  <th>IG</th>
-                  <th>Verified?</th>
-              </tr>
-              <tr v-for="umkm in newUmkm" :key="umkm.id" v-bind:style="{'color':(umkm.read==0?'blue':'black')}">
-                  <td>{{umkm.name}}</td>
-                  <td>{{umkm.email}}</td>
-                  <td>{{umkm.place}}</td>
-                  <td>{{umkm.wa}}</td>
-                  <td>{{umkm.ig}}</td>
-                  <td><a @click.prevent="verified(umkm)">yes</a></td>
-              </tr>
+  <main class="main px-5">
+      <div class="new-umkm table-responsive">
+          <table class="table table-bordered table-hover">
+              <caption class="h3 text-dark" style="caption-side:top;text-align:center">List of UMKM Who Waiting Verification</caption>
+              <thead>
+                <tr class="h5 text-dark">
+                    <th>UMKM</th>
+                    <th>Email</th>
+                    <th>Place</th>
+                    <th>WA</th>
+                    <th>IG</th>
+                    <th>Verified?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="umkm in newUmkm" :key="umkm.id" v-bind:style="{color:(umkm.read==0?'blue':'black')}">
+                    <td>{{umkm.name}} <span :style="{display:umkm.read==0?'inline':'none'}">(New!!!)</span></td>
+                    <td>{{umkm.email}}</td>
+                    <td>{{umkm.place}}</td>
+                    <td>{{umkm.wa}}</td>
+                    <td>{{umkm.ig}}</td>
+                    <td><a class="btn btn-sm bg-info" style="cursor:pointer" @click.prevent="verified(umkm)">yes</a></td>
+                </tr>
+              </tbody>
           </table>
-      </div>
-      <div>
-          <p v-for="dataUmkm in umkm" :key="dataUmkm.id"><a @click.prevent="loginUmkm(dataUmkm)">{{dataUmkm.name}}</a></p>
       </div>
   </main>
 </template>
@@ -30,12 +32,10 @@
 export default {
     mounted(){
         this.getData(); //data register umkm
-        this.getUmkm(); //data umkm for login to dashboard member 
     },
     data(){
         return{
             newUmkm:{},
-            umkm:{},
         }
     },
     methods:{
@@ -75,53 +75,11 @@ export default {
             }catch(e){
                 console.log();
             }
-        },
-        async getUmkm(){
-            try{
-                await axios.get('/api/admin/umkm').then(res=>{
-                    this.umkm = res.data.umkm;
-                })
-            }catch(e){
-
-            }
-        },
-        async loginUmkm(umkm){
-            try{
-                await axios.post('api/admin/login-member',{id:umkm.id}).then(res=>{
-                    // console.log(res.data);
-                    if (res.data=='sukses') {
-                        window.location.href = '/member';
-                    }
-                })
-            }catch(e){
-                console.log(e.response.data.errors);
-            }
         }
     }
 }
 </script>
 
 <style>
-    .main .new-umkm{
-        width:950px;
-        margin: 0 auto;
-        margin-top: 50px;
-    }
-    .main .new-umkm table{
-        width: 100%;
-        text-align: left;
-        border-collapse: collapse;
-    }
-    .main .new-umkm table a{
-        color: blue;
-    }
-    .main .new-umkm table a:hover{
-        cursor: pointer;
-    }
-    .main .new-umkm table td,
-    .main .new-umkm table th{
-        border: 1px solid black;
-        padding: 10px;
-        box-sizing: border-box;
-    }
+
 </style>

@@ -1,7 +1,7 @@
 <template>
     <main class="container-fluid main">
-        <div class="row">
-            <div class="col-12 text-right mb-3">
+        <div class="row" style="display:flex;flex-wrap:wrap;justify-content:space-evenly">
+            <div class="w-100 d-block text-right mb-3">
                 <a href="/member/my-product/add" class="btn btn-primary">+ Add Product</a>
             </div>
             <show-product v-for="product in products" :product="product" :key="product.id"></show-product>

@@ -25,6 +25,11 @@
                 <input type="text" id="gross_price" :value="grossPrice" class="form-control" disabled/>
             </div>
             <div class="form-group">
+                <label for="profit">Discount</label>
+                <p class="error-form" v-if="errors.discount" >{{errors.discount[0]}}</p>
+                <input type="text" id="discount" :value="discount" class="form-control" disabled/>
+            </div>
+            <div class="form-group">
                 <label for="profit">Profit</label>
                 <p class="error-form" v-if="errors.profit" >{{errors.profit[0]}}</p>
                 <input type="text" id="profit" :value="profit" class="form-control" disabled/>
@@ -65,6 +70,7 @@ export default {
                 net_price:'',
                 ongkir:'',
                 gross_price:'',
+                discount:'',
                 profit:'',
             },
             errors:{}
@@ -76,8 +82,14 @@ export default {
             this.form.gross_price = Math.ceil(this.form.net_price*1.3);
             return this.formatRupiah(this.form.gross_price);
         },
+        discount(){
+            this.form.discount = Math.ceil(this.form.net_price*0.23);
+            return this.formatRupiah(this.form.discount);
+        },
         profit(){
-            this.form.profit = Math.ceil(this.form.net_price*0.3);
+            const {net_price, gross_price, discount} = this.form;
+            this.form.profit = Math.ceil(gross_price-discount-net_price);
+            console.log(gross_price);
             return this.formatRupiah(this.form.profit);
         }
     },
@@ -136,7 +148,8 @@ export default {
                         }).then(res=>{
                             this.loading = false;
                             // console.log(res.data);
-                            this.errors = {}
+                            this.errors = {};
+                            window.location.href='/member/my-transaction/update';
                         })
             }catch(e){
                 this.loading = false;

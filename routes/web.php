@@ -35,6 +35,8 @@ Route::prefix('api')->group(function(){
             Route::post('/admin/create-umkm','Admin\AdminController@create');
             Route::get('/admin/umkm','Admin\AdminController@all_umkm');
             Route::post('/admin/login-member','Auth\LoginMemberController');
+
+            Route::get('/overview','Admin\AdminController@overview');
         });
 
         Route::middleware('member')->group(function(){
@@ -63,5 +65,7 @@ Route::middleware('role')->group(function(){
     Route::view('/member/my-product/add','member.add_product');
     Route::view('/member/my-transaction/update','member.my_transaction_update');
 
-    Route::view('/admin','admin.new_umkm');
+    Route::view('/admin','admin.overview');
+    Route::view('/admin/new-umkm','admin.new_umkm');
+    Route::view('/admin/login-to-umkm','admin.login_to_umkm');
 });

@@ -39,6 +39,13 @@ html{
     margin: 0 auto;
 }
 
+.header .nav.responsive{
+    display:none;
+}
+.header .nav.normal{
+    display: block;
+}
+
 .header .join {
     text-align: center;
     margin-top: 4px;

@@ -1,7 +1,7 @@
 <template>
-  <div class="col-sm-6">
-        <div class="card" style="width: 18rem;margin:20px auto">
-            <img :src="'../img/product/'+product.img" class="card-img-top" width="270px" height="200px"  
+  <div style="width:15rem;margin:20px" >
+        <div class="card" style="width: 15rem;margin:10px auto">
+            <img :src="'../img/product/'+product.img" class="card-img-top" width="270px" height="180px"  
                 :alt="product.name" :title="product.name" onerror="this.src='../img/profile/default picture.png';"
             >
             <div class="card-body">

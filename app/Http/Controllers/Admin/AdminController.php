@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 use App\Register;
 use App\Account;
 use App\Profile;
+use App\Transaction;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
+    // show umkm who need verification
     public function index(){
         // get umkm that want to join
         $newUmkm = Register::orderBy('created_at','desc')->get();
@@ -23,11 +25,12 @@ class AdminController extends Controller
         return response()->json(compact('newUmkm'),200);
     }
 
+    // create umkm  account
     public function create(Request $request){
         // create account for new umkm after verified
         $umkm = Account::create([
-            'name'=>$request->name,
-            'place'=>$request->place,
+            'name'=>ucwords($request->name),
+            'place'=>ucwords($request->place),
             'wa'=>$request->wa,
             'ig'=>$request->ig,
             'email'=>$request->email,
@@ -43,8 +46,22 @@ class AdminController extends Controller
         return response()->json(['umkm'=>$umkm]);
     }
 
+    // get data umkm to login to dashboard umkm
     public function all_umkm(){
-        $umkm = Account::where('role','member')->get();
+        $umkm = Account::select('id','name','email','place','wa','ig')->where('role','member')->get();
         return response()->json(compact('umkm'));
+    }
+
+    // get the overview profit and others
+    public function overview(){
+        $annual = Transaction::select(DB::raw('sum(profit) as profit, count(profit) as sold_item'))->where('updated_at','LIKE','%'.date('Y').'%')->first();
+        $annualProfit = str_replace('.0','',$annual->profit);
+        $annualSoldItem = $annual->sold_item;
+        
+        $monthly = Transaction::select(DB::raw('sum(profit) as profit, count(profit) as sold_item'))->where('updated_at','LIKE','%'.date('Y-m').'%')->first();
+        $monthlyProfit = str_replace('.0','',$monthly->profit);
+        $monthlySoldItem = $monthly->sold_item;
+
+        return response()->json(compact('annualProfit','annualSoldItem','monthlyProfit','monthlySoldItem'));
     }
 }

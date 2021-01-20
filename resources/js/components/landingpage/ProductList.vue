@@ -11,10 +11,8 @@ export default {
         Product
     },
     mounted(){
-        // get id of all umkm
         axios.get('api/product').then(response=>{
             this.allProduct = response.data.product;
-            // console.log(response.data.umkm);
         })
     },
     data(){

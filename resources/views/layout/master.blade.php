@@ -6,6 +6,7 @@
         {{-- <meta name="csrf-token" content="{{csrf_token()}}"> --}}
         
         <title>Artur</title>
+        <!-- Created By Arkan | arkanfauzan93@gmail.com | github.com/ArkanFauzan -->
         
         <!-- Fonts -->
         <link href="{{asset('/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -17,10 +18,11 @@
     </head>
     <div id="wrapper">
         <header class="header">
+            <!-- Created By Arkan | arkanfauzan93@gmail.com | github.com/ArkanFauzan-->
             <div class="logo">
                 <img src="img/logo.png" alt="Artur">
             </div>
-            <nav class="nav">
+            <nav class="nav responsive">
                 <ul id="navbar" class="">
                     <?php $uri=$_SERVER['REQUEST_URI'];$route=ucwords(str_replace('/','',$uri));?>
                     
@@ -39,6 +41,14 @@
                     <?php if('/umkm'!=$uri){?>
                         <li><a href="/umkm">Umkm</a></li>
                     <?php };?>
+                    <li><a class="button" href="/register">Join Us</a></li>
+                </ul>
+            </nav>
+            <nav class="nav normal">
+                <ul class="">
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/product">Product</a></li>
+                    <li><a href="/umkm">Umkm</a></li>
                     <li><a class="button" href="/register">Join Us</a></li>
                 </ul>
             </nav>
@@ -69,8 +79,9 @@
                     </div>
                 </div>
                 <img src="img/logo-white.png" alt="Logo Artur" class="logo">
-                <div class="clear copyright">CopyRight 2020 by Artur. All Rights Reserved</div>
+                <div class="clear copyright">CopyRight <?php echo date('Y'); ?> by Artur. All Rights Reserved</div>
             </div>
+            <!-- Created By Arkan | arkanfauzan93@gmail.com | github.com/ArkanFauzan-->
         </footer>
     </div>
 

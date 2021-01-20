@@ -10,6 +10,7 @@
   <meta name="author" content="">
 
   <title>Artur</title>
+  <!-- Created By Arkan | arkanfauzan93@gmail.com | github.com/ArkanFauzan -->
 
   <!-- Custom fonts for this template-->
   <link href="{{asset('/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -92,6 +93,14 @@
     <div id="content-wrapper">
 
       <!-- Main Content -->
+      <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+        <!-- Sidebar Toggle (Topbar) -->
+        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+          <i class="fa fa-bars"></i>
+        </button>
+      </nav>
+
       <div id="content" style="min-height: 85vh">
 
         <!-- Begin Page Content -->
@@ -110,9 +119,10 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Artur 2020</span>
+            <span>Copyright &copy; Artur <?php echo date('Y'); ?></span>
           </div>
         </div>
+        <!-- Created By Arkan | arkanfauzan93@gmail.com | github.com/ArkanFauzan -->
       </footer>
       <!-- End of Footer -->
 

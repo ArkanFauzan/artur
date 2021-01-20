@@ -6,9 +6,11 @@
         <div class="description px-3">
             <h5 class="card-title">{{product.name}}</h5>
             <div class="card-text">
-                <p><i class="fas fa-tag mr-2"></i>{{product_discount}}</p>
-                <p style="text-decoration:line-through;color:red">{{product.price}}</p>
-                <p>{{product.description}}</p>
+                <p class="mt-2">
+                    <span style="font-weight:bold;color:#e31f52;background-color:pink;border:2px solid pink; border-radius:5px;margin-right:5px;padding:3px">-23%</span> 
+                    <span style="text-decoration:line-through;font-size:11px">{{gross}}</span>
+                </p>
+                <p class="mt-2" style="font-size:14px;font-weight:bold">{{price}}</p>
             </div>  
         </div>
         <div class="button-toko">
@@ -24,8 +26,18 @@
                 <div>
                     <img class="popup-img" :src="popup.img">
                     <p class="popup-name" v-text="popup.name"></p>
-                    <p class="popup-price" v-text="popup.price"></p>
+                    <div class="popup-price">
+                        <p class="mt-2 text-left">
+                            <span style="font-weight:bold;color:#e31f52;background-color:pink;border:2px solid pink; border-radius:5px;margin-right:5px;padding:3px">-23%</span> 
+                            <span style="text-decoration:line-through;font-size:11px">{{gross}}</span>
+                        </p>
+                        <p class="mt-2 text-left" style="font-size:14px;font-weight:bold">{{price}}</p>
+                    </div>
                     <p class="popup-description" v-text="popup.description"></p>
+                    <div class="button-toko" style="flex-direction:column;justify-content:left">
+                        <a :href="product.ig" target="_blank"  class="ig mb-3"><img src="img/ig umkm.png"><p>Instagram</p></a>
+                        <a :href="product.ecommerce" target="_blank" class="ecommerce"><img src="img/toko umkm.png"><p>E-Commerce</p></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -38,13 +50,19 @@ export default {
     mounted(){
         // console.log(this.product); 
 
-        // set product discount. discount = 20%
-        this.product_discount = parseInt(this.product.price.replace(/\D/g,''))*0.8;
-        this.product_discount = 'Rp. '+ Intl.NumberFormat('de-DE').format(this.product_discount);
+        this.gross = parseInt(this.product.price.replace(/\D/g,'')); //gross price from database
+        this.net_price = Math.ceil(this.gross/1.3); //net price from seller
+        this.price = this.net_price*1.07; //price include profit
+        this.gross = Math.ceil(this.price/77*100); // gross price. gross-23% = product price
+
+        this.price = 'Rp. '+ Intl.NumberFormat('de-DE').format(this.price);
+        this.gross = 'Rp. '+ Intl.NumberFormat('de-DE').format(this.gross);
     },
     data(){
         return{
-            product_discount:'',
+            net_price:'',
+            gross:'',
+            price:'',
             popup:{
                 status:false,
                 img:'',
@@ -130,7 +148,7 @@ export default {
         font-weight: bold !important;
     }
 
-    .popup-description{
+    .popup-description,.popup-product .button-toko{
         text-align: left!important;
         margin: 15px 15px !important;
         font-size: 17px !important;
