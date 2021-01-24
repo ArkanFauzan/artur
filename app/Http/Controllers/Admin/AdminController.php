@@ -62,6 +62,32 @@ class AdminController extends Controller
         $monthlyProfit = str_replace('.0','',$monthly->profit);
         $monthlySoldItem = $monthly->sold_item;
 
-        return response()->json(compact('annualProfit','annualSoldItem','monthlyProfit','monthlySoldItem'));
+        $allUmkm = Account::with('transaction')->where('role','member')->get();
+        $umkm = [];
+        foreach ($allUmkm as $data) {
+            $transaction = $data->transaction;
+            $total_profit = $data->transaction->sum('profit');
+
+            foreach ($transaction as $key => $value) {
+                // dd('Rp. '.number_format($value->profit,0,',','.'));
+                $transaction[$key]['net_price'] = 'Rp. '.number_format($value->net_price,0,",",".");
+                $transaction[$key]['gross'] =  'Rp. '.number_format($value->gross,0,",",".");
+                $transaction[$key]['discount'] =  'Rp. '.number_format($value->discount,0,",",".");
+                $transaction[$key]['profit'] =  'Rp. '.number_format($value->profit,0,",",".");
+                $transaction[$key]['ongkir'] =  'Rp. '.number_format($value->ongkir,0,",",".");
+            }
+            $umkm[] = [
+                'id' => $data->id,
+                'name'=>$data->name,
+                'place'=>$data->place,
+                'ig'=>$data->ig,
+                'ecommerce'=>$data->ecommerce,
+                'logo'=>$data->profile->id.'.'.$data->profile->type,
+                'profit' =>(int) $total_profit,
+                'transaction' => $transaction
+            ];
+        }
+
+        return response()->json(compact('annualProfit','annualSoldItem','monthlyProfit','monthlySoldItem','umkm'));
     }
 }

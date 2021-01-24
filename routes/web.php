@@ -21,6 +21,7 @@ Route::view('/login','login');
 Route::view('/register','register');
 Route::view('/umkm','umkm');
 Route::view('/product','product');
+Route::get('/product/{id}','Member\MemberController@detail_product');
 
 Route::prefix('api')->group(function(){
     Route::post('/register','Auth\RegisterController');

@@ -251,7 +251,7 @@ class MemberController extends Controller
                         'id'=> "$id_umkm.product.$id_product",
                         'img' => $data->id.'.'.$data->file_type,
                         'name' => $data->name,
-                        'price' => 'Rp. '.number_format($data->gross,0,",","."),
+                        'price' => 'Rp. '.number_format($data->net_price*1.07,0,",","."),
                         'description'=> $data->description
                     ];
                     $id_product++;
@@ -273,9 +273,11 @@ class MemberController extends Controller
     }
     // list product for landing page product
     public function all_product(){
-        $data_product = Product::get();
+        $data_product = Product::orderBy('created_at','ASC')->get();
 
         $product = [];
+        // don't show the real id product (as uuid), but show the increments 
+        // first product will have id = 1, etc.
         $id_product = 1;
         foreach ($data_product as $value) {
             $umkm = $value->umkm;
@@ -299,8 +301,36 @@ class MemberController extends Controller
             ];
             $id_product++;
         }
+        // show the newest product
+        $product = array_reverse($product);
         return response()->json(compact('product'));
     }
+
+    // Detail product for landing page product
+    public function detail_product(Request $request){
+        $id_product = $request->id;
+        $data_product = Product::orderBy('created_at','ASC')->get();
+
+        $product = $data_product[$id_product-1];
+        $umkm = $product->umkm;
+        $umkm = [
+            'name'=>$umkm->name,
+            'place'=>$umkm->place,
+            'ig'=>$umkm->ig,
+            'ecommerce'=>$umkm->ecommerce,
+            'logo'=>$umkm->profile->id.'.'.$umkm->profile->type,
+        ];
+        $product = [
+            'name'=>$product->name,
+            'img'=>$product->id.'.'.$product->file_type,
+            'price'=>'Rp. '.number_format($product->gross,0,",","."),
+            'ig'=>$product->ig,
+            'ecommerce'=>$product->ecommerce,
+            'description'=>$product->description,
+            'umkm'=>$umkm
+        ];
+        return view('/product_detail',compact('product'));
+    }    
 
     // create transaction for member
     public function transaction(Request $request){

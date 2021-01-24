@@ -911,3 +911,90 @@ a.button:hover, button.button:hover{
     width: 230px;
     z-index: -1;
 }
+
+/* Product Detail Page */
+
+.main .product {
+    width:100%;
+}
+.main .product .product-image{
+    width:100%;
+    height: auto;
+    max-height: 300px;
+    overflow:hidden;
+    border-radius:30px;
+    margin: 30px 0;
+}
+.main .product .product-image img{
+    width:100%;
+    transform:translateY(-30%);
+}
+.main .product .product-name{
+    display: flex;
+    margin-bottom: 20px;
+}
+.main .product .product-name h4{
+    margin: 0;
+    margin-right:20px;
+    font-size: 40px;
+    font-weight: bold;
+}
+.main .product .product-name .star{
+    padding: 5px 12px;
+    height: 36px;
+    background: #ff8f1f;
+    border-radius: 10px;
+    margin-top: 7px;
+}
+.main .product .product-name .star img{
+    height:25px;
+    width:25px;
+}
+.main .product .description p{ 
+    text-indent: 30px;
+}
+.main .product .link{
+    background:#f3f3f3;
+    padding: 30px 20px;
+    border-radius:20px;
+    width: 380px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+.main .product .link a{
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    padding: 10px 10px;
+    border-radius: 10px;
+    width: 160px;
+    display: flex;
+    flex-wrap: wrap;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+.main .product .link a.btn-ig{
+    background:#41b3e3;
+}
+.main .product .link a.btn-ig:hover{
+    background:rgba(28,157,210,1);
+}
+.main .product .link a.btn-ecommerce{
+    background:rgb(103,209,0);
+}
+.main .product .link a.btn-ecommerce:hover{
+    background:rgb(100, 182, 17);
+}
+.main .product .link a p{
+    margin:0px;
+    width: 100px;
+    line-height: 25px;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 15px;
+}
+.main .product .link a::before,
+.main .product .link a::after{
+    box-sizing:border-box;
+}

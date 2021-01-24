@@ -79,6 +79,11 @@
     .main .register .section .form-group:last-child{
         width:100%;
     }
+
+    
+    .main .product .product-image img{
+        transform:translateY(-15%);
+    }
 }
 @media (max-width:800px){
     *,
@@ -457,6 +462,11 @@
         flex-wrap: wrap;
         justify-content:space-around;
         width:100%;
+    }
+
+
+    .main .product .product-image img{
+        transform:translateY(-5%);
     }
 }
 
