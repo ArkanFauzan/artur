@@ -10,14 +10,14 @@
                 <a class="button" href="/register">Get Started</a>
             </div>
             <div class="video-wrapper" onclick="playVideo()">
-                <img src="https://1.bp.blogspot.com/-w6Y9tzLYfv8/W-j4rX5o9kI/AAAAAAAAAC4/OdkGD4JkL1AkP6ySJDNqP5pOSBjubjLGQCPcBGAYYCw/s1600/T1.jpg" alt="About Artur">
+                <img src="img/iklan artur.jpg" alt="About Artur">
                 <img src="img/play.png" class="play-btn">
             </div>           
         </div>
         <div id="videoPlayer" class="hideVideo">
             <img src="img/close.png" class="close-btn" onclick="closeVideo()">
-            <video controls autoplay muted>
-                <source src="video/Rec 0001.mp4" type="video/mp4">
+            <video controls autoplay>
+                <source src="video/iklan artur.mp4" type="video/mp4">
             </video>
         </div> 
 
