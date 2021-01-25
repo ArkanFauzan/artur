@@ -16,7 +16,7 @@
         </div>
         <div id="videoPlayer" class="hideVideo">
             <img src="img/close.png" class="close-btn" onclick="closeVideo()">
-            <video controls autoplay>
+            <video controls>
                 <source src="video/iklan artur.mp4" type="video/mp4">
             </video>
         </div> 

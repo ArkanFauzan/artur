@@ -78,8 +78,8 @@
             <div v-for="umkm in data.umkm" :key="umkm.id">
                 <hr>
                 <div class="mb-3" style="display:flex;justify-content:space-between">
-                    <h4>{{umkm.name}},<span class="text-dark h5"> Total Profit = {{'Rp. '+ Intl.NumberFormat('de-DE').format(umkm.profit)}}</span> 
-                    </h4>
+                    <h5>{{umkm.name}},<span class="text-dark h6"> Total Profit = {{'Rp. '+ Intl.NumberFormat('de-DE').format(umkm.profit)}}</span> 
+                    </h5>
                     <a style="cursor:pointer;color:blue" @click="showDetail('id'+umkm.id)">show details!</a>
                 </div>
                 <div :id="'id'+umkm.id" class="table-responsive data-transaction">

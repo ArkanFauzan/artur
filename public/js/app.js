@@ -3851,7 +3851,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['product'],
@@ -41382,17 +41381,17 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("main", { staticClass: "main px-5" }, [
+    _c(
+      "p",
+      {
+        staticClass: "h3 text-dark text-center",
+        staticStyle: { "caption-side": "top", "text-align": "center" }
+      },
+      [_vm._v("Login to Dashboard UMKM")]
+    ),
+    _vm._v(" "),
     _c("div", { staticClass: "new-umkm table-responsive" }, [
       _c("table", { staticClass: "table table-bordered table-hover" }, [
-        _c(
-          "caption",
-          {
-            staticClass: "h3 text-dark",
-            staticStyle: { "caption-side": "top", "text-align": "center" }
-          },
-          [_vm._v("Login to Dashboard UMKM")]
-        ),
-        _vm._v(" "),
         _vm._m(0),
         _vm._v(" "),
         _c(
@@ -41477,17 +41476,17 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("main", { staticClass: "main px-5" }, [
+    _c(
+      "p",
+      {
+        staticClass: "h3 text-dark text-center",
+        staticStyle: { "caption-side": "top", "text-align": "center" }
+      },
+      [_vm._v("List of UMKM Who Waiting Verification")]
+    ),
+    _vm._v(" "),
     _c("div", { staticClass: "new-umkm table-responsive" }, [
       _c("table", { staticClass: "table table-bordered table-hover" }, [
-        _c(
-          "caption",
-          {
-            staticClass: "h3 text-dark",
-            staticStyle: { "caption-side": "top", "text-align": "center" }
-          },
-          [_vm._v("List of UMKM Who Waiting Verification")]
-        ),
-        _vm._v(" "),
         _vm._m(0),
         _vm._v(" "),
         _c(
@@ -41736,9 +41735,9 @@ var render = function() {
               }
             },
             [
-              _c("h4", [
+              _c("h5", [
                 _vm._v(_vm._s(umkm.name) + ","),
-                _c("span", { staticClass: "text-dark h5" }, [
+                _c("span", { staticClass: "text-dark h6" }, [
                   _vm._v(
                     " Total Profit = " +
                       _vm._s(
@@ -44069,8 +44068,6 @@ var render = function() {
             { staticClass: "card-text" },
             [
               _c("p", [_vm._v(_vm._s(_vm.product.price) + " (from seller)")]),
-              _vm._v(" "),
-              _c("p", [_vm._v(_vm._s(_vm.product.description))]),
               _vm._v(" "),
               _c(
                 "a",

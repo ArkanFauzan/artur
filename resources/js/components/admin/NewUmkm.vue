@@ -1,8 +1,8 @@
 <template>
   <main class="main px-5">
+      <p class="h3 text-dark text-center" style="caption-side:top;text-align:center">List of UMKM Who Waiting Verification</p>
       <div class="new-umkm table-responsive">
           <table class="table table-bordered table-hover">
-              <caption class="h3 text-dark" style="caption-side:top;text-align:center">List of UMKM Who Waiting Verification</caption>
               <thead>
                 <tr class="h5 text-dark">
                     <th>UMKM</th>
