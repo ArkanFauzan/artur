@@ -14,8 +14,9 @@
             </div>  
         </div>
         <div class="button-toko">
-            <a :href="product.ig" target="_blank"  class="ig"><img src="img/ig umkm.png"><p>Instagram</p></a>
-            <a :href="product.ecommerce" target="_blank" class="ecommerce"><img src="img/toko umkm.png"><p>E-Commerce</p></a>
+            <!-- <a :href="product.ig" target="_blank"  class="ig"><img src="img/ig umkm.png"><p>Instagram</p></a>
+            <a :href="product.ecommerce" target="_blank" class="ecommerce"><img src="img/toko umkm.png"><p>E-Commerce</p></a> -->
+            <a class="detail">Show Detail</a>
         </div>
 
         <div class="background"></div>

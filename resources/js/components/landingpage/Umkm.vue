@@ -5,7 +5,7 @@
             <div :id="'id'+umkm.id" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div v-for="product in umkm.products" :key="product.id" class="carousel-item">
-                        <img class="d-block w-100" @click.prevent="showPopup(product)" :src="'img/product/'+product.img" onerror="this.src='img/loading.gif';" :tittle="product.name" :alt="product.name">
+                        <img class="d-block w-100" :src="'img/product/'+product.img" onerror="this.src='img/loading.gif';" :tittle="product.name" :alt="product.name">
                     </div>
                 </div>
                 <a class="carousel-control-prev" :href="'#id'+umkm.id" role="button" data-slide="prev">
@@ -27,10 +27,10 @@
                 <p>{{umkm.place}}</p>
             </div>
         </div>
-        <div class="button-toko">
+        <!-- <div class="button-toko">
             <a :href="'https://instagram.com/'+umkm.ig" target="_blank"  class="ig"><img src="img/ig umkm.png"><p>Instagram</p></a>
             <a :href="umkm.ecommerce" target="_blank" class="ecommerce"><img src="img/toko umkm.png" class="ecommers"><p>E-Commerce</p></a>
-        </div>
+        </div> -->
 
         <div class="background"></div>
 

@@ -127,11 +127,17 @@
         function playVideo(){
             videoPlayer.classList.add("showVideo");
             videoPlayer.classList.remove("hideVideo");
+            // play the video
+            setTimeout(function(){
+                videoPlayer.childNodes[2].play();
+            },1100);
         }
 
         function closeVideo(){
             videoPlayer.classList.add("hideVideo");
             videoPlayer.classList.remove("showVideo");
+            // pause the video
+            videoPlayer.childNodes[2].pause();
         }
     </script>
 @endpush

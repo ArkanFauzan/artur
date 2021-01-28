@@ -2669,6 +2669,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['product'],
   mounted: function mounted() {
@@ -42446,37 +42447,22 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "button-toko" }, [
-        _c(
-          "a",
-          {
-            staticClass: "ig",
-            attrs: { href: _vm.product.ig, target: "_blank" }
-          },
-          [
-            _c("img", { attrs: { src: "img/ig umkm.png" } }),
-            _c("p", [_vm._v("Instagram")])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "ecommerce",
-            attrs: { href: _vm.product.ecommerce, target: "_blank" }
-          },
-          [
-            _c("img", { attrs: { src: "img/toko umkm.png" } }),
-            _c("p", [_vm._v("E-Commerce")])
-          ]
-        )
-      ]),
+      _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "background" })
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "button-toko" }, [
+      _c("a", { staticClass: "detail" }, [_vm._v("Show Detail")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -42553,12 +42539,6 @@ var render = function() {
                       onerror: "this.src='img/loading.gif';",
                       tittle: product.name,
                       alt: product.name
-                    },
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        return _vm.showPopup(product)
-                      }
                     }
                   })
                 ]
@@ -42626,38 +42606,6 @@ var render = function() {
         _vm._v(" "),
         _c("p", [_vm._v(_vm._s(_vm.umkm.place))])
       ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "button-toko" }, [
-      _c(
-        "a",
-        {
-          staticClass: "ig",
-          attrs: {
-            href: "https://instagram.com/" + _vm.umkm.ig,
-            target: "_blank"
-          }
-        },
-        [
-          _c("img", { attrs: { src: "img/ig umkm.png" } }),
-          _c("p", [_vm._v("Instagram")])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "ecommerce",
-          attrs: { href: _vm.umkm.ecommerce, target: "_blank" }
-        },
-        [
-          _c("img", {
-            staticClass: "ecommers",
-            attrs: { src: "img/toko umkm.png" }
-          }),
-          _c("p", [_vm._v("E-Commerce")])
-        ]
-      )
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "background" }),
