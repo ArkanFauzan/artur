@@ -1,7 +1,7 @@
 <template>
     <main class="main px-5">
         <div class="profile text-center mb-3">
-            <img :src="'../img/profile/'+profile.img" width="300px" height="300px" :alt="profile.name" onerror="this.src='../img/profile/default picture.png';">
+            <img :src="'../img/profile/'+profile.img" width="300px" height="300px" :alt="profile.name" onerror="this.src='../img/default picture.png';">
         </div>
         <div>
             <form action="#" class="row">

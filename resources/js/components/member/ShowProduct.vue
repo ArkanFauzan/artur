@@ -2,7 +2,7 @@
   <div style="width:15rem;margin:20px" >
         <div class="card" style="width: 15rem;margin:10px auto">
             <img :src="'../img/product/'+product.img" class="card-img-top" width="270px" height="180px"  
-                :alt="product.name" :title="product.name" onerror="this.src='../img/profile/default picture.png';"
+                :alt="product.name" :title="product.name" onerror="this.src='../img/default picture.png';"
             >
             <div class="card-body">
                 <h5 class="card-title">{{product.name}}</h5>
