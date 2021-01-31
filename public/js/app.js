@@ -2566,6 +2566,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2593,7 +2598,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this.loading = true;
                 _context.next = 4;
                 return axios.post('/api/register', _this.form).then(function (response) {
-                  _this.errors = '';
+                  _this.errors = ''; // change background to grey
+
+                  var backgroudPopup = document.getElementsByClassName('background-popup')[0];
+                  backgroudPopup.style.backgroundColor = '#737373';
+                  backgroudPopup.style.zIndex = '2'; // show popup
+
                   var registrationPopup = document.getElementsByClassName('registration-success')[0];
                   registrationPopup.classList.add('showPopup');
                   registrationPopup.classList.remove('hidePopup');
@@ -2605,6 +2615,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     ig: ''
                   };
                   _this.loading = false;
+                  setTimeout(function () {
+                    document.getElementById('success').classList.add('success');
+                  }, 500);
                 });
 
               case 4:
@@ -2629,6 +2642,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var registrationPopup = document.getElementsByClassName('registration-success')[0];
       registrationPopup.classList.remove('showPopup');
       registrationPopup.classList.add('hidePopup');
+      var backgroudPopup = document.getElementsByClassName('background-popup')[0];
+      backgroudPopup.style.backgroundColor = 'transparent';
+      backgroudPopup.style.zIndex = '-1';
+      document.getElementById('success').classList.remove('success');
     }
   }
 });
@@ -8377,7 +8394,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.error-form{\n    display: block;\n    color: red;\n    margin: 0;\n    padding: 0;\n}\nbutton.button .loading{\n    width: 21px;\n    height: 21px;\n    float:right;\n    margin-left: 10px;\n}\n.registration-success{\n    position: fixed;\n    top: 50%;\n    left:50%;\n    transform:translate(-50%,-50%); \n    width: 30%;\n    background: lightgrey;\n    padding: 20px;\n    border-radius: 20px;\n}\n.hidePopup{\n    display: none;\n}\n.showPopup{\n    z-index: 2;\n    opacity:1;\n    -webkit-animation: showPopup 0.3s;\n            animation: showPopup 0.3s;\n}\n@-webkit-keyframes showPopup {\n0%{\n        transform: translateX(-50%);\n        top: -50%;\n        left: 50%;\n        display: none;\n}\n}\n@keyframes showPopup {\n0%{\n        transform: translateX(-50%);\n        top: -50%;\n        left: 50%;\n        display: none;\n}\n}\n.popup-header{\n    margin-bottom: 10px;\n    font-size: 30px;\n}\n.popup-header h2{\n    margin: 25px 0px;\n}\n.popup-body{\n    text-align: justify;\n}\na.popup-button{\n    font-size: 15px;\n    padding: 7px 15px;\n    border-radius: 10px;\n    margin-top: 20px;\n    float: right;\n}\n", ""]);
+exports.push([module.i, "\n.error-form{\n    display: block;\n    color: red;\n    margin: 0;\n    padding: 0;\n}\nbutton.button .loading{\n    width: 21px;\n    height: 21px;\n    float:right;\n    margin-left: 10px;\n}\n.background-popup{\n    display:block;\n    width:100%;\n    height:100vh;\n    z-index:-1;\n    background:transparent;\n    opacity: 0.4;\n    position: fixed;\n    top: 0;\n    left:0;\n}\n.registration-success{\n    position: fixed;\n    top: 50%;\n    left:50%;\n    transform:translate(-50%,-50%); \n    width: 25%;\n    background: white;\n    padding: 0px;\n    border-radius: 10px;\n}\n.main .register .registration-success img{\n    display: none;\n    width: 80px;\n    height: 80px;\n    position: absolute;\n    left: 50%;\n    top:0px;\n    transform: translate(-50%,-50%);\n}\n.main .register .registration-success img.success{\n    display: block;\n    -webkit-animation: ceklis 0.7s;\n            animation: ceklis 0.7s;\n}\n@-webkit-keyframes ceklis{\n0%{\n        width: 150px;\n        height: 150px;\n}\n}\n@keyframes ceklis{\n0%{\n        width: 150px;\n        height: 150px;\n}\n}\n.hidePopup{\n    display: none;\n}\n.showPopup{\n    z-index: 3;\n    opacity:1;\n    -webkit-animation: showPopup 0.3s;\n            animation: showPopup 0.3s;\n}\n@-webkit-keyframes showPopup {\n0%{\n        transform: translateX(-50%);\n        top: -50%;\n        left: 50%;\n        display: none;\n}\n}\n@keyframes showPopup {\n0%{\n        transform: translateX(-50%);\n        top: -50%;\n        left: 50%;\n        display: none;\n}\n}\n.popup-header{\n    margin-top: 50px;\n    margin-bottom: 20px;\n    text-align: center;\n    font-size: 20px;\n}\n.popup-header h2{\n    margin: 0;\n}\n.popup-body{\n    text-align: justify;\n    padding: 0 20px 20px 20px;\n    display: flex;\n    flex-direction: column;\n}\na.popup-button{\n    text-align: center;\n    font-size: 15px;\n    padding: 7px 15px;\n    border-radius: 5px;\n    margin-top: 25px;\n    position: relative;\n}\n", ""]);
 
 // exports
 
@@ -42319,28 +42336,41 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
+    _c("div", { staticClass: "background-popup" }),
+    _vm._v(" "),
     _c("div", { staticClass: "registration-success hidePopup" }, [
+      _c("img", {
+        attrs: {
+          src: "img/success.png",
+          id: "success",
+          width: "50px",
+          height: "50px"
+        }
+      }),
+      _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "popup-body" }, [
-        _vm._v(
-          "\n            Mohon cek secara berkala email yang anda daftarkan untuk menerima \n            akses login dari kami jika anda lolos seleksi administrasi.\n        "
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "button popup-button",
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              return _vm.hidePopup($event)
+        _c("span", [
+          _vm._v(
+            "\n                Mohon cek secara berkala email yang anda daftarkan untuk menerima \n                akses login dari kami jika anda lolos seleksi administrasi.\n            "
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "button popup-button",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.hidePopup($event)
+              }
             }
-          }
-        },
-        [_vm._v("Mengerti")]
-      )
+          },
+          [_vm._v("Ok")]
+        )
+      ])
     ])
   ])
 }
@@ -42350,7 +42380,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "popup-header" }, [
-      _c("h2", [_vm._v("Registrasi Berhasil!")])
+      _c("h2", [_vm._v("Registrasi Berhasil")])
     ])
   }
 ]

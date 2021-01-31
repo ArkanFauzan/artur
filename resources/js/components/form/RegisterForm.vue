@@ -46,15 +46,20 @@
             <div class="backgroud"></div>
             <div class="clear"></div>
         </form>
+        <div class="background-popup">
+        </div>
         <div class="registration-success hidePopup">
+            <img src="img/success.png" id="success" width="50px" height="50px">
             <div class="popup-header">
-                <h2>Registrasi Berhasil!</h2>
+                <h2>Registrasi Berhasil</h2>
             </div>
             <div class="popup-body">
-                Mohon cek secara berkala email yang anda daftarkan untuk menerima 
-                akses login dari kami jika anda lolos seleksi administrasi.
+                <span>
+                    Mohon cek secara berkala email yang anda daftarkan untuk menerima 
+                    akses login dari kami jika anda lolos seleksi administrasi.
+                </span>
+                <a class="button popup-button" @click.prevent="hidePopup">Ok</a>
             </div>
-            <a class="button popup-button" @click.prevent="hidePopup">Mengerti</a>
         </div>
     </div>
     
@@ -83,6 +88,12 @@ export default {
                 await axios.post('/api/register',this.form).then(response=>{
                     this.errors='';
 
+                    // change background to grey
+                    let backgroudPopup = document.getElementsByClassName('background-popup')[0];
+                    backgroudPopup.style.backgroundColor = '#737373';
+                    backgroudPopup.style.zIndex = '2';
+
+                    // show popup
                     let registrationPopup = document.getElementsByClassName('registration-success')[0];
                     registrationPopup.classList.add('showPopup');
                     registrationPopup.classList.remove('hidePopup');
@@ -95,6 +106,10 @@ export default {
                         ig:'',
                     }
                     this.loading = false;
+
+                    setTimeout(function(){
+                        document.getElementById('success').classList.add('success');
+                    },500)
                 })
             }catch(e){
                 this.errors = e.response.data.errors;
@@ -105,6 +120,12 @@ export default {
             let registrationPopup = document.getElementsByClassName('registration-success')[0];
             registrationPopup.classList.remove('showPopup');
             registrationPopup.classList.add('hidePopup');
+
+            let backgroudPopup = document.getElementsByClassName('background-popup')[0];
+            backgroudPopup.style.backgroundColor = 'transparent';
+            backgroudPopup.style.zIndex = '-1';
+
+            document.getElementById('success').classList.remove('success');
         }
     }
 }
@@ -123,21 +144,51 @@ export default {
         float:right;
         margin-left: 10px;
     }
+    .background-popup{
+        display:block;
+        width:100%;
+        height:100vh;
+        z-index:-1;
+        background:transparent;
+        opacity: 0.4;
+        position: fixed;
+        top: 0;
+        left:0;
+    }
     .registration-success{
         position: fixed;
         top: 50%;
         left:50%;
         transform:translate(-50%,-50%); 
-        width: 30%;
-        background: lightgrey;
-        padding: 20px;
-        border-radius: 20px;
+        width: 25%;
+        background: white;
+        padding: 0px;
+        border-radius: 10px;
+    }
+    .main .register .registration-success img{
+        display: none;
+        width: 80px;
+        height: 80px;
+        position: absolute;
+        left: 50%;
+        top:0px;
+        transform: translate(-50%,-50%);
+    }
+    .main .register .registration-success img.success{
+        display: block;
+        animation: ceklis 0.7s;
+    }
+    @keyframes ceklis{
+        0%{
+            width: 150px;
+            height: 150px;
+        }
     }
     .hidePopup{
         display: none;
     }
     .showPopup{
-        z-index: 2;
+        z-index: 3;
         opacity:1;
         animation: showPopup 0.3s;
     }
@@ -150,20 +201,26 @@ export default {
         }
     }
     .popup-header{
-        margin-bottom: 10px;
-        font-size: 30px;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 20px;
     }
     .popup-header h2{
-        margin: 25px 0px;
+        margin: 0;
     }
     .popup-body{
         text-align: justify;
+        padding: 0 20px 20px 20px;
+        display: flex;
+        flex-direction: column;
     }
     a.popup-button{
+        text-align: center;
         font-size: 15px;
         padding: 7px 15px;
-        border-radius: 10px;
-        margin-top: 20px;
-        float: right;
+        border-radius: 5px;
+        margin-top: 25px;
+        position: relative;
     }
 </style>
