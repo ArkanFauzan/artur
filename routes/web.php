@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 // $password= bcrypt("haloo");
 
-Route::view('/','home');
+Route::get('/',function(){return redirect('/home');});
 Route::view('/home','home');
 Route::view('/login','login');
 Route::view('/register','register');

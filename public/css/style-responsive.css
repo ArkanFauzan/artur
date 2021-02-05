@@ -538,15 +538,21 @@
         font-size:18px;
     }
 
-
+ 
     .main .features{
         width:100%;
+    }
+    .main .features .features-description .goals h1{
+        font-size:30px;
     }
     .main .features .mockup img{
         top:20px;
     }
     .main .features .features-description{
         width:100%;
+    }
+    .main .features .features-description .features-list h1{
+        font-size:30px;
     }
     .main .features .features-description .features-list{
         justify-content:space-around;
@@ -583,6 +589,9 @@
     .main .quotes .ceo-image{
         float:none;
         text-align:center;
+        position:relative;
+        top:-20px;
+        left:-5px;
     }
     .main .quotes .quotes-group{
         width:100%;
@@ -719,5 +728,84 @@
     }
     .main .register .form .button{
         font-size:15px;
+    }
+}
+
+@media (max-width:400px){
+    .main .welcome{
+        height:380px;
+    }
+    .main .welcome .video-wrapper{
+        width:300px;
+        height:180px;
+    }
+    .main .welcome .video-wrapper img{
+        width:300px;
+        height:180px;
+    }
+    .main .welcome .text p{
+        top:210px;
+        font-size:18px;
+    }
+    .main .welcome .text a{
+        top:210px;
+    }
+
+
+    .main .features .features-description .goals p{
+        font-size:15px;
+    }
+    .main .features .features-description .features-list>div{
+        width:90px;
+        box-sizing:border-box;
+        margin:0 5px;
+    }
+
+    .main .quotes .quotes-group .text{
+        font-size:15px;
+    }
+    .main .quotes .quotes-group p.by{
+        font-size:15px;
+    }
+    .main .quotes .quotes-group p.position{
+        font-size:15px;
+    }
+
+    .main .mitra .text{
+        font-size:14px;
+    }
+    .main .mitra .list-mitra .name{
+        font-size:12px;
+    }
+    .main .mitra .list-mitra .ig{
+        font-size:12px;
+    }
+
+    .main .pricing .text p{
+        font-size:15px;
+        margin-top:70px;
+    }
+
+    .footer{
+        margin-top:20px;
+    }
+    .footer .footer-group{
+        position:relative;
+    }
+    .footer .footer-group h1{
+        font-size:25px;
+    }
+    .footer .footer-group p{
+        font-size:11px;
+        line-height:18px;
+    }
+    .footer .logo{
+        width:100px;
+        position:absolute;
+        top:0;
+        right:0;
+    }
+    .footer .copyright{
+        font-size:11px;
     }
 }
