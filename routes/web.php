@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// $password= bcrypt("haloo");
+// $password= bcrypt("Artur.041020");
 
 Route::get('/',function(){return redirect('/home');});
 Route::view('/home','home');
